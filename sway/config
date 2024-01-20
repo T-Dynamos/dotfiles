@@ -11,6 +11,7 @@ set $down Right
 set $up Up
 set $right Down
 
+set $file_manager thunar
 set $term kitty
 set $browser google-chrome-stable
 
@@ -52,10 +53,13 @@ bindswitch lid:on output eDP-1 disable
 bindswitch lid:off output eDP-1 enable
 
 bindsym $mod+Return exec $term
+bindsym $mod+Escape exec $file_manager
 bindsym $mod+BackSpace exec $browser
 bindsym $mod+c kill
 bindsym $mod+d exec $menu
-bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
+bindsym $mod+Shift+p exec hyprpicker --render-inactive --autocopy
+bindsym  --whole-window button8 exec mpc next
+bindsym  --whole-window button9 exec mpc prev
 
 #SWAY
 floating_modifier $mod normal

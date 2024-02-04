@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+from rich.console import Console
+from rich.markdown import Markdown
+import google.generativeai as genai
+import sys
+import os
+
+genai.configure(api_key="OSM<E")
+model = genai.GenerativeModel('gemini-pro')
+sys.argv.pop(0)
+response = model.generate_content(" ".join(sys.argv))
+
+def get_codes(text):
+    codes = text.split('```')
+    result = ""
+    for i in range(len(codes)):
+        if (i) % 2 == 1:
+            result += "\n" + codes[i]
+    return result[2:]
+
+os.system("wl-copy '{}'".format(get_codes(response.text)))
+
+markdown = Markdown(
+    response.text,
+    justify="left",
+    code_theme="catppuccin-mocha",
+)
+console = Console(
+     record=True
+)
+console.print(markdown)

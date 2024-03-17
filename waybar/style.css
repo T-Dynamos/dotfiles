@@ -63,6 +63,7 @@ window#waybar.hidden {
 #backlight,
 #pulseaudio,
 #network,
+#temperature,
 #mpd,
 #clock,
 #tray {
@@ -126,6 +127,10 @@ window#waybar.hidden {
 
 #mpd {
     background-color:#f5e0dc;
+}
+
+#temperature {
+    background-color:#FCC5FA
 }
 
 #network {

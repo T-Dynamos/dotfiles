@@ -16,7 +16,7 @@
         "clock"
     ],
     "modules-right": [
-        "mpd",
+        "mpris",
         "network",
         "pulseaudio",
         "backlight",
@@ -30,9 +30,21 @@
     "temperature": {
       // "thermal-zone": 2,
       // "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
-      // "critical-threshold": 80,
+      // "critical-threshold": 65,
       // "format-critical": "{temperatureC}°C ",
       "format": "{temperatureC}°C "
+    },
+    "mpris": {
+      "format": "{player_icon} {title}",
+      "format-paused": "{status_icon} {title}",
+      "player-icons": {
+        "default": "󰏤 ",
+        "mpv": "🎵"
+      },
+      "status-icons": {
+        "paused": " "
+      },
+      // "ignored-players": ["firefox"]
     },
     "mpd":{
         "format":"󰏤  {title}",
@@ -102,7 +114,7 @@
         "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
-            "default": ["󰖀","󰕾",""]
+            "default": ["󰖀 ","󰕾 " ," "]
         },
         "on-click": "pamixer -t",
         "scroll-step": 1

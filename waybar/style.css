@@ -65,6 +65,7 @@ window#waybar.hidden {
 #network,
 #temperature,
 #mpd,
+#mpris,
 #clock,
 #tray {
   border-radius: 4px;
@@ -123,6 +124,10 @@ window#waybar.hidden {
 
 #cpu  {
   background-color:#f5e0dc;
+}
+
+#mpris {
+    background-color:#f5e0dc;
 }
 
 #mpd {

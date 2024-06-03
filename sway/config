@@ -1,9 +1,8 @@
 set $mod Mod4
 
-
 default_border none
 default_floating_border none
-font pango:monospace 0
+# font pango:monospace 0
 titlebar_padding 1
 
 set $left Left
@@ -13,13 +12,21 @@ set $right Down
 
 set $file_manager thunar
 set $term kitty
-set $browser google-chrome-stable
+set $browser firefox
 
-set $menu ~/.config/rofi/launchers/misc/launcher.sh & 
+set $menu /home/tdynamos/.config/rofi/launchers/type-2/launcher.sh
+
+# Notification Daemon
+exec swaync
+exec mpd-mpris
+
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+bindsym $mod+Shift+x exec LANG=POSIX /home/tdynamos/.local/share/woomer/target/release/woomer
 
 output * bg /home/tdynamos/.config/wallpaper fill
 smart_borders 1
-
+# exec huiontablet
 client.focused              #181825 #CBA6F7  #CBA6F7 #CBA6F7   #CBA6F7
 
 # output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -31,7 +38,7 @@ client.focused              #181825 #CBA6F7  #CBA6F7 #CBA6F7   #CBA6F7
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-
+exec /usr/lib/xfce-polkit/xfce-polkit
 ### Input configuration
 #
 # Example configuration:
@@ -58,8 +65,8 @@ bindsym $mod+BackSpace exec $browser
 bindsym $mod+c kill
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+p exec hyprpicker --render-inactive --autocopy
-bindsym  --whole-window button8 exec mpc next
-bindsym  --whole-window button9 exec mpc prev
+bindsym  --whole-window button8 exec playerctl play-pause
+bindsym  --whole-window button9 exec playerctl next
 
 #SWAY
 floating_modifier $mod normal

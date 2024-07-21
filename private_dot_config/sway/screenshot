@@ -1,0 +1,22 @@
+screen () {
+    export FILE=~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+    grim -t png $FILE
+    wl-copy < $FILE
+    echo $FILE
+}
+
+window () {
+    export FILE=~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+    export WINDOW=$(swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)
+    grim -t png -g "$WINDOW" $FILE
+    wl-copy < $FILE
+}
+
+region () {
+    export FILE=~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+    export REGION=$(slurp)
+    grim -t png -g "$REGION" $FILE
+    wl-copy < $FILE
+}
+
+$1

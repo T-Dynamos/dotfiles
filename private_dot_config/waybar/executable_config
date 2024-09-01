@@ -5,7 +5,7 @@
     "height": 45,
     "modules-left": [
         "custom/power",
-        "custom/logo",
+        "custom/fan",
         "cpu",
         "temperature",
         "memory",
@@ -29,7 +29,7 @@
     },
     "temperature": {
       // "thermal-zone": 2,
-      // "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
+      "hwmon-path": ["/sys/class/hwmon/hwmon3/temp1_input"],
       // "critical-threshold": 65,
       // "format-critical": "{temperatureC}°C ",
       "format": "{temperatureC}°C "
@@ -119,10 +119,10 @@
         "on-click": "pamixer -t",
         "scroll-step": 1
     },
-    "custom/logo": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "~/.config/rofi/launchers/misc/launcher.sh &"
+  "custom/fan": {
+      "exec": "sensors | awk '/fan2:/ {print $2}'",
+      "format": "󰈐 {} RPM",
+      "interval": 2,
     },
     "battery": {
         "format": "{capacity}% {icon}",

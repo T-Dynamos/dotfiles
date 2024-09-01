@@ -56,7 +56,7 @@ window#waybar.hidden {
 
 #memory,
 #custom-power,
-#custom-logo,
+#custom-fan,
 #backlight,
 #cpu,
 #battery,
@@ -79,10 +79,7 @@ window#waybar.hidden {
   margin-right: 6px;
 }
 
-#custom-logo {
-  padding-right: 15px;
-  padding-left: 13px;
-  font-size: 15px;
+#custom-fan {
   background-color: #A6E3A1;
 }
 

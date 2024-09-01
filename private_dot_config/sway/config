@@ -19,6 +19,8 @@ set $menu /home/tdynamos/.config/rofi/launchers/type-2/launcher.sh
 # Notification Daemon
 exec swaync
 exec mpd-mpris
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec swaymsg output DP-1 mode 1920x1080
 
 # Toggle control center
 bindsym $mod+Shift+n exec swaync-client -t -sw
@@ -46,7 +48,7 @@ exec /usr/lib/xfce-polkit/xfce-polkit
 #
 # Example configuration:
 #
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "1739:30963:Synaptics_TM3096-003" {
        dwt enabled
        tap enabled
        natural_scroll enabled
@@ -60,8 +62,7 @@ for_window [class="python3.11"] floating enable
 for_window [class="python3.12"] floating enable
 
 # Multimonitor
-bindswitch lid:on output eDP-1 disable
-bindswitch lid:off output eDP-1 enable
+bindsym $mod+j output eDP-1 toggle
 
 bindsym $mod+Return exec $term
 bindsym $mod+Escape exec $file_manager

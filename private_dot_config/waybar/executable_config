@@ -1,14 +1,11 @@
 {
     "layer": "top",
     "position": "top",
-    "spacing": 0,
-    "height": 45,
     "modules-left": [
-        "custom/power",
-        "custom/fan",
         "cpu",
         "temperature",
         "memory",
+        "custom/spacing-left",
         "sway/workspaces"
     ],
     "modules-center": [
@@ -16,10 +13,12 @@
         "clock"
     ],
     "modules-right": [
+        "custom/spacing-right",
         "mpris",
         "network",
         "pulseaudio",
         "backlight",
+        "custom/fan",
         "battery",
         "tray",
     ],
@@ -28,15 +27,14 @@
       "format-icons":["󰾆","󰾅","󰓅"]
     },
     "temperature": {
-      // "thermal-zone": 2,
       "hwmon-path": ["/sys/class/hwmon/hwmon3/temp1_input"],
-      // "critical-threshold": 65,
-      // "format-critical": "{temperatureC}°C ",
       "format": "{temperatureC}°C "
     },
     "mpris": {
       "format": "{player_icon} {title}",
+      "title-len":15,
       "format-paused": "{status_icon} {title}",
+      "ignored-players": ["firefox"],
       "player-icons": {
         "default": "󰏤 ",
         "mpv": "🎵"
@@ -44,7 +42,6 @@
       "status-icons": {
         "paused": " "
       },
-      // "ignored-players": ["firefox"]
     },
     "mpd":{
         "format":"󰏤  {title}",
@@ -81,7 +78,7 @@
     },
     "memory": {
         "interval": 1,
-        "format": "󰍛 {used} GB",
+        "format": "{used} GB 󰍛",
         "max-length": 10,
         "on-click":"xfce4-taskmanager",
     },
@@ -120,10 +117,11 @@
         "scroll-step": 1
     },
   "custom/fan": {
-      "exec": "sensors | awk '/fan2:/ {print $2}'",
-      "format": "󰈐 {} RPM",
-      "interval": 2,
-    },
+          "exec": "sensors | awk '/curr1:/ { if ($2 == \"1000.00\") { print \"\" } else { print $2, $3 }}'",
+        "format": "{}",
+        "interval": 1, 
+        "hide-empty-text": true,
+      },
     "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": {
@@ -165,14 +163,14 @@
       "max-length": 100
     },
     "backlight": {
-        "device": "intel_backlight",
         "format": "{percent}% {icon}",
         "scroll-step": 5,
         "format-icons":["󰃚","󰃛","󰃜","󰃝","󰃞","󰃟","󰃠"],
     },
-    "custom/power": {
-        "format": "󰤆",
-        "tooltip": false,
-        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &"
-    }
+    "custom/spacing-left" : {
+      "format":  " ",
+    },
+    "custom/spacing-right" : {
+      "format":  " ",
+    },
 }

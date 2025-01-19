@@ -1,13 +1,186 @@
 sw_volume: 100
 audio_device_state:1:pulse audio
 audio_device_state:1:my_fifo
-state: stop
-random: 0
+state: play
+current: 130
+time: 122.050000
+random: 1
 repeat: 1
-single: 1
+single: 0
 consume: 0
-crossfade: 0
+crossfade: 2
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
+0:SynthWave/A.L.I.S.O.N - Nightride - Revisited.mp3
+1:SynthWave/Voyage - Beyond.mp3
+2:SynthWave/A.L.I.S.O.N - always in my dreams.mp3
+3:SynthWave/Hotel Pools - Limits.mp3
+4:SynthWave/Downtown Binary - Atlantis.mp3
+5:SynthWave/Voyage - Moon Phase.mp3
+6:SynthWave/Downtown Binary, The Present Sound - Polaris.mp3
+7:SynthWave/Hotel Pools, A.L.I.S.O.N - Lunar.mp3
+8:SynthWave/Hotel Pools - Snowfall.mp3
+9:SynthWave/oDDling - Drifting.mp3
+10:SynthWave/Hotel Pools, oDDling - Remain.mp3
+11:SynthWave/A.L.I.S.O.N - Subtract.mp3
+12:SynthWave/Krosia - Last Horizon.mp3
+13:SynthWave/oDDling - Void.mp3
+14:SynthWave/Emil Rottmayer - Elevate.mp3
+15:SynthWave/Monolism - Transparent.mp3
+16:SynthWave/Neon Galaxy - Portal.mp3
+17:SynthWave/KING PALM - Luxury.mp3
+18:SynthWave/DEPARTURE - Imagine.mp3
+19:SynthWave/Voyage - Center Point.mp3
+20:SynthWave/A.L.I.S.O.N - Nightride - Revisited.mp3
+21:SynthWave/VIQ - Orbit.mp3
+22:SynthWave/KING PALM - Journey.mp3
+23:SynthWave/Krosia - Crystal Bells.mp3
+24:SynthWave/EVANS - third planet.mp3
+25:SynthWave/Hotel Pools - Evolve.mp3
+26:SynthWave/KING PALM - Coast.mp3
+27:SynthWave/Monolism - Infinite Space.mp3
+28:SynthWave/oDDling - Divide.mp3
+29:SynthWave/GRAEDA - Deluge.mp3
+30:SynthWave/Xtract - Audiotool Day 2016.mp3
+31:SynthWave/MEGAS - Stargazer.mp3
+32:SynthWave/Forhill, Hotel Pools - Descent.mp3
+33:SynthWave/Hotel Pools, Memorex Memories - Distance.mp3
+34:SynthWave/GRAEDA - Barranca.mp3
+35:SynthWave/DavZ - Mindless.mp3
+36:SynthWave/Unfound - Rise.mp3
+37:SynthWave/oDDling - Reverie.mp3
+38:SynthWave/Unfound - Heaven.mp3
+39:SynthWave/Novus Sana - Sound of the Sky.mp3
+40:SynthWave/Krosia - Sonar.mp3
+41:SynthWave/Akraa - Lightyears.mp3
+42:SynthWave/Virtua, Robert Iver - Analogue Pulsar.mp3
+43:SynthWave/Soundgo - Starwave.mp3
+44:SynthWave/Forhill, Eagle Eyed Tiger - Infuse.mp3
+45:SynthWave/VIQ, Krosia - Echodrift.mp3
+46:SynthWave/Tibeauthetraveler - Soare.mp3
+47:SynthWave/Boy From Nowhere - Bleue Astrale.mp3
+48:SynthWave/Virtua - Searching.mp3
+49:SynthWave/Soundgo - Electrosky.mp3
+50:SynthWave/Protocols - Orion.mp3
+51:SynthWave/Hotel Pools - Satin.mp3
+52:SynthWave/Downtown Binary - Icarus.mp3
+53:SynthWave/A.L.I.S.O.N - Erebus.mp3
+54:SynthWave/Girl From Nowhere, Boy From Nowhere - Diamond.mp3
+55:SynthWave/Kabes, Protocols - Static.mp3
+56:SynthWave/VIQ - Somewhere.mp3
+57:SynthWave/Akraa, Virtua - Portal.mp3
+58:SynthWave/Nitewalk, SwuM - Last Cosmo.mp3
+59:SynthWave/Nitewalk - Prismatic Waves.mp3
+60:SynthWave/Theo Aabel - Night Owl.mp3
+61:SynthWave/Virtua, Akraa - Phases.mp3
+62:SynthWave/Virtua, Akraa - Tomorrow.mp3
+63:SynthWave/Virtua, Akraa - Horizon.mp3
+64:SynthWave/Virtua, Akraa - Pulse.mp3
+65:SynthWave/Virtua, Akraa - Stargaze.mp3
+66:SynthWave/Virtua, Akraa - Lifted.mp3
+67:SynthWave/Virtua, Akraa - Nightrider.mp3
+68:SynthWave/Virtua, Akraa - Lights.mp3
+69:SynthWave/Virtua, Akraa - Cosmos.mp3
+70:SynthWave/Virtua, Akraa - Passenger.mp3
+71:SynthWave/Virtua, Akraa - Echoes.mp3
+72:SynthWave/Virtua, Akraa - Lunar.mp3
+73:SynthWave/Virtua, Akraa - Distance.mp3
+74:SynthWave/Virtua, Akraa - Technicolour.mp3
+75:SynthWave/Virtua, Akraa - Resurgence.mp3
+76:SynthWave/Virtua, Akraa - Tranquil.mp3
+77:SynthWave/Voyage - Allude.mp3
+78:SynthWave/Downtown Binary - Taking Flight.mp3
+79:SynthWave/Downtown Binary - Astral.mp3
+80:SynthWave/Downtown Binary - Cirrus.mp3
+81:SynthWave/Downtown Binary - Light Cycles.mp3
+82:SynthWave/Downtown Binary, FRM - Umbra.mp3
+83:SynthWave/Downtown Binary - Shuto Expressway.mp3
+84:SynthWave/Downtown Binary - Fantasia.mp3
+85:SynthWave/Downtown Binary - Winter.mp3
+86:SynthWave/Downtown Binary - Pandora.mp3
+87:SynthWave/Voyage - Aura.mp3
+88:SynthWave/Downtown Binary - 4am.mp3
+89:SynthWave/Downtown Binary - Aurora.mp3
+90:SynthWave/Downtown Binary - Lost Signal.mp3
+91:SynthWave/Downtown Binary - Reflect.mp3
+92:SynthWave/Downtown Binary - City Lights.mp3
+93:SynthWave/Downtown Binary - Pools.mp3
+94:SynthWave/Downtown Binary - Void.mp3
+95:SynthWave/Downtown Binary - Distant.mp3
+96:SynthWave/Le Metroid - Crystal Children.mp3
+97:SynthWave/Le Metroid - Frequencies.mp3
+98:SynthWave/Le Metroid - Andromeda.mp3
+99:SynthWave/Le Metroid - Le Metroid.mp3
+100:SynthWave/Le Metroid - Orion.mp3
+101:SynthWave/Le Metroid - Saturne.mp3
+102:SynthWave/Le Metroid - Speed Light.mp3
+103:SynthWave/Le Metroid - Earth 21.mp3
+104:SynthWave/Le Metroid - Gemini.mp3
+105:SynthWave/Le Metroid - Blackhole.mp3
+106:SynthWave/Hotel Pools - Stardust.mp3
+107:SynthWave/Hotel Pools - Return.mp3
+108:SynthWave/Emil Rottmayer - Descend.mp3
+109:SynthWave/Emil Rottmayer - S.O.L.O.mp3
+110:SynthWave/Emil Rottmayer - K.E.Y.S.mp3
+111:SynthWave/Emil Rottmayer - W.A.V.E..mp3
+112:SynthWave/Emil Rottmayer - Mega.mp3
+113:SynthWave/Voyage - Dream State.mp3
+114:SynthWave/Voyage - Enter.mp3
+115:SynthWave/A.L.I.S.O.N - Continuity.mp3
+116:SynthWave/Hotel Pools - Eclipse.mp3
+117:SynthWave/Hotel Pools - Phase.mp3
+118:SynthWave/Hotel Pools - Interlude.mp3
+119:SynthWave/Hotel Pools, oDDling - Parallel.mp3
+120:SynthWave/Hotel Pools - Bedrock.mp3
+121:SynthWave/Hotel Pools - Horizon.mp3
+122:SynthWave/Hotel Pools, A.L.I.S.O.N - Drift.mp3
+123:SynthWave/Hotel Pools - Dissolve.mp3
+124:SynthWave/Girl From Nowhere, Boy From Nowhere - The Shining Night.mp3
+125:SynthWave/Girl From Nowhere, Boy From Nowhere - Emerald Horizon.mp3
+126:SynthWave/Girl From Nowhere, Boy From Nowhere - Pieces.mp3
+127:SynthWave/Girl From Nowhere, Boy From Nowhere - Rewind.mp3
+128:SynthWave/Girl From Nowhere, Boy From Nowhere - Rêverie.mp3
+129:SynthWave/Jasper De Ceuster - Floating point.mp3
+130:SynthWave/Jasper De Ceuster - Memory bank.mp3
+131:SynthWave/Jasper De Ceuster - Hoover.mp3
+132:SynthWave/Jasper De Ceuster - Intervals.mp3
+133:SynthWave/Jasper De Ceuster - Circuitry.mp3
+134:SynthWave/Jasper De Ceuster - Stasis.mp3
+135:SynthWave/Jasper De Ceuster - Recompile.mp3
+136:SynthWave/Jasper De Ceuster - Amplitude.mp3
+137:SynthWave/Downtown Binary - Metropolis.mp3
+138:SynthWave/Downtown Binary - Daydream.mp3
+139:SynthWave/Downtown Binary - Night Walk.mp3
+140:SynthWave/Downtown Binary - Lonely.mp3
+141:SynthWave/Downtown Binary - Nostalgia.mp3
+142:SynthWave/Downtown Binary - Future Memories.mp3
+143:SynthWave/Gerardo Millán - Crying Dunes.mp3
+144:SynthWave/Gerardo Millán - Astros.mp3
+145:SynthWave/Gerardo Millán - Interlude.mp3
+146:SynthWave/Gerardo Millán - Metropolis.mp3
+147:SynthWave/Gerardo Millán - Neon Lights.mp3
+148:SynthWave/Gerardo Millán - Quantum Serenity.mp3
+149:SynthWave/A.L.I.S.O.N - Screens.mp3
+150:SynthWave/A.L.I.S.O.N, Krosia - Seagulls.mp3
+151:SynthWave/Kabes - Beginnings.mp3
+152:SynthWave/Kabes - Explore.mp3
+153:SynthWave/Kabes - Flare.mp3
+154:SynthWave/Kabes - Pluto.mp3
+155:SynthWave/Kabes - Pressure.mp3
+156:SynthWave/Kabes - Stellar.mp3
+157:SynthWave/Kabes - Vertigo.mp3
+158:SynthWave/Hotel Pools - Fields.mp3
+159:SynthWave/Forhill, oDDling - Supernal.mp3
+160:SynthWave/Foudroie - Journey.mp3
+161:SynthWave/Foudroie - Odyssey.mp3
+162:SynthWave/Foudroie - Solar Wind.mp3
+163:SynthWave/Foudroie, Forhill - Interstellar.mp3
+164:SynthWave/Foudroie - The Traveler.mp3
+165:SynthWave/Foudroie - Moon Dust.mp3
+166:SynthWave/Foudroie - Departure.mp3
+167:SynthWave/Foudroie - Interpolation.mp3
+168:SynthWave/Foudroie - Lunar.mp3
+169:SynthWave/Foudroie - Finding The Edge.mp3
+170:SynthWave/Voyage - Time.mp3
 playlist_end

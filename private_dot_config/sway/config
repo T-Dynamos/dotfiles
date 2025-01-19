@@ -60,6 +60,7 @@ input "1739:30963:Synaptics_TM3096-003" {
 # Basics:
 for_window [class="python3.11"] floating enable
 for_window [class="python3.12"] floating enable
+for_window [class="python3.13"] floating enable
 
 # Multimonitor
 bindsym $mod+j output eDP-1 toggle

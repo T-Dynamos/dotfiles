@@ -1,0 +1,37 @@
+[Desktop Entry]
+FullScreen=false
+shouldShowMenuBarComingFromFullScreen=false
+shouldShowToolBarComingFromFullScreen=false
+
+[General]
+LockSidebar=false
+ShowSidebar=false
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[Recent Files]
+File1[$e]=$HOME/Documents/IISER_Aptitude_Test_Syllabus_2024.pdf
+File10[$e]=$HOME/Documents/Physics_SrSec_2024-25.pdf
+File2[$e]=$HOME/Documents/PWOriginal/MAGNETIC+EFFECT+OF+CURRENT+(1).pdf
+File3[$e]=$HOME/Documents/PWOriginal/Solutions+Typed+Notes.pdf
+File4[$e]=$HOME/Documents/PWOriginal/haloalkanes+typed+notes+(1).pdf
+File5[$e]=$HOME/Quick Revision Chapterwise Mind-Maps class 12 Chemistry (2).pdf
+File6[$e]=$HOME/Documents/2024102841.pdf
+File7[$e]=$HOME/Documents/Chemistry_SrSec_2024-25.pdf
+File8[$e]=$HOME/Documents/Chemistry-SQP.pdf
+File9[$e]=$HOME/Documents/Physics-SQP.pdf
+Name1[$e]=IISER_Aptitude_Test_Syllabus_2024.pdf
+Name10[$e]=Physics_SrSec_2024-25.pdf
+Name2[$e]=MAGNETIC+EFFECT+OF+CURRENT+(1).pdf
+Name3[$e]=Solutions+Typed+Notes.pdf
+Name4[$e]=haloalkanes+typed+notes+(1).pdf
+Name5[$e]=Quick Revision Chapterwise Mind-Maps class 12 Chemistry (2).pdf
+Name6[$e]=2024102841.pdf
+Name7[$e]=Chemistry_SrSec_2024-25.pdf
+Name8[$e]=Chemistry-SQP.pdf
+Name9[$e]=Physics-SQP.pdf
+
+[UiSettings]
+ColorScheme=Breeze Dark

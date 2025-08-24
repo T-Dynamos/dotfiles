@@ -14,22 +14,23 @@ set $file_manager thunar
 set $term kitty
 set $browser firefox
 
-set $menu /home/tdynamos/.config/rofi/launchers/type-2/launcher.sh
 
 # Notification Daemon
 exec swaync
 exec mpd-mpris
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/lib/xdg-desktop-portal
 exec swaymsg output DP-1 mode 1920x1080
-
-# Toggle control center
+exec kitty
+exec firefox
 bindsym $mod+Shift+n exec swaync-client -t -sw
 bindsym $mod+Shift+x exec LANG=POSIX /home/tdynamos/woomer/target/release/woomer
 
 #bindsym $mod+p exec output HDMI-A-1 dpms on
 #bindsym $mod+o exec output HDMI-A-1 dpms off
 
-output * bg /home/tdynamos/.config/wallpaper fill
+output * bg /home/tdynamos/Walls/raw/boliviainteligente-GH6uTRKPK0Q-unsplash.jpg fill
 smart_borders 1
 # exec huiontablet
 client.focused              #181825 #CBA6F7  #CBA6F7 #CBA6F7   #CBA6F7
@@ -43,13 +44,14 @@ client.focused              #181825 #CBA6F7  #CBA6F7 #CBA6F7   #CBA6F7
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-exec /usr/lib/xfce-polkit/xfce-polkit
 ### Input configuration
 #
 # Example configuration:
 #
+
+
 input "1739:30963:Synaptics_TM3096-003" {
-       dwt enabled
+       dwt disabled
        tap enabled
        natural_scroll enabled
        middle_emulation enabled
@@ -69,7 +71,6 @@ bindsym $mod+Return exec $term
 bindsym $mod+Escape exec $file_manager
 bindsym $mod+BackSpace exec $browser
 bindsym $mod+c kill
-bindsym $mod+d exec $menu
 bindsym $mod+Shift+p exec hyprpicker --render-inactive --autocopy
 bindsym  --whole-window button8 exec playerctl play-pause
 bindsym  --whole-window button9 exec playerctl next
@@ -143,6 +144,10 @@ mode "󰹑  [ S | W | R ]" {
     bindsym Escape mode "default"
 }
 
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 bindsym $mod+shift+s mode "󰹑  [ S | W | R ]"
 
 mode " Recording" {
@@ -164,3 +169,7 @@ bar {
 }
 
 include /etc/sway/config.d/*
+
+input type:touchpad {
+    dwt disabled
+}

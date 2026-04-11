@@ -170,6 +170,8 @@ bar {
 
 include /etc/sway/config.d/*
 
-input type:touchpad {
-    dwt disabled
-}
+
+
+# touchpad configs
+
+bindcode tablet_pad:7 exec notify-send "PAD 7"

@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+
+import subprocess
+import re
+import sys
+import time
+import os
+
+# ---------------- CONFIG ----------------
+
+# Button → key mapping
+
+BINDINGS = {
+    0: "type 1",
+    1: "type 2",
+    2: "type 3",
+    3: "type 4",
+    4: "key 29:1 42:1 34:1 29:0 42:0 34:0",  # select (ctrl+shift+g)
+    5: "key 111:1 111:0",  # DEL
+    6: "key 29:1 21:1 21:0 29:0",  # ctrl+u
+    7: "key 29:1 44:1 44:0 29:0",  # ctrl+z
+}
+# Delay between retries if tablet not found (seconds)
+RETRY_DELAY = 5
+# ----------------------------------------
+
+
+def find_tablet_pad_event():
+    """Detect /dev/input/eventX for tablet pad."""
+    try:
+        p = subprocess.run(
+            ["libinput", "list-devices"], stdout=subprocess.PIPE, text=True, check=True
+        )
+    except subprocess.CalledProcessError:
+        return None
+
+    lines = p.stdout.splitlines()
+    for i, line in enumerate(lines):
+        if "Capabilities:" in line and "tablet-pad" in line:
+            for j in range(i - 5, i + 5):
+                if 0 <= j < len(lines) and lines[j].strip().startswith("Kernel:"):
+                    return lines[j].split()[-1]
+    return None
+
+
+# ---------- wait for device ----------
+event = None
+while event is None:
+    event = find_tablet_pad_event()
+    if event is None:
+        print(f"[INFO] Tablet-pad not found. Retrying in {RETRY_DELAY}s...")
+        time.sleep(RETRY_DELAY)
+
+print(f"[INFO] Using tablet-pad device: {event}", flush=True)
+
+# ---------- start libinput ----------
+proc = subprocess.Popen(
+    ["libinput", "debug-events", "--device", event],
+    stdout=subprocess.PIPE,
+    text=True,
+)
+
+# regex to match pressed buttons only
+button_re = re.compile(r"TABLET_PAD_BUTTON\s+(\d+)\s+pressed")
+
+for line in proc.stdout:
+    m = button_re.search(line)
+    if not m:
+        continue
+
+    button = int(m.group(1))
+    if button in BINDINGS:
+        key = BINDINGS[button]
+        # print(f"[PAD] button={button} → typing '{key}'", flush=True)
+        os.system(f"ydotool {key}")

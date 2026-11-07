@@ -10,6 +10,16 @@ return {
   opts = {
     -- change colorscheme
     colorscheme = "material-you",
+    status = {
+      colors = function(hl)
+        -- Keep git branch, lsp, and treesitter in sync with theme primary/accents
+        if hl.normal then
+          hl.git_branch_fg = hl.normal
+          hl.treesitter_fg = hl.insert or hl.treesitter_fg
+        end
+        return hl
+      end,
+    },
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = { -- this table overrides highlights in all themes

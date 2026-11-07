@@ -2,7 +2,7 @@
 
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/), featuring an integrated **Material You (Material Design 3)** dynamic theming system powered by [`materialyoucolor`](https://github.com/T-Dynamos/materialyoucolor-python).
 
-All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, and **Firefox**—synchronize their color palettes dynamically from your active wallpaper.
+All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, and **Firefox**—synchronize their color palettes dynamically from your active wallpaper.
 
 ---
 
@@ -34,24 +34,32 @@ All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, and **Firefox**—sy
 - Hot-reloads live on wallpaper change via `SIGUSR1`.
 
 ### App Launcher: Wofi
-- Clean, centered Material 3 search card with rounded corners (`20px`), pill search input, and primary selection highlights.
+- Clean, centered Material 3 search card with rounded corners (`20px`), floating pill input, and primary selection highlights.
+- Completely transparent window backdrop eliminating compositor corner clipping artifacts.
 - Press **Windows key (`Super`)** or **`Mod4+d`** to toggle.
 
+### Screen Locker: Swaylock
+- Dynamic Material 3 lock screen matching the active wallpaper (`~/.config/swaylock/config`).
+- Features a semi-transparent surface ring with primary accent keypress feedback, error backspace indicators, and wallpaper scaling.
+
 ### Browser: Firefox
-- Custom `userChrome.css` and `userContent.css` matching the active Material You dark theme across navigation toolbar, pill URL bar, tabs, context menus, and new tab page.
+- Custom `userChrome.css` and `userContent.css` matching the active Material You dark theme across navigation toolbar, pill URL bar, floating pill tabs rounded on all sides, context menus, and new tab page.
 - Colors auto-regenerated in `chrome/colors.css` upon wallpaper change.
 
 ---
 
 ## Installation & Setup
 
-### 1. Prerequisites (Arch Linux)
+### 1. Install All Dependencies (Single Command)
+
+Run this single command on Arch Linux to install all necessary system packages and Python dependencies:
+
 ```bash
-sudo pacman -S --needed chezmoi sway waybar kitty wofi swaybg brightnessctl pamixer
-pip install materialyoucolor pillow
+sudo pacman -S --needed --noconfirm chezmoi sway waybar kitty wofi swaylock swaybg brightnessctl pamixer playerctl wl-clipboard grim slurp wf-recorder bluez bluez-utils python python-pip ttf-jetbrains-mono-nerd && pip install --break-system-packages materialyoucolor pillow
 ```
 
 ### 2. Apply with Chezmoi
+
 ```bash
 chezmoi init --apply T-Dynamos
 ```
@@ -107,6 +115,8 @@ change-wallpaper --watch
 ├── sway/
 │   ├── config
 │   └── theme                # Dynamic Material 3 border colors
+├── swaylock/
+│   └── config               # Dynamic Material 3 lockscreen
 ├── waybar/
 │   ├── config
 │   ├── style.py             # Material You stylesheet generator
@@ -119,6 +129,8 @@ change-wallpaper --watch
 ├── wofi/
 │   ├── config
 │   └── style.css            # Dynamic launcher styling
+├── pip/
+│   └── pip.conf             # Global Python package settings
 └── wallpaper                # Active wallpaper image
 
 ~/.local/bin/

@@ -16,6 +16,7 @@ set $browser firefox
 
 exec swaync
 exec mpd-mpris
+exec waybar -c ~/.config/waybar/memento-mori.json -s ~/.config/waybar/memento-mori.css
 exec /usr/bin/lxqt-policykit-agent
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway
 exec /usr/lib/xdg-desktop-portal

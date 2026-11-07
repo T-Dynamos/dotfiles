@@ -11,7 +11,7 @@
     "modules-center": [
         "sway/window",
         "sway/mode",
-        "mpris",
+        "group/player",
         "clock"
     ],
     "modules-right": [
@@ -23,7 +23,7 @@
         "custom/fan",
         "custom/powerbank",
         "battery",
-        "tray",
+        "tray"
     ],
     "cpu":{
       "format":"{icon} {usage}%",
@@ -33,31 +33,55 @@
       "hwmon-path": ["/sys/class/hwmon/hwmon3/temp1_input"],
       "format": "{temperatureC}°C "
     },
+    "group/player": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/player-prev",
+            "mpris",
+            "custom/player-next"
+        ]
+    },
+    "custom/player-prev": {
+        "format": "{}",
+        "exec": "playerctl status 2>/dev/null | grep -E 'Playing|Paused' >/dev/null && echo '󰒮' || echo ''",
+        "interval": 1,
+        "on-click": "playerctl previous",
+        "hide-empty-text": true,
+        "tooltip": false
+    },
     "mpris": {
-      "format": "󰒮 {status_icon} 󰒭 {dynamic}",
-      "format-paused": "󰒮 {status_icon} 󰒭 <i>{dynamic}</i>",
-      "format-stopped": "",
-      "player-icons": {
-        "default": "🎵",
-        "mpv": "🎬",
-        "spotify": ""
-      },
-      "status-icons": {
-        "playing": "󰏤",
-        "paused": "󰐊",
-        "stopped": ""
-      },
-      "dynamic-order": ["title", "artist"],
-      "dynamic-len": 24,
-      "title-len": 18,
-      "artist-len": 12,
-      "ellipsis": "…",
-      "on-click": "playerctl play-pause",
-      "on-click-right": "playerctl next",
-      "on-click-middle": "playerctl previous",
-      "on-scroll-up": "playerctl next",
-      "on-scroll-down": "playerctl previous",
-      "tooltip-format": "{player} ({status})\n{title} - {artist}\n\nLeft: Play/Pause | Right: Next | Middle: Prev"
+        "format": "{status_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "format-stopped": "",
+        "player-icons": {
+            "default": "🎵",
+            "mpv": "🎬",
+            "spotify": ""
+        },
+        "status-icons": {
+            "playing": "󰏤",
+            "paused": "󰐊",
+            "stopped": ""
+        },
+        "dynamic-order": ["title", "artist"],
+        "dynamic-len": 24,
+        "title-len": 18,
+        "artist-len": 12,
+        "ellipsis": "…",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "tooltip-format": "{player} ({status})\n{title} - {artist}\n\nClick: Play/Pause\nScroll: Next/Prev"
+    },
+    "custom/player-next": {
+        "format": "{}",
+        "exec": "playerctl status 2>/dev/null | grep -E 'Playing|Paused' >/dev/null && echo '󰒭' || echo ''",
+        "interval": 1,
+        "on-click": "playerctl next",
+        "hide-empty-text": true,
+        "tooltip": false
     },
     "mpd":{
         "format":"󰏤  {title}",
@@ -96,7 +120,7 @@
         "interval": 1,
         "format": "{used} GB 󰍛",
         "max-length": 10,
-        "on-click":"xfce4-taskmanager",
+        "on-click":"xfce4-taskmanager"
     },
     "tray": {
         "spacing": 10
@@ -118,7 +142,7 @@
 	"on-click": "networkmanager_dmenu",
 	"on-click-right": "networkmanager_dmenu",
 	"interval": 5,
-	"nospacing": 1,
+	"nospacing": 1
     },
     "pulseaudio": {
         "format": "{icon} {volume}",
@@ -137,7 +161,7 @@
           "exec": "sensors | awk '/curr1:/ { if ($2 == \"1000.00\") { print \"\" } else { print $2, $3 }}'",
         "format": "{}",
         "interval": 1, 
-        "hide-empty-text": true,
+        "hide-empty-text": true
       },
     "custom/powerbank": {
         "exec": "python3 /home/tdynamos/.config/waybar/scripts/powerbank.py",
@@ -194,7 +218,7 @@
     "backlight": {
         "format": "{percent}% {icon}",
         "scroll-step": 5,
-        "format-icons":["󰃚","󰃛","󰃜","󰃝","󰃞","󰃟","󰃠"],
+        "format-icons":["󰃚","󰃛","󰃜","󰃝","󰃞","󰃟","󰃠"]
     },
     "custom/brightness": {
         "format": "{}% {icon}",
@@ -205,12 +229,12 @@
         "on-scroll-up": "~/.config/waybar/scripts/brightness.sh up",
         "on-scroll-down": "~/.config/waybar/scripts/brightness.sh down",
         "on-click": "~/.config/waybar/scripts/brightness.sh left_click",
-        "on-click-right": "~/.config/waybar/scripts/brightness.sh right_click",
+        "on-click-right": "~/.config/waybar/scripts/brightness.sh right_click"
     },
     "custom/spacing-left" : {
-      "format":  " ",
+      "format":  " "
     },
     "custom/spacing-right" : {
-      "format":  " ",
-    },
+      "format":  " "
+    }
 }

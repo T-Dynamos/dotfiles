@@ -19,12 +19,14 @@ All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **Sway
 - Dynamic window border colors (`client.focused`, `client.unfocused`, `client.urgent`) matching the wallpaper palette.
 - App launcher bound to the **Windows key (`Super`)**.
 
-### Status Bar: Waybar
-- **Authentic Material 3 aesthetic**: Calm tonal surfaces (`surface_container`) with subtle borders (`outline_variant`), free from rainbow clutter.
+### Status Bar: Waybar & Desktop Widgets
+- **Authentic Material 3 aesthetic**: Calm tonal surfaces (`surface_container`) with subtle borders (`outline_variant`) and harmonized secondary color roles (`peach` for CPU, `yellow` for temp/brightness, `purple` for RAM, `teal` for network, `secondary` for audio, `green` for power).
+- **Interactive MPRIS Media Capsule**: Center-positioned media controller with dedicated clickable Previous (`󰒮`), Play/Pause (`󰐊`/`󰏤`), and Next (`󰒭`) buttons seamlessly connected into a single pill, auto-hidden when stopped.
+- **Desktop Memento Mori Countdown Widget**: Centered ambient desktop widget (`layer: "bottom"`, `exclusive: false`) displaying remaining lifespan in weeks, days, and hours based on birth date (21 April 2007, 04:00 AM) and an 80-year horizon.
 - **Connected Pill Capsules**:
   - **Left Cluster**: `cpu` → `temperature` → `memory` → `custom-spacing-left` connected seamlessly into one capsule with smooth rounded ends.
-  - **Right Cluster**: `custom-spacing-right` → `mpris` → `network` → `pulseaudio` → `brightness` → `fan` → `powerbank` → `battery` connected into one capsule.
-  - **Center**: Independent active workspace pills (`primary` highlight) and elevated clock pill.
+  - **Right Cluster**: `custom-spacing-right` → `network` → `pulseaudio` → `brightness` → `fan` → `powerbank` → `battery` connected into one capsule.
+  - **Center**: MPRIS player capsule and elevated clock pill.
 - **Dynamic Background Transparency**: When the active workspace has no windows, the Waybar background is completely `transparent` so your wallpaper shines through. When a window is focused, it smoothly transitions to a solid `surface` background for maximum readability.
 - **3S PowerBank & Battery Telemetry**: Custom Bluetooth module reporting power draw (W) and energy used (Wh) with state-aware charging accents.
 - **Interactive Network Manager**: Click or right-click the Wi-Fi icon to launch `networkmanager_dmenu` for scanning and connecting to networks in a Material 3 popover.
@@ -55,7 +57,9 @@ All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **Sway
 - Seamless Thunar custom styling: tonal sidebar pane, rounded pill search and pathbar chips, and refined popover menus.
 
 ### Browser: Firefox
-- Custom `userChrome.css` and `userContent.css` matching the active Material You dark theme across navigation toolbar, pill URL bar, floating pill tabs rounded on all sides, context menus, and new tab page.
+- Custom `userChrome.css` and `userContent.css` matching the active Material You dark theme across navigation toolbar, pill URL bar, context menus, and custom home page.
+- **Distinct Active Tab Elevation**: Current tab is highlighted with an elevated tonal container tint, crisp primary border, and subtle glow.
+- **Custom Home & New Tab Page (`about:home` / `about:newtab`)**: Styled Material 3 search capsule, elevated shortcut cards with hover elevation, and themed personalize button.
 - Colors auto-regenerated in `chrome/colors.css` upon wallpaper change.
 
 ---

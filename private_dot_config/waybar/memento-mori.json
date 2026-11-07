@@ -1,0 +1,18 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "margin-top": 280,
+    "exclusive": false,
+    "passthrough": false,
+    "modules-center": [
+        "custom/memento-mori"
+    ],
+    "custom/memento-mori": {
+        "exec": "python3 /home/tdynamos/.config/waybar/scripts/lifespan.py",
+        "return-type": "json",
+        "interval": 60,
+        "format": "{}",
+        "on-click": "notify-send '⏳ Memento Mori' '\"You could leave life right now. Let that determine what you do and say and think.\" — Marcus Aurelius'",
+        "tooltip": true
+    }
+}

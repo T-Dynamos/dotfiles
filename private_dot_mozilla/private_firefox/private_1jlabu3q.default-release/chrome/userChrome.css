@@ -1,0 +1,143 @@
+/* ==========================================================
+   Material Design 3 Dark Theme for Firefox
+   Auto-synchronized with active wallpaper and system palette
+   ========================================================== */
+
+@import "colors.css";
+
+:root {
+  --toolbar-bgcolor: var(--md-surface-container) !important;
+  --toolbar-color: var(--md-on-surface) !important;
+  --toolbarbutton-icon-fill: var(--md-on-surface) !important;
+  --lwt-toolbar-field-background-color: var(--md-surface-container-lowest) !important;
+  --lwt-toolbar-field-color: var(--md-on-surface) !important;
+  --lwt-toolbar-field-border-color: var(--md-outline-variant) !important;
+  --lwt-toolbar-field-focus: var(--md-surface-container-high) !important;
+  --toolbar-field-focus-border-color: var(--md-primary) !important;
+  --lwt-selected-tab-background-color: var(--md-surface-container-high) !important;
+  --tab-selected-bgcolor: var(--md-surface-container-high) !important;
+  --tab-selected-textcolor: var(--md-primary) !important;
+  --lwt-accent-color: var(--md-surface) !important;
+  --lwt-text-color: var(--md-on-surface-variant) !important;
+  --arrowpanel-background: var(--md-surface-container-high) !important;
+  --arrowpanel-color: var(--md-on-surface) !important;
+  --arrowpanel-border-color: var(--md-outline-variant) !important;
+  --autocomplete-popup-background: var(--md-surface-container-high) !important;
+  --autocomplete-popup-color: var(--md-on-surface) !important;
+}
+
+/* Main browser window & background */
+#browser,
+#navigator-toolbox,
+#TabsToolbar {
+  background-color: var(--md-surface) !important;
+  color: var(--md-on-surface-variant) !important;
+}
+
+/* Nav-bar / Toolbar */
+#nav-bar {
+  background-color: var(--md-surface-container) !important;
+  border-bottom: 1px solid var(--md-outline-variant) !important;
+  box-shadow: none !important;
+}
+
+/* Bookmarks bar */
+#PersonalToolbar {
+  background-color: var(--md-surface-container) !important;
+  color: var(--md-on-surface-variant) !important;
+}
+
+/* URL bar (Material 3 Pill shape) */
+#urlbar-background,
+#searchbar {
+  background-color: var(--md-surface-container-lowest) !important;
+  border: 1px solid var(--md-outline-variant) !important;
+  border-radius: 20px !important;
+  transition: all 0.2s ease !important;
+}
+
+#urlbar[focused="true"] > #urlbar-background {
+  border-color: var(--md-primary) !important;
+  box-shadow: 0 0 0 1px var(--md-primary) !important;
+}
+
+#urlbar-input,
+#searchbar .searchbar-textbox {
+  color: var(--md-on-surface) !important;
+}
+
+/* Tabs */
+.tabbrowser-tab {
+  padding-inline: 3px !important;
+}
+
+.tabbrowser-tab .tab-background {
+  border-radius: 12px !important;
+  margin-block: 4px !important;
+  transition: all 0.15s ease !important;
+}
+
+.tabbrowser-tab:not([selected="true"]):not([visuallyselected="true"]) .tab-background {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 1px solid transparent !important;
+}
+
+.tabbrowser-tab:hover:not([selected="true"]):not([visuallyselected="true"]) .tab-background {
+  background-color: var(--md-surface-container) !important;
+  background-image: none !important;
+  border: 1px solid var(--md-outline-variant) !important;
+}
+
+/* Selected / Active Tab - Distinct Material 3 Elevation & Tonal Highlight */
+.tab-background:is([selected], [multiselected]),
+.tabbrowser-tab:is([selected="true"], [visuallyselected="true"], [multiselected]) .tab-background {
+  background-color: color-mix(in srgb, var(--md-primary) 22%, var(--md-surface-container-high)) !important;
+  background-image: none !important;
+  border: 1.5px solid var(--md-primary) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.tabbrowser-tab:is([selected="true"], [visuallyselected="true"], [multiselected]) .tab-label {
+  color: var(--md-primary) !important;
+  font-weight: 700 !important;
+}
+
+.tabbrowser-tab:is([selected="true"], [visuallyselected="true"], [multiselected]) .tab-close-button {
+  fill: var(--md-primary) !important;
+  color: var(--md-primary) !important;
+  opacity: 1 !important;
+}
+
+.tabbrowser-tab:is([selected="true"], [visuallyselected="true"], [multiselected]) .tab-icon-image {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) !important;
+}
+
+/* Popups and context menus */
+menupopup,
+panel {
+  --panel-background: var(--md-surface-container-high) !important;
+  --panel-color: var(--md-on-surface) !important;
+  --panel-border-color: var(--md-outline-variant) !important;
+  --panel-border-radius: 12px !important;
+}
+
+menuitem,
+menupopup menuitem {
+  color: var(--md-on-surface) !important;
+  border-radius: 8px !important;
+}
+
+menuitem:hover,
+menupopup menuitem:hover {
+  background-color: var(--md-surface-container) !important;
+  color: var(--md-primary) !important;
+}
+
+/* Sidebar */
+#sidebar-box,
+#sidebar-header {
+  background-color: var(--md-surface-container) !important;
+  color: var(--md-on-surface) !important;
+  border-right: 1px solid var(--md-outline-variant) !important;
+}

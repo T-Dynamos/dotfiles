@@ -29,7 +29,7 @@ window#waybar.hidden {
   margin: 10px 0 10px 10px;
   padding: 4px 10px;
   background-color: #081B2A;
-  color: #D3E8FF;
+  color: #FFB3B0;
   border-radius: 20px 0 0 20px;
   border: 1px solid #324A60;
   border-right: none;
@@ -40,7 +40,7 @@ window#waybar.hidden {
   margin: 10px 0;
   padding: 4px 10px;
   background-color: #081B2A;
-  color: #D3E8FF;
+  color: #BBD138;
   border-top: 1px solid #324A60;
   border-bottom: 1px solid #324A60;
   border-left: none;
@@ -52,7 +52,7 @@ window#waybar.hidden {
   margin: 10px 0;
   padding: 4px 10px;
   background-color: #081B2A;
-  color: #D3E8FF;
+  color: #DFB7FF;
   border-top: 1px solid #324A60;
   border-bottom: 1px solid #324A60;
   border-left: none;
@@ -64,6 +64,7 @@ window#waybar.hidden {
   margin: 10px 10px 10px 0;
   padding: 4px 6px;
   background-color: #081B2A;
+  color: #607890;
   border-radius: 0 20px 20px 0;
   border: 1px solid #324A60;
   border-left: none;
@@ -114,33 +115,68 @@ window#waybar.hidden {
 #clock {
   margin: 10px 4px;
   padding: 4px 14px;
-  color: #D3E8FF;
+  color: #BAE2FF;
   border-radius: 18px;
   background-color: #0A2133;
   border: 1px solid #324A60;
   font-weight: 600;
 }
 
-#mpris {
-  margin: 10px 4px;
-  padding: 4px 12px;
-  border-radius: 18px;
+#custom-player-prev {
+  margin: 10px 0 10px 4px;
+  padding: 4px 8px 4px 12px;
+  border-radius: 18px 0 0 18px;
   background-color: #081B2A;
-  color: #D3E8FF;
+  color: #FFB5EB;
   border: 1px solid #324A60;
+  border-right: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+#custom-player-prev:hover {
+  background-color: #0A2133;
+  color: #BAE2FF;
+}
+
+#mpris {
+  margin: 10px 0;
+  padding: 4px 10px;
+  border-radius: 0;
+  background-color: #081B2A;
+  color: #FFB5EB;
+  border-top: 1px solid #324A60;
+  border-bottom: 1px solid #324A60;
+  border-left: none;
+  border-right: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 #mpris.playing {
-  color: #BAE2FF;
-  border-color: #BAE2FF;
+  color: #FFB5EB;
   background-color: #0A2133;
 }
 
 #mpris.paused {
   color: #95AEC7;
-  border-color: #324A60;
+}
+
+#custom-player-next {
+  margin: 10px 4px 10px 0;
+  padding: 4px 12px 4px 8px;
+  border-radius: 0 18px 18px 0;
+  background-color: #081B2A;
+  color: #FFB5EB;
+  border: 1px solid #324A60;
+  border-left: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+#custom-player-next:hover {
+  background-color: #0A2133;
+  color: #BAE2FF;
 }
 
 #mode {
@@ -162,22 +198,67 @@ window#waybar.hidden {
   margin: 10px 0 10px 10px;
   padding: 4px 6px;
   background-color: #081B2A;
+  color: #607890;
   border-radius: 20px 0 0 20px;
   border: 1px solid #324A60;
   border-right: none;
   font-size: 14px;
 }
 
-#network,
-#pulseaudio,
+#network {
+  margin: 10px 0;
+  padding: 4px 7px;
+  background-color: #081B2A;
+  color: #58D5FF;
+  border-top: 1px solid #324A60;
+  border-bottom: 1px solid #324A60;
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+}
+
+#pulseaudio {
+  margin: 10px 0;
+  padding: 4px 7px;
+  background-color: #081B2A;
+  color: #DABFD3;
+  border-top: 1px solid #324A60;
+  border-bottom: 1px solid #324A60;
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+}
+
 #custom-brightness,
-#backlight,
-#custom-fan,
+#backlight {
+  margin: 10px 0;
+  padding: 4px 7px;
+  background-color: #081B2A;
+  color: #BBD138;
+  border-top: 1px solid #324A60;
+  border-bottom: 1px solid #324A60;
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+}
+
+#custom-fan {
+  margin: 10px 0;
+  padding: 4px 7px;
+  background-color: #081B2A;
+  color: #B9EAFF;
+  border-top: 1px solid #324A60;
+  border-bottom: 1px solid #324A60;
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+}
+
 #custom-powerbank {
   margin: 10px 0;
   padding: 4px 7px;
   background-color: #081B2A;
-  color: #D3E8FF;
+  color: #52DF9A;
   border-top: 1px solid #324A60;
   border-bottom: 1px solid #324A60;
   border-left: none;
@@ -189,7 +270,7 @@ window#waybar.hidden {
   margin: 10px 10px 10px 0;
   padding: 4px 12px;
   background-color: #081B2A;
-  color: #D3E8FF;
+  color: #52DF9A;
   border-radius: 0 20px 20px 0;
   border: 1px solid #324A60;
   border-left: none;

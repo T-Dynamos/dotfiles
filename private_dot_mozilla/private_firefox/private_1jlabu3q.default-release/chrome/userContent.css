@@ -1,0 +1,148 @@
+/* ==========================================================
+   Material Design 3 Theme for Firefox New Tab / Home Page
+   Synchronized with Material You system palette via colors.css
+   ========================================================== */
+@import "colors.css";
+
+@-moz-document url("about:home"), url("about:newtab") {
+  body {
+    background-color: var(--md-surface) !important;
+    color: var(--md-on-surface) !important;
+    font-family: "JetBrainsMono Nerd Font", system-ui, -apple-system, sans-serif !important;
+  }
+
+  /* Logo & Wordmark */
+  .logo-and-wordmark .wordmark,
+  .wordmark,
+  .logo {
+    fill: var(--md-primary) !important;
+    color: var(--md-primary) !important;
+  }
+
+  /* Search Bar (Modern Fake Search / Handoff Button) */
+  .search-handoff-button,
+  .search-wrapper .search-inner-wrapper {
+    background-color: var(--md-surface-container-high) !important;
+    border: 1.5px solid var(--md-outline-variant) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .search-handoff-button:hover,
+  .search-handoff-button:focus-within,
+  .search-wrapper .search-inner-wrapper:hover,
+  .search-wrapper .search-inner-wrapper:focus-within {
+    background-color: var(--md-surface-container) !important;
+    border-color: var(--md-primary) !important;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--md-primary) !important;
+  }
+
+  .search-handoff-button .fake-editable,
+  .search-wrapper input {
+    color: var(--md-on-surface) !important;
+  }
+
+  .search-handoff-button .fake-caret {
+    background-color: var(--md-primary) !important;
+  }
+
+  /* Top Sites / Shortcuts Cards */
+  .top-site-outer .tile {
+    background-color: var(--md-surface-container) !important;
+    border: 1.5px solid var(--md-outline-variant) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .top-site-outer:hover .tile,
+  .top-site-outer:focus-within .tile {
+    background-color: var(--md-surface-container-high) !important;
+    border-color: var(--md-primary) !important;
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .top-site-outer .title {
+    color: var(--md-on-surface) !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    margin-top: 6px !important;
+  }
+
+  .top-site-outer .context-menu-button {
+    fill: var(--md-on-surface-variant) !important;
+    color: var(--md-on-surface-variant) !important;
+    transition: all 0.15s ease !important;
+  }
+
+  .top-site-outer .context-menu-button:hover {
+    fill: var(--md-primary) !important;
+    color: var(--md-primary) !important;
+    background-color: var(--md-surface-container-high) !important;
+  }
+
+  /* Customize / Personalize Button */
+  .personalize-button,
+  button.customize-menu-button {
+    background-color: var(--md-primary-container) !important;
+    color: var(--md-on-primary-container) !important;
+    border: 1.5px solid var(--md-primary) !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .personalize-button:hover,
+  button.customize-menu-button:hover {
+    background-color: var(--md-primary) !important;
+    color: var(--md-surface) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .personalize-button .icon,
+  .personalize-button svg {
+    fill: currentColor !important;
+  }
+
+  /* Weather & Pocket Cards */
+  .weather,
+  .card-outer,
+  .ds-card {
+    background-color: var(--md-surface-container) !important;
+    border: 1px solid var(--md-outline-variant) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .card-outer:hover,
+  .ds-card:hover {
+    background-color: var(--md-surface-container-high) !important;
+    border-color: var(--md-primary) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  .card-title {
+    color: var(--md-on-surface) !important;
+  }
+
+  .card-details,
+  .card-excerpt {
+    color: var(--md-on-surface-variant) !important;
+  }
+
+  /* Settings / Modal overlay */
+  .modalOverlay,
+  .customise-menu,
+  .panel {
+    background-color: var(--md-surface-container-high) !important;
+    color: var(--md-on-surface) !important;
+    border: 1px solid var(--md-outline-variant) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+  }
+}

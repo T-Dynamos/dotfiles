@@ -538,8 +538,8 @@ window#waybar.hidden {{
 #battery.urgent,
 #battery.charging,
 #battery.plugged {{
-  background-color: {pal["surface_container"]} !important;
-  animation: none !important;
+  background-color: {pal["surface_container"]};
+  animation: none;
 }}
 
 #battery.good {{
@@ -1613,8 +1613,11 @@ def apply_wallpaper(image_path=None, scheme="expressive", is_dark=True):
             sys.exit(1)
 
         WALLPAPER_TARGET.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(img_p, WALLPAPER_TARGET)
-        print(f"Wallpaper updated: {img_p} -> {WALLPAPER_TARGET}")
+        if img_p.resolve() != WALLPAPER_TARGET.resolve():
+            shutil.copy2(img_p, WALLPAPER_TARGET)
+            print(f"Wallpaper updated: {img_p} -> {WALLPAPER_TARGET}")
+        else:
+            print(f"Wallpaper already at target: {WALLPAPER_TARGET}")
     else:
         if not WALLPAPER_TARGET.is_file():
             print(f"Error: No wallpaper specified and {WALLPAPER_TARGET} does not exist.", file=sys.stderr)

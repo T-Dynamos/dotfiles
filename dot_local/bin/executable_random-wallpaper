@@ -1,0 +1,258 @@
+#!/usr/bin/env python3
+"""
+random-wallpaper: Fetch a random high-resolution wallpaper from Unsplash,
+record metadata into wallpaper_history.json, and apply it with change-wallpaper.
+Supports both official Unsplash API (if API key is provided) and Unsplash
+photography stream via Picsum fallback without API keys.
+"""
+
+import datetime
+import json
+import os
+from pathlib import Path
+import random
+import subprocess
+import sys
+import urllib.parse
+import urllib.request
+
+WALLPAPERS_DIR = Path.home() / "Pictures" / "Wallpapers"
+HISTORY_FILE = Path.home() / ".config" / "wallpaper_history.json"
+KEY_FILE = Path.home() / ".config" / "unsplash_key"
+CHANGE_WALLPAPER = Path.home() / ".local" / "bin" / "change-wallpaper"
+
+CATEGORIES = [
+    "nature",
+    "landscapes",
+    "wallpapers",
+    "mountains",
+    "minimal",
+    "architecture",
+    "space",
+    "ocean",
+    "forest",
+    "aesthetic"
+]
+
+
+def send_notify(title, message, icon="preferences-desktop-wallpaper", urgency="normal"):
+    try:
+        subprocess.run(
+            ["notify-send", "-a", "Wallpaper", "-i", icon, "-u", urgency, title, message],
+            stderr=subprocess.DEVNULL
+        )
+    except Exception:
+        pass
+
+
+def get_unsplash_key():
+    key = os.environ.get("UNSPLASH_ACCESS_KEY", "").strip()
+    if key:
+        return key
+    if KEY_FILE.is_file():
+        try:
+            return KEY_FILE.read_text().strip()
+        except Exception:
+            return None
+    return None
+
+
+def fetch_from_unsplash_api(key, category):
+    params = urllib.parse.urlencode({
+        "query": category,
+        "orientation": "landscape",
+        "content_filter": "high"
+    })
+    url = f"https://api.unsplash.com/photos/random?{params}"
+    req = urllib.request.Request(url, headers={
+        "Authorization": f"Client-ID {key}",
+        "User-Agent": "AntigravityWallpaperManager/1.0"
+    })
+
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+
+    photo_id = data.get("id", "random")
+    author = data.get("user", {}).get("name", "Unknown Photographer")
+    author_username = data.get("user", {}).get("username", "")
+    unsplash_url = data.get("links", {}).get("html", f"https://unsplash.com/photos/{photo_id}")
+    download_location = data.get("links", {}).get("download_location")
+    img_url = data.get("urls", {}).get("raw", data.get("urls", {}).get("full"))
+    if not img_url:
+        img_url = data.get("urls", {}).get("regular")
+
+    # Download track
+    if download_location:
+        try:
+            track_req = urllib.request.Request(
+                f"{download_location}?client_id={key}",
+                headers={"User-Agent": "AntigravityWallpaperManager/1.0"}
+            )
+            urllib.request.urlopen(track_req, timeout=5)
+        except Exception:
+            pass
+
+    return {
+        "id": photo_id,
+        "author": author,
+        "author_username": author_username,
+        "url": unsplash_url,
+        "img_url": img_url,
+        "source": "Unsplash API"
+    }
+
+
+def fetch_from_picsum_stream(category):
+    # Picsum serves verified Unsplash photography with full author credits & Unsplash URLs
+    # without needing API credentials.
+    req = urllib.request.Request(
+        "https://picsum.photos/1920/1080",
+        headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"}
+    )
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        final_url = resp.geturl()
+
+    # Extract ID from redirect e.g. https://fastly.picsum.photos/id/147/1920/1080.jpg?...
+    parts = final_url.split("/id/")
+    picsum_id = "0"
+    if len(parts) > 1:
+        picsum_id = parts[1].split("/")[0]
+
+    author = "Unsplash Photographer"
+    unsplash_url = f"https://unsplash.com"
+
+    try:
+        info_req = urllib.request.Request(
+            f"https://picsum.photos/id/{picsum_id}/info",
+            headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64)"}
+        )
+        with urllib.request.urlopen(info_req, timeout=10) as info_resp:
+            info = json.loads(info_resp.read().decode("utf-8"))
+            author = info.get("author", author)
+            unsplash_url = info.get("url", unsplash_url)
+    except Exception:
+        pass
+
+    return {
+        "id": picsum_id,
+        "author": author,
+        "author_username": "",
+        "url": unsplash_url,
+        "img_url": final_url,
+        "source": "Unsplash (via Picsum)"
+    }
+
+
+def save_history(entry):
+    HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    history = []
+    if HISTORY_FILE.is_file():
+        try:
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                history = json.load(f)
+                if not isinstance(history, list):
+                    history = []
+        except Exception:
+            history = []
+
+    history.insert(0, entry)
+    # Keep last 100 entries
+    history = history[:100]
+
+    try:
+        with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+            json.dump(history, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"[Warning] Failed to save history to {HISTORY_FILE}: {e}", file=sys.stderr)
+
+
+def main():
+    category = random.choice(CATEGORIES)
+    print(f"Finding random wallpaper (Category: {category})...")
+
+    # Send immediate notification as requested by user
+    send_notify(
+        "Finding Wallpaper",
+        f"Fetching random wallpaper from Unsplash...\nCategory: {category.title()}",
+        icon="preferences-desktop-wallpaper"
+    )
+
+    key = get_unsplash_key()
+    photo_data = None
+
+    if key:
+        try:
+            print(f"Connecting to official Unsplash API for '{category}'...")
+            photo_data = fetch_from_unsplash_api(key, category)
+        except Exception as e:
+            print(f"[Warning] Unsplash API error: {e}. Falling back to Unsplash stream...", file=sys.stderr)
+
+    if not photo_data:
+        try:
+            print("Connecting to Unsplash photography stream...")
+            photo_data = fetch_from_picsum_stream(category)
+        except Exception as e:
+            print(f"Error fetching wallpaper: {e}", file=sys.stderr)
+            send_notify(
+                "Wallpaper Download Failed",
+                f"Could not reach Unsplash: {e}",
+                icon="dialog-error",
+                urgency="critical"
+            )
+            sys.exit(1)
+
+    WALLPAPERS_DIR.mkdir(parents=True, exist_ok=True)
+    ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    dest_filename = f"unsplash_{photo_data['id']}_{ts}.jpg"
+    dest_path = WALLPAPERS_DIR / dest_filename
+
+    print(f"Downloading photo by {photo_data['author']} -> {dest_path}...")
+    try:
+        dl_req = urllib.request.Request(
+            photo_data["img_url"],
+            headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"}
+        )
+        with urllib.request.urlopen(dl_req, timeout=30) as resp, open(dest_path, "wb") as out_f:
+            out_f.write(resp.read())
+    except Exception as e:
+        print(f"Failed to download image: {e}", file=sys.stderr)
+        send_notify(
+            "Wallpaper Download Failed",
+            f"Failed to save image: {e}",
+            icon="dialog-error",
+            urgency="critical"
+        )
+        sys.exit(1)
+
+    # Save to history
+    entry = {
+        "id": photo_data["id"],
+        "timestamp": datetime.datetime.now().isoformat(),
+        "category": category,
+        "author": photo_data["author"],
+        "author_username": photo_data.get("author_username", ""),
+        "url": photo_data["url"],
+        "source": photo_data["source"],
+        "file_path": str(dest_path)
+    }
+    save_history(entry)
+    print(f"Recorded in history: {HISTORY_FILE}")
+
+    # Apply wallpaper
+    if CHANGE_WALLPAPER.is_file():
+        print(f"Applying wallpaper with {CHANGE_WALLPAPER}...")
+        subprocess.run([str(CHANGE_WALLPAPER), str(dest_path)])
+    else:
+        print(f"Error: {CHANGE_WALLPAPER} not found.", file=sys.stderr)
+
+    # Success notification with downloaded wallpaper as thumbnail
+    send_notify(
+        "Wallpaper Changed",
+        f"Photo by {photo_data['author']} on Unsplash\nCategory: {category.title()}\nSaved to history",
+        icon=str(dest_path)
+    )
+    print(f"Successfully applied wallpaper: {dest_path}")
+
+
+if __name__ == "__main__":
+    main()

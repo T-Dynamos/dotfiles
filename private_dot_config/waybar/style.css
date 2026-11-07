@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background-color: #190B02;
+  background-color: #00110F;
   transition-property: background-color;
   transition-duration: 0.25s;
 }
@@ -28,10 +28,10 @@ window#waybar.hidden {
 #cpu {
   margin: 10px 0 10px 10px;
   padding: 4px 10px;
-  background-color: #291404;
-  color: #FFDFCA;
+  background-color: #001E1A;
+  color: #C3EEE5;
   border-radius: 20px 0 0 20px;
-  border: 1px solid #624025;
+  border: 1px solid #264F49;
   border-right: none;
   font-weight: 500;
 }
@@ -39,10 +39,10 @@ window#waybar.hidden {
 #temperature {
   margin: 10px 0;
   padding: 4px 10px;
-  background-color: #291404;
-  color: #FFDFCA;
-  border-top: 1px solid #624025;
-  border-bottom: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border-top: 1px solid #264F49;
+  border-bottom: 1px solid #264F49;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -51,10 +51,10 @@ window#waybar.hidden {
 #memory {
   margin: 10px 0;
   padding: 4px 10px;
-  background-color: #291404;
-  color: #FFDFCA;
-  border-top: 1px solid #624025;
-  border-bottom: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border-top: 1px solid #264F49;
+  border-bottom: 1px solid #264F49;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -63,10 +63,10 @@ window#waybar.hidden {
 #custom-spacing-left {
   margin: 10px 10px 10px 0;
   padding: 4px 6px;
-  background-color: #291404;
-  color: #956D4E;
+  background-color: #001E1A;
+  color: #547D76;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #624025;
+  border: 1px solid #264F49;
   border-left: none;
   font-size: 14px;
 }
@@ -85,28 +85,28 @@ window#waybar.hidden {
   padding: 4px 14px;
   margin: 2px 3px;
   border-radius: 16px;
-  background-color: #291404;
-  color: #D0A280;
-  border: 1px solid #624025;
+  background-color: #001E1A;
+  color: #89B3AB;
+  border: 1px solid #264F49;
   transition: all 0.2s ease;
 }
 
 #workspaces button.visible {
-  color: #190B02;
-  background-color: #FFBE9C;
-  border-color: #FFBE9C;
+  color: #00110F;
+  background-color: #E6FFF4;
+  border-color: #E6FFF4;
   font-weight: bold;
 }
 
 #workspaces button:hover {
-  color: #FFDFCA;
-  background-color: #321A05;
+  color: #C3EEE5;
+  background-color: #002520;
 }
 
 #workspaces button.urgent {
-  color: #450900;
-  background-color: #FE7453;
-  border-color: #FE7453;
+  color: #490006;
+  background-color: #FF716C;
+  border-color: #FF716C;
 }
 
 /* ==========================================================
@@ -115,38 +115,48 @@ window#waybar.hidden {
 #clock {
   margin: 10px 4px;
   padding: 4px 14px;
-  color: #FFDFCA;
+  color: #C3EEE5;
   border-radius: 18px;
-  background-color: #321A05;
-  border: 1px solid #624025;
+  background-color: #002520;
+  border: 1px solid #264F49;
   font-weight: 600;
 }
 
-#custom-player-prev {
+#custom-player-prev,
+#custom-player-next,
+#mpris {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+#custom-player-prev.active {
   margin: 10px 0 10px 4px;
   padding: 4px 8px 4px 12px;
   border-radius: 18px 0 0 18px;
-  background-color: #291404;
-  color: #FFDFCA;
-  border: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border: 1px solid #264F49;
   border-right: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
-#custom-player-prev:hover {
-  background-color: #321A05;
-  color: #FFBE9C;
+#custom-player-prev.active:hover {
+  background-color: #002520;
+  color: #E6FFF4;
 }
 
-#mpris {
+#mpris.playing,
+#mpris.paused {
   margin: 10px 0;
   padding: 4px 10px;
   border-radius: 0;
-  background-color: #291404;
-  color: #FFDFCA;
-  border-top: 1px solid #624025;
-  border-bottom: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border-top: 1px solid #264F49;
+  border-bottom: 1px solid #264F49;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -154,38 +164,38 @@ window#waybar.hidden {
 }
 
 #mpris.playing {
-  color: #FFDFCA;
-  background-color: #321A05;
+  color: #C3EEE5;
+  background-color: #002520;
 }
 
 #mpris.paused {
-  color: #D0A280;
+  color: #89B3AB;
 }
 
-#custom-player-next {
+#custom-player-next.active {
   margin: 10px 4px 10px 0;
   padding: 4px 12px 4px 8px;
   border-radius: 0 18px 18px 0;
-  background-color: #291404;
-  color: #FFDFCA;
-  border: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border: 1px solid #264F49;
   border-left: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
-#custom-player-next:hover {
-  background-color: #321A05;
-  color: #FFBE9C;
+#custom-player-next.active:hover {
+  background-color: #002520;
+  color: #E6FFF4;
 }
 
 #mode {
   border-radius: 16px;
   margin: 10px 4px;
   padding: 4px 10px;
-  color: #FFDFCA;
-  background-color: #291404;
-  border: 1px solid #624025;
+  color: #C3EEE5;
+  background-color: #001E1A;
+  border: 1px solid #264F49;
 }
 
 /* ==========================================================
@@ -197,10 +207,10 @@ window#waybar.hidden {
 #custom-spacing-right {
   margin: 10px 0 10px 10px;
   padding: 4px 6px;
-  background-color: #291404;
-  color: #956D4E;
+  background-color: #001E1A;
+  color: #547D76;
   border-radius: 20px 0 0 20px;
-  border: 1px solid #624025;
+  border: 1px solid #264F49;
   border-right: none;
   font-size: 14px;
 }
@@ -208,10 +218,10 @@ window#waybar.hidden {
 #network {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #291404;
-  color: #FFDFCA;
-  border-top: 1px solid #624025;
-  border-bottom: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border-top: 1px solid #264F49;
+  border-bottom: 1px solid #264F49;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -220,10 +230,10 @@ window#waybar.hidden {
 #pulseaudio {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #291404;
-  color: #FFDFCA;
-  border-top: 1px solid #624025;
-  border-bottom: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border-top: 1px solid #264F49;
+  border-bottom: 1px solid #264F49;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -233,10 +243,10 @@ window#waybar.hidden {
 #backlight {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #291404;
-  color: #FFDFCA;
-  border-top: 1px solid #624025;
-  border-bottom: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border-top: 1px solid #264F49;
+  border-bottom: 1px solid #264F49;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -245,10 +255,10 @@ window#waybar.hidden {
 #custom-fan {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #291404;
-  color: #FFDFCA;
-  border-top: 1px solid #624025;
-  border-bottom: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border-top: 1px solid #264F49;
+  border-bottom: 1px solid #264F49;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -257,10 +267,10 @@ window#waybar.hidden {
 #custom-powerbank {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #291404;
-  color: #FFDFCA;
-  border-top: 1px solid #624025;
-  border-bottom: 1px solid #624025;
+  background-color: #001E1A;
+  color: #C3EEE5;
+  border-top: 1px solid #264F49;
+  border-bottom: 1px solid #264F49;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -270,65 +280,65 @@ window#waybar.hidden {
 #battery {
   margin: 10px 10px 10px 0;
   padding: 4px 12px;
-  background-color: #291404;
-  color: #FFDFCA;
+  background-color: #001E1A;
+  color: #C3EEE5;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #624025;
+  border: 1px solid #264F49;
   border-left: none;
   font-weight: 500;
 }
 
 #battery.good {
-  color: #A0D756;
+  color: #52DF99;
 }
 
 #battery.warning {
-  color: #FFB597;
+  color: #FFB68A;
 }
 
 #battery.critical {
-  color: #FE7453;
+  color: #FF716C;
 }
 
 #battery.charging,
 #battery.plugged,
 #custom-powerbank.charging {
-  color: #A0D756;
+  color: #52DF99;
 }
 
 #tray {
   margin: 10px 10px 10px 4px;
   padding: 2px 10px;
   border-radius: 16px;
-  background-color: #291404;
-  border: 1px solid #624025;
+  background-color: #001E1A;
+  border: 1px solid #264F49;
 }
 
 /* Status States for Connected Modules */
 #custom-powerbank.charging {
-  color: #A0D756;
+  color: #52DF99;
 }
 
 #custom-powerbank.idle {
-  color: #D0A280;
+  color: #89B3AB;
 }
 
 #battery.charging {
-  color: #A0D756;
+  color: #52DF99;
 }
 
 @keyframes blink {
   to {
-    background-color: #FE7453;
-    color: #450900;
+    background-color: #FF716C;
+    color: #490006;
   }
 }
 
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-  background-color: #FE7453;
-  color: #450900;
+  background-color: #FF716C;
+  color: #490006;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -340,12 +350,12 @@ window#waybar.hidden {
 tooltip {
   border-radius: 12px;
   padding: 12px;
-  background-color: #321A05;
-  border: 1px solid #624025;
+  background-color: #002520;
+  border: 1px solid #264F49;
 }
 
 tooltip label {
   padding: 4px;
   background-color: transparent;
-  color: #FFDFCA;
+  color: #C3EEE5;
 }

@@ -12,7 +12,7 @@ set $right Down
 
 set $file_manager thunar
 set $term kitty
-set $browser firefox
+set $browser env MOZ_REMOTE_ALLOW_SYSTEM_ACCESS=1 firefox --marionette
 
 exec swaync
 exec mpd-mpris
@@ -22,7 +22,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CU
 exec /usr/lib/xdg-desktop-portal
 exec swaymsg output DP-1 mode 1920x1080@75.00Hz
 exec kitty
-exec firefox
+exec env MOZ_REMOTE_ALLOW_SYSTEM_ACCESS=1 firefox --marionette
 exec python3 ~/.config/sway/tablet-pad-listener
 
 bindsym $mod+Shift+n exec swaync-client -t -sw
@@ -62,6 +62,11 @@ for_window [class="python3.12"] floating enable
 for_window [class="python3.13"] floating enable
 for_window [class="python3.14"] floating enable
 for_window [class="python3.15"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+for_window [class="[pP]avucontrol"] floating enable
+for_window [app_id="float_term"] floating enable
+for_window [class="float_term"] floating enable
 
 # Multimonitor
 bindsym $mod+j output eDP-1 toggle
@@ -76,6 +81,7 @@ bindsym $mod+BackSpace exec $browser
 bindsym $mod+c kill
 bindsym $mod+l exec swaylock
 bindsym $mod+Shift+p exec hyprpicker --render-inactive --autocopy
+bindsym $mod+Shift+w exec /home/tdynamos/.local/bin/random-wallpaper
 bindsym  --whole-window button8 exec playerctl play-pause
 bindsym  --whole-window button9 exec playerctl next
 

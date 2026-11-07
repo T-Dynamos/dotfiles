@@ -1,7 +1,7 @@
 set $mod Mod4
 
 default_border none
-default_floating_border none
+default_floating_border pixel 2
 # font pango:monospace 0
 titlebar_padding 1
 
@@ -57,6 +57,10 @@ input "1739:30963:Synaptics_TM3096-003" {
 ### Key bindings
 #
 # Basics:
+for_window [floating] border pixel 2
+for_window [app_id="thunar"] floating enable, border pixel 2
+for_window [app_id="Thunar"] floating enable, border pixel 2
+for_window [class="[tT]hunar"] floating enable, border pixel 2
 for_window [class="python3.11"] floating enable
 for_window [class="python3.12"] floating enable
 for_window [class="python3.13"] floating enable
@@ -73,7 +77,7 @@ for_window [app_id="io.github.jakebgrant.phylax"] floating enable, border pixel 
 bindsym $mod+j output eDP-1 toggle
 
 # App launcher (Wofi)
-bindsym --release Super_L exec pkill wofi || wofi --show drun
+bindsym $mod+Shift+m exec pkill wofi || wofi --show drun
 bindsym $mod+d exec pkill wofi || wofi --show drun
 
 bindsym $mod+Return exec $term
@@ -128,7 +132,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+f fullscreen
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space exec ~/.config/sway/scripts/toggle-floating.sh
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 # Move the currently focused window to the scratchpad

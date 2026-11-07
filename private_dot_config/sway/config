@@ -16,8 +16,8 @@ set $browser firefox
 
 exec swaync
 exec mpd-mpris
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/bin/lxqt-policykit-agent
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway
 exec /usr/lib/xdg-desktop-portal
 exec swaymsg output DP-1 mode 1920x1080@75.00Hz
 exec kitty
@@ -25,11 +25,11 @@ exec firefox
 exec python3 ~/.config/sway/tablet-pad-listener
 
 bindsym $mod+Shift+n exec swaync-client -t -sw
-bindsym $mod+Shift+x exec LANG=POSIX ~/woomer/target/release/woomer
+bindsym $mod+Shift+x exec LANG=POSIX woomer
+bindsym XF86PowerOff exec echo Hellow
 
-output * bg ~/.config/wallpaper fill
+include theme
 smart_borders 1
-client.focused              #181825 #CBA6F7  #CBA6F7 #CBA6F7   #CBA6F7
 
 # output HDMI-A-1 resolution 1920x1080 position 1920,0
 # exec swayidle -w \
@@ -64,6 +64,10 @@ for_window [class="python3.15"] floating enable
 
 # Multimonitor
 bindsym $mod+j output eDP-1 toggle
+
+# App launcher (Wofi)
+bindsym --release Super_L exec pkill wofi || wofi --show drun
+bindsym $mod+d exec pkill wofi || wofi --show drun
 
 bindsym $mod+Return exec $term
 bindsym $mod+Escape exec $file_manager
@@ -179,3 +183,4 @@ bar {
 
 include /etc/sway/config.d/*
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway

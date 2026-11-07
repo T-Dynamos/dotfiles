@@ -9,6 +9,7 @@
         "sway/workspaces"
     ],
     "modules-center": [
+        "sway/window",
         "sway/mode",
         "clock"
     ],
@@ -20,6 +21,7 @@
         "custom/brightness",
         "backlight",
         "custom/fan",
+        "custom/powerbank",
         "battery",
         "tray",
     ],
@@ -123,6 +125,15 @@
         "interval": 1, 
         "hide-empty-text": true,
       },
+    "custom/powerbank": {
+        "exec": "python3 /home/tdynamos/.config/waybar/scripts/powerbank.py",
+        "return-type": "json",
+        "format": "{}",
+        "hide-empty-text": true,
+        "on-click": "kitty --class float_term -e python3 /home/tdynamos/Projects/PowerBank/monitor.py",
+        "on-click-right": "python3 /home/tdynamos/.config/waybar/scripts/powerbank.py reset",
+        "restart-interval": 5
+    },
     "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": {
@@ -158,6 +169,9 @@
             "critical": 10
         },
         "tooltip": false
+    },
+    "sway/window": {
+        "format": ""
     },
     "sway/mode": {
       "format": "{}",

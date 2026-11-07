@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-random-wallpaper: Fetch a random high-resolution wallpaper from Unsplash,
+random-wallpaper: Fetch a random high-resolution wallpaper,
 record metadata into wallpaper_history.json, and apply it with change-wallpaper.
-Supports both official Unsplash API (if API key is provided) and Unsplash
-photography stream via Picsum fallback without API keys.
+Supports Unsplash API (if API key is provided), Wallhaven search (curated 1080p-4k tags
+focused on space, night scenes, and landscapes), and Picsum stream fallback.
 """
 
 import datetime
@@ -21,17 +21,35 @@ HISTORY_FILE = Path.home() / ".config" / "wallpaper_history.json"
 KEY_FILE = Path.home() / ".config" / "unsplash_key"
 CHANGE_WALLPAPER = Path.home() / ".local" / "bin" / "change-wallpaper"
 
+# Categories majorly focused on space, landscapes, and night scenes
 CATEGORIES = [
-    "nature",
-    "landscapes",
-    "wallpapers",
-    "mountains",
-    "minimal",
-    "architecture",
+    # Space & Cosmic
     "space",
-    "ocean",
-    "forest",
-    "aesthetic"
+    "deep space",
+    "galaxy",
+    "nebula",
+    "milky way",
+    "astrophotography",
+    "cosmos",
+    "starry sky",
+    "stars night",
+
+    # Night Scenes & Astrolandscapes
+    "night landscape",
+    "night sky mountains",
+    "aurora borealis",
+    "northern lights",
+    "night mountains",
+    "night forest",
+    "starry night",
+    "dark landscape",
+    "moonlight landscape",
+
+    # Landscapes
+    "landscape photography",
+    "mountain landscape",
+    "nature landscape",
+    "scenic landscape"
 ]
 
 
@@ -102,9 +120,46 @@ def fetch_from_unsplash_api(key, category):
     }
 
 
+def fetch_from_wallhaven(category):
+    # Free REST API delivering high resolution (1080p-4k) matching tags
+    params = urllib.parse.urlencode({
+        "q": category,
+        "categories": "100",  # General wallpapers
+        "purity": "100",      # SFW only
+        "ratios": "16x9,16x10",
+        "sorting": "random"
+    })
+    url = f"https://wallhaven.cc/api/v1/search?{params}"
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"}
+    )
+    with urllib.request.urlopen(req, timeout=12) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+
+    wallpapers = data.get("data", [])
+    if not wallpapers:
+        raise ValueError(f"No wallpapers found on Wallhaven for category '{category}'")
+
+    item = random.choice(wallpapers)
+    photo_id = item.get("id", "random")
+    img_url = item.get("path")
+    page_url = item.get("url", f"https://wallhaven.cc/w/{photo_id}")
+    resolution = item.get("resolution", "")
+
+    return {
+        "id": photo_id,
+        "author": "Wallhaven Community",
+        "author_username": "",
+        "url": page_url,
+        "img_url": img_url,
+        "source": "Wallhaven",
+        "resolution": resolution
+    }
+
+
 def fetch_from_picsum_stream(category):
     # Picsum serves verified Unsplash photography with full author credits & Unsplash URLs
-    # without needing API credentials.
     req = urllib.request.Request(
         "https://picsum.photos/1920/1080",
         headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"}
@@ -112,7 +167,6 @@ def fetch_from_picsum_stream(category):
     with urllib.request.urlopen(req, timeout=15) as resp:
         final_url = resp.geturl()
 
-    # Extract ID from redirect e.g. https://fastly.picsum.photos/id/147/1920/1080.jpg?...
     parts = final_url.split("/id/")
     picsum_id = "0"
     if len(parts) > 1:
@@ -173,7 +227,7 @@ def main():
     # Send immediate notification as requested by user
     send_notify(
         "Finding Wallpaper",
-        f"Fetching random wallpaper from Unsplash...\nCategory: {category.title()}",
+        f"Searching for random wallpaper...\nCategory: {category.title()}",
         icon="preferences-desktop-wallpaper"
     )
 
@@ -185,17 +239,24 @@ def main():
             print(f"Connecting to official Unsplash API for '{category}'...")
             photo_data = fetch_from_unsplash_api(key, category)
         except Exception as e:
-            print(f"[Warning] Unsplash API error: {e}. Falling back to Unsplash stream...", file=sys.stderr)
+            print(f"[Warning] Unsplash API error: {e}. Trying alternative source...", file=sys.stderr)
 
     if not photo_data:
         try:
-            print("Connecting to Unsplash photography stream...")
+            print(f"Searching Wallhaven for category '{category}'...")
+            photo_data = fetch_from_wallhaven(category)
+        except Exception as e:
+            print(f"[Warning] Wallhaven search error: {e}. Falling back to Picsum stream...", file=sys.stderr)
+
+    if not photo_data:
+        try:
+            print("Connecting to Picsum fallback stream...")
             photo_data = fetch_from_picsum_stream(category)
         except Exception as e:
             print(f"Error fetching wallpaper: {e}", file=sys.stderr)
             send_notify(
                 "Wallpaper Download Failed",
-                f"Could not reach Unsplash: {e}",
+                f"Could not reach wallpaper service: {e}",
                 icon="dialog-error",
                 urgency="critical"
             )
@@ -203,7 +264,8 @@ def main():
 
     WALLPAPERS_DIR.mkdir(parents=True, exist_ok=True)
     ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    dest_filename = f"unsplash_{photo_data['id']}_{ts}.jpg"
+    source_prefix = "wallhaven" if "Wallhaven" in photo_data.get("source", "") else "unsplash"
+    dest_filename = f"{source_prefix}_{photo_data['id']}_{ts}.jpg"
     dest_path = WALLPAPERS_DIR / dest_filename
 
     print(f"Downloading photo by {photo_data['author']} -> {dest_path}...")
@@ -233,6 +295,7 @@ def main():
         "author_username": photo_data.get("author_username", ""),
         "url": photo_data["url"],
         "source": photo_data["source"],
+        "resolution": photo_data.get("resolution", ""),
         "file_path": str(dest_path)
     }
     save_history(entry)
@@ -248,7 +311,7 @@ def main():
     # Success notification with downloaded wallpaper as thumbnail
     send_notify(
         "Wallpaper Changed",
-        f"Photo by {photo_data['author']} on Unsplash\nCategory: {category.title()}\nSaved to history",
+        f"Category: {category.title()}\nSource: {photo_data['source']}\nSaved to history",
         icon=str(dest_path)
     )
     print(f"Successfully applied wallpaper: {dest_path}")

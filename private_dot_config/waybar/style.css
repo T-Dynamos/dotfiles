@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background-color: #040F1A;
+  background-color: #00110D;
   transition-property: background-color;
   transition-duration: 0.25s;
 }
@@ -35,10 +35,10 @@ window#waybar.hidden {
 #cpu {
   margin: 10px 0 10px 10px;
   padding: 4px 10px;
-  background-color: #091B2B;
-  color: #D5E7FF;
+  background-color: #001E18;
+  color: #C3EFE2;
   border-radius: 20px 0 0 20px;
-  border: 1px solid #344A61;
+  border: 1px solid #274F46;
   border-right: none;
   font-weight: 500;
 }
@@ -46,10 +46,10 @@ window#waybar.hidden {
 #temperature {
   margin: 10px 0;
   padding: 4px 10px;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border-top: 1px solid #344A61;
-  border-bottom: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border-top: 1px solid #274F46;
+  border-bottom: 1px solid #274F46;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -58,10 +58,10 @@ window#waybar.hidden {
 #memory {
   margin: 10px 0;
   padding: 4px 10px;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border-top: 1px solid #344A61;
-  border-bottom: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border-top: 1px solid #274F46;
+  border-bottom: 1px solid #274F46;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -70,10 +70,10 @@ window#waybar.hidden {
 #custom-spacing-left {
   margin: 10px 10px 10px 0;
   padding: 4px 6px;
-  background-color: #091B2B;
-  color: #627791;
+  background-color: #001E18;
+  color: #557D73;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #344A61;
+  border: 1px solid #274F46;
   border-left: none;
   font-size: 14px;
 }
@@ -92,22 +92,22 @@ window#waybar.hidden {
   padding: 4px 14px;
   margin: 2px 3px;
   border-radius: 16px;
-  background-color: #091B2B;
-  color: #97ADC8;
-  border: 1px solid #344A61;
+  background-color: #001E18;
+  color: #8AB4A8;
+  border: 1px solid #274F46;
   transition: all 0.2s ease;
 }
 
 #workspaces button.visible {
-  color: #040F1A;
-  background-color: #B7DFFF;
-  border-color: #B7DFFF;
+  color: #00110D;
+  background-color: #E7FFF2;
+  border-color: #E7FFF2;
   font-weight: bold;
 }
 
 #workspaces button:hover {
-  color: #D5E7FF;
-  background-color: #0C2134;
+  color: #C3EFE2;
+  background-color: #00251E;
 }
 
 #workspaces button.urgent {
@@ -122,10 +122,10 @@ window#waybar.hidden {
 #clock {
   margin: 10px 4px;
   padding: 4px 14px;
-  color: #D5E7FF;
+  color: #C3EFE2;
   border-radius: 18px;
-  background-color: #0C2134;
-  border: 1px solid #344A61;
+  background-color: #00251E;
+  border: 1px solid #274F46;
   font-weight: 600;
 }
 
@@ -142,17 +142,17 @@ window#waybar.hidden {
   margin: 10px 0 10px 4px;
   padding: 4px 8px 4px 12px;
   border-radius: 18px 0 0 18px;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border: 1px solid #274F46;
   border-right: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 #custom-player-prev.active:hover {
-  background-color: #0C2134;
-  color: #B7DFFF;
+  background-color: #00251E;
+  color: #E7FFF2;
 }
 
 #mpris.playing,
@@ -160,10 +160,10 @@ window#waybar.hidden {
   margin: 10px 0;
   padding: 4px 10px;
   border-radius: 0;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border-top: 1px solid #344A61;
-  border-bottom: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border-top: 1px solid #274F46;
+  border-bottom: 1px solid #274F46;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -171,38 +171,38 @@ window#waybar.hidden {
 }
 
 #mpris.playing {
-  color: #D5E7FF;
-  background-color: #0C2134;
+  color: #C3EFE2;
+  background-color: #00251E;
 }
 
 #mpris.paused {
-  color: #97ADC8;
+  color: #8AB4A8;
 }
 
 #custom-player-next.active {
   margin: 10px 4px 10px 0;
   padding: 4px 12px 4px 8px;
   border-radius: 0 18px 18px 0;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border: 1px solid #274F46;
   border-left: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 #custom-player-next.active:hover {
-  background-color: #0C2134;
-  color: #B7DFFF;
+  background-color: #00251E;
+  color: #E7FFF2;
 }
 
 #mode {
   border-radius: 16px;
   margin: 10px 4px;
   padding: 4px 10px;
-  color: #D5E7FF;
-  background-color: #091B2B;
-  border: 1px solid #344A61;
+  color: #C3EFE2;
+  background-color: #001E18;
+  border: 1px solid #274F46;
 }
 
 /* ==========================================================
@@ -214,10 +214,10 @@ window#waybar.hidden {
 #custom-spacing-right {
   margin: 10px 0 10px 10px;
   padding: 4px 6px;
-  background-color: #091B2B;
-  color: #627791;
+  background-color: #001E18;
+  color: #557D73;
   border-radius: 20px 0 0 20px;
-  border: 1px solid #344A61;
+  border: 1px solid #274F46;
   border-right: none;
   font-size: 14px;
 }
@@ -225,10 +225,10 @@ window#waybar.hidden {
 #network {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border-top: 1px solid #344A61;
-  border-bottom: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border-top: 1px solid #274F46;
+  border-bottom: 1px solid #274F46;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -237,10 +237,10 @@ window#waybar.hidden {
 #pulseaudio {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border-top: 1px solid #344A61;
-  border-bottom: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border-top: 1px solid #274F46;
+  border-bottom: 1px solid #274F46;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -250,10 +250,10 @@ window#waybar.hidden {
 #backlight {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border-top: 1px solid #344A61;
-  border-bottom: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border-top: 1px solid #274F46;
+  border-bottom: 1px solid #274F46;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -262,10 +262,10 @@ window#waybar.hidden {
 #custom-fan {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border-top: 1px solid #344A61;
-  border-bottom: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border-top: 1px solid #274F46;
+  border-bottom: 1px solid #274F46;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -274,10 +274,10 @@ window#waybar.hidden {
 #custom-powerbank {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #091B2B;
-  color: #D5E7FF;
-  border-top: 1px solid #344A61;
-  border-bottom: 1px solid #344A61;
+  background-color: #001E18;
+  color: #C3EFE2;
+  border-top: 1px solid #274F46;
+  border-bottom: 1px solid #274F46;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -287,51 +287,64 @@ window#waybar.hidden {
 #battery {
   margin: 10px 10px 10px 0;
   padding: 4px 12px;
-  background-color: #091B2B;
-  color: #D5E7FF;
+  background-color: #001E18;
+  color: #C3EFE2;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #344A61;
+  border: 1px solid #274F46;
   border-left: none;
   font-weight: 500;
 }
 
+#battery.good,
+#battery.warning,
+#battery.critical,
+#battery.critical:not(.charging),
+#battery.urgent,
+#battery.charging,
+#battery.plugged {
+  background-color: #001E18 !important;
+  animation: none !important;
+}
+
 #battery.good {
-  color: #52DF9A;
+  color: #52DF91;
 }
 
 #battery.warning {
-  color: #FFB3B0;
+  color: #FFB68A;
 }
 
-#battery.critical {
+#battery.critical,
+#battery.critical:not(.charging),
+#battery.urgent {
   color: #FF716C;
 }
 
 #battery.charging,
 #battery.plugged,
 #custom-powerbank.charging {
-  color: #52DF9A;
+  color: #52DF91;
 }
 
 #tray {
   margin: 10px 10px 10px 4px;
   padding: 2px 10px;
   border-radius: 16px;
-  background-color: #091B2B;
-  border: 1px solid #344A61;
+  background-color: #001E18;
+  border: 1px solid #274F46;
 }
 
 /* Status States for Connected Modules */
 #custom-powerbank.charging {
-  color: #52DF9A;
+  color: #52DF91;
 }
 
 #custom-powerbank.idle {
-  color: #97ADC8;
+  color: #8AB4A8;
 }
 
 #battery.charging {
-  color: #52DF9A;
+  color: #52DF91;
 }
 
 #battery.critical,
@@ -343,12 +356,12 @@ window#waybar.hidden {
 tooltip {
   border-radius: 12px;
   padding: 12px;
-  background-color: #0C2134;
-  border: 1px solid #344A61;
+  background-color: #00251E;
+  border: 1px solid #274F46;
 }
 
 tooltip label {
   padding: 4px;
   background-color: transparent;
-  color: #D5E7FF;
+  color: #C3EFE2;
 }

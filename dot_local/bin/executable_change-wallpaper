@@ -531,6 +531,17 @@ window#waybar.hidden {{
   font-weight: 500;
 }}
 
+#battery.good,
+#battery.warning,
+#battery.critical,
+#battery.critical:not(.charging),
+#battery.urgent,
+#battery.charging,
+#battery.plugged {{
+  background-color: {pal["surface_container"]} !important;
+  animation: none !important;
+}}
+
 #battery.good {{
   color: {pal["green"]};
 }}
@@ -539,7 +550,9 @@ window#waybar.hidden {{
   color: {pal["peach"]};
 }}
 
-#battery.critical {{
+#battery.critical,
+#battery.critical:not(.charging),
+#battery.urgent {{
   color: {pal["error"]};
 }}
 

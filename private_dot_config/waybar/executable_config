@@ -203,8 +203,9 @@
         "format-full": "{capacity}% 󰂅",
         "interval": 5,
         "states": {
-            "warning": 20,
-            "critical": 10
+            "good": 80,
+            "warning": 30,
+            "critical": 15
         },
         "tooltip": false
     },

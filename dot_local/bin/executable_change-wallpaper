@@ -263,7 +263,7 @@ window#waybar.hidden {{
   margin: 10px 0 10px 10px;
   padding: 4px 10px;
   background-color: {pal["surface_container"]};
-  color: {pal["peach"]};
+  color: {pal["on_surface"]};
   border-radius: 20px 0 0 20px;
   border: 1px solid {pal["outline_variant"]};
   border-right: none;
@@ -274,7 +274,7 @@ window#waybar.hidden {{
   margin: 10px 0;
   padding: 4px 10px;
   background-color: {pal["surface_container"]};
-  color: {pal["yellow"]};
+  color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
   border-bottom: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -286,7 +286,7 @@ window#waybar.hidden {{
   margin: 10px 0;
   padding: 4px 10px;
   background-color: {pal["surface_container"]};
-  color: {pal["purple"]};
+  color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
   border-bottom: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -344,12 +344,12 @@ window#waybar.hidden {{
 }}
 
 /* ==========================================================
-   CENTER (Clock, Mode & MPRIS)
+   CENTER (Clock, Mode & MPRIS Capsule)
    ========================================================== */
 #clock {{
   margin: 10px 4px;
   padding: 4px 14px;
-  color: {pal["primary"]};
+  color: {pal["on_surface"]};
   border-radius: 18px;
   background-color: {pal["surface_container_high"]};
   border: 1px solid {pal["outline_variant"]};
@@ -361,7 +361,7 @@ window#waybar.hidden {{
   padding: 4px 8px 4px 12px;
   border-radius: 18px 0 0 18px;
   background-color: {pal["surface_container"]};
-  color: {pal["tertiary"]};
+  color: {pal["on_surface"]};
   border: 1px solid {pal["outline_variant"]};
   border-right: none;
   font-weight: 500;
@@ -378,7 +378,7 @@ window#waybar.hidden {{
   padding: 4px 10px;
   border-radius: 0;
   background-color: {pal["surface_container"]};
-  color: {pal["tertiary"]};
+  color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
   border-bottom: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -388,7 +388,7 @@ window#waybar.hidden {{
 }}
 
 #mpris.playing {{
-  color: {pal["tertiary"]};
+  color: {pal["on_surface"]};
   background-color: {pal["surface_container_high"]};
 }}
 
@@ -401,7 +401,7 @@ window#waybar.hidden {{
   padding: 4px 12px 4px 8px;
   border-radius: 0 18px 18px 0;
   background-color: {pal["surface_container"]};
-  color: {pal["tertiary"]};
+  color: {pal["on_surface"]};
   border: 1px solid {pal["outline_variant"]};
   border-left: none;
   font-weight: 500;
@@ -417,7 +417,7 @@ window#waybar.hidden {{
   border-radius: 16px;
   margin: 10px 4px;
   padding: 4px 10px;
-  color: {pal["on_surface_variant"]};
+  color: {pal["on_surface"]};
   background-color: {pal["surface_container"]};
   border: 1px solid {pal["outline_variant"]};
 }}
@@ -443,7 +443,7 @@ window#waybar.hidden {{
   margin: 10px 0;
   padding: 4px 7px;
   background-color: {pal["surface_container"]};
-  color: {pal["teal"]};
+  color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
   border-bottom: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -455,7 +455,7 @@ window#waybar.hidden {{
   margin: 10px 0;
   padding: 4px 7px;
   background-color: {pal["surface_container"]};
-  color: {pal["secondary"]};
+  color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
   border-bottom: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -468,7 +468,7 @@ window#waybar.hidden {{
   margin: 10px 0;
   padding: 4px 7px;
   background-color: {pal["surface_container"]};
-  color: {pal["yellow"]};
+  color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
   border-bottom: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -480,7 +480,7 @@ window#waybar.hidden {{
   margin: 10px 0;
   padding: 4px 7px;
   background-color: {pal["surface_container"]};
-  color: {pal["teal_bright"]};
+  color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
   border-bottom: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -492,7 +492,7 @@ window#waybar.hidden {{
   margin: 10px 0;
   padding: 4px 7px;
   background-color: {pal["surface_container"]};
-  color: {pal["green"]};
+  color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
   border-bottom: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -500,15 +500,34 @@ window#waybar.hidden {{
   font-weight: 500;
 }}
 
+/* Only battery changes color based on percentage and charging state */
 #battery {{
   margin: 10px 10px 10px 0;
   padding: 4px 12px;
   background-color: {pal["surface_container"]};
-  color: {pal["green"]};
+  color: {pal["on_surface"]};
   border-radius: 0 20px 20px 0;
   border: 1px solid {pal["outline_variant"]};
   border-left: none;
   font-weight: 500;
+}}
+
+#battery.good {{
+  color: {pal["green"]};
+}}
+
+#battery.warning {{
+  color: {pal["peach"]};
+}}
+
+#battery.critical {{
+  color: {pal["error"]};
+}}
+
+#battery.charging,
+#battery.plugged,
+#custom-powerbank.charging {{
+  color: {pal["green"]};
 }}
 
 #tray {{
@@ -626,6 +645,8 @@ def update_memento_mori(pal):
 
 window#waybar {{
   background-color: transparent;
+  border: none;
+  box-shadow: none;
 }}
 
 #custom-memento-mori {{
@@ -639,7 +660,7 @@ window#waybar {{
   border: 1.5px solid {pal["outline"]};
   border-radius: 28px;
   padding: 16px 32px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  box-shadow: none;
   font-size: 13px;
   letter-spacing: 0.5px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);

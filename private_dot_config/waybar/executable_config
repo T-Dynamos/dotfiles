@@ -9,6 +9,7 @@
         "sway/workspaces"
     ],
     "modules-center": [
+        "sway/window",
         "sway/mode",
         "group/player",
         "clock"

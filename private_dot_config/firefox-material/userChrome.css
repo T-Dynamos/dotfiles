@@ -48,8 +48,19 @@
 }
 
 /* URL bar (Material 3 Pill shape) */
+#remote-control-box,
+#urlbar-remote-control-notification-anchor,
+.urlbar-icon[aria-label*="remote control"],
+.urlbar-icon[tooltiptext*="remote control"] {
+  display: none !important;
+}
+
 #urlbar-background,
+.urlbar-background,
+#urlbar[remote-control] .urlbar-background,
+#urlbar[remote-control] #urlbar-background,
 #searchbar {
+  background-image: none !important;
   background-color: var(--md-surface-container-lowest) !important;
   border: 1px solid var(--md-outline-variant) !important;
   border-radius: 20px !important;

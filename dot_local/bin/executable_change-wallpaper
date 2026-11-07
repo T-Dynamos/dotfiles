@@ -257,6 +257,13 @@ window#waybar.hidden {{
   opacity: 0.5;
 }}
 
+#window {{
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+}}
+
 /* ==========================================================
    LEFT MODULE CLUSTER (Connected Material 3 Pill)
    cpu -> temperature -> memory -> custom-spacing-left
@@ -563,23 +570,9 @@ window#waybar.hidden {{
   color: {pal["green"]};
 }}
 
-@keyframes blink {{
-  to {{
-    background-color: {pal["error"]};
-    color: {pal["on_error"]};
-  }}
-}}
-
-#battery.warning,
 #battery.critical,
 #battery.urgent {{
-  background-color: {pal["error"]};
-  color: {pal["on_error"]};
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  color: {pal["error"]};
 }}
 
 /* Tooltips */
@@ -756,6 +749,26 @@ def reload_firefox_live(pal):
         }}
         sss.loadAndRegisterSheet(dataUri, sss.USER_SHEET);
 
+        const fixCss = `
+        #remote-control-box,
+        #urlbar-remote-control-notification-anchor,
+        .urlbar-icon[aria-label*="remote control"],
+        .urlbar-icon[tooltiptext*="remote control"] {{
+          display: none !important;
+        }}
+        #urlbar-background,
+        .urlbar-background,
+        #urlbar[remote-control] .urlbar-background,
+        #urlbar[remote-control] #urlbar-background {{
+          background-image: none !important;
+        }}
+        `;
+        const fixUri = ios.newURI("data:text/css," + encodeURIComponent(fixCss));
+        if (sss.sheetRegistered(fixUri, sss.USER_SHEET)) {{
+            sss.unregisterSheet(fixUri, sss.USER_SHEET);
+        }}
+        sss.loadAndRegisterSheet(fixUri, sss.USER_SHEET);
+
         const vars = {json.dumps(vars_dict)};
         const enumerator = wm.getEnumerator("navigator:browser");
         let count = 0;
@@ -765,6 +778,12 @@ def reload_firefox_live(pal):
                 for (const [k, v] of Object.entries(vars)) {{
                     win.document.documentElement.style.setProperty(k, v, "important");
                 }}
+                const bgs = win.document.querySelectorAll(".urlbar-background");
+                for (const b of bgs) {{
+                    b.style.setProperty("background-image", "none", "important");
+                }}
+                const rcBox = win.document.getElementById("remote-control-box");
+                if (rcBox) rcBox.style.setProperty("display", "none", "important");
                 count++;
             }}
         }}
@@ -785,10 +804,27 @@ def reload_firefox_live(pal):
 
 def update_firefox(pal):
     if not MOZILLA_DIR.is_dir():
+        # Try to initialize default profile if firefox is present
+        try:
+            subprocess.run(
+                ["firefox", "--headless", "-CreateProfile", "default-release"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                timeout=5
+            )
+        except Exception:
+            pass
+
+    if not MOZILLA_DIR.is_dir():
         return
 
-    # Find profiles with prefs.js
-    profiles = [p for p in MOZILLA_DIR.iterdir() if p.is_dir() and (p / "prefs.js").is_file()]
+    # Master CSS templates for new/existing profiles
+    master_dir = Path.home() / ".config" / "firefox-material"
+    user_chrome_src = master_dir / "userChrome.css"
+    user_content_src = master_dir / "userContent.css"
+
+    # Find all profile directories
+    profiles = [p for p in MOZILLA_DIR.iterdir() if p.is_dir() and ((p / "prefs.js").is_file() or (p / "user.js").is_file() or (p / "chrome").is_dir() or "default" in p.name)]
     for prof in profiles:
         chrome_dir = prof / "chrome"
         chrome_dir.mkdir(parents=True, exist_ok=True)
@@ -812,6 +848,12 @@ def update_firefox(pal):
 }}
 """
         colors_css.write_text(colors_content)
+
+        # Copy master templates so any new laptop installation automatically gets full theme
+        if user_chrome_src.is_file():
+            shutil.copy2(user_chrome_src, chrome_dir / "userChrome.css")
+        if user_content_src.is_file():
+            shutil.copy2(user_content_src, chrome_dir / "userContent.css")
 
         # Ensure user.js enables custom stylesheets and marionette
         user_js = prof / "user.js"

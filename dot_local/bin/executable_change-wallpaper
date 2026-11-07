@@ -531,12 +531,12 @@ window {{
 }}
 
 #outer-box {{
-  margin: 10px;
+  margin: 0px;
   padding: 14px;
   background-color: {pal["surface"]};
-  border: 1px solid {pal["outline_variant"]};
+  border: 1.5px solid {pal["outline_variant"]};
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }}
 
 #input {{

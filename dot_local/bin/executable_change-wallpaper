@@ -596,7 +596,7 @@ def restart_waybars():
     # Launch memento-mori desktop widget
     launch_script = WAYBAR_DIR / "scripts" / "launch-memento.sh"
     if launch_script.is_file():
-        subprocess.Popen([str(launch_script)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+        subprocess.Popen([str(launch_script), "--once"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     else:
         subprocess.Popen(
             ["waybar", "-c", str(WAYBAR_DIR / "memento-mori.json"), "-s", str(WAYBAR_DIR / "memento-mori.css")],

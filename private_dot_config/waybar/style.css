@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background-color: #070E1B;
+  background-color: #040F1A;
   transition-property: background-color;
   transition-duration: 0.25s;
 }
@@ -28,10 +28,10 @@ window#waybar.hidden {
 #cpu {
   margin: 10px 0 10px 10px;
   padding: 4px 10px;
-  background-color: #0E1A2C;
-  color: #DAE6FF;
+  background-color: #081B2A;
+  color: #D3E8FF;
   border-radius: 20px 0 0 20px;
-  border: 1px solid #394863;
+  border: 1px solid #324A60;
   border-right: none;
   font-weight: 500;
 }
@@ -39,10 +39,10 @@ window#waybar.hidden {
 #temperature {
   margin: 10px 0;
   padding: 4px 10px;
-  background-color: #0E1A2C;
-  color: #DAE6FF;
-  border-top: 1px solid #394863;
-  border-bottom: 1px solid #394863;
+  background-color: #081B2A;
+  color: #D3E8FF;
+  border-top: 1px solid #324A60;
+  border-bottom: 1px solid #324A60;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -51,10 +51,10 @@ window#waybar.hidden {
 #memory {
   margin: 10px 0;
   padding: 4px 10px;
-  background-color: #0E1A2C;
-  color: #DAE6FF;
-  border-top: 1px solid #394863;
-  border-bottom: 1px solid #394863;
+  background-color: #081B2A;
+  color: #D3E8FF;
+  border-top: 1px solid #324A60;
+  border-bottom: 1px solid #324A60;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -63,9 +63,9 @@ window#waybar.hidden {
 #custom-spacing-left {
   margin: 10px 10px 10px 0;
   padding: 4px 6px;
-  background-color: #0E1A2C;
+  background-color: #081B2A;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #394863;
+  border: 1px solid #324A60;
   border-left: none;
   font-size: 14px;
 }
@@ -84,22 +84,22 @@ window#waybar.hidden {
   padding: 4px 14px;
   margin: 2px 3px;
   border-radius: 16px;
-  background-color: #0E1A2C;
-  color: #9CACCA;
-  border: 1px solid #394863;
+  background-color: #081B2A;
+  color: #95AEC7;
+  border: 1px solid #324A60;
   transition: all 0.2s ease;
 }
 
 #workspaces button.visible {
-  color: #070E1B;
-  background-color: #A7CFFF;
-  border-color: #A7CFFF;
+  color: #040F1A;
+  background-color: #BAE2FF;
+  border-color: #BAE2FF;
   font-weight: bold;
 }
 
 #workspaces button:hover {
-  color: #DAE6FF;
-  background-color: #122035;
+  color: #D3E8FF;
+  background-color: #0A2133;
 }
 
 #workspaces button.urgent {
@@ -109,44 +109,65 @@ window#waybar.hidden {
 }
 
 /* ==========================================================
-   CENTER (Clock & Mode)
+   CENTER (Clock, Mode & MPRIS)
    ========================================================== */
 #clock {
-  margin: 10px 8px;
-  padding: 4px 16px;
-  color: #DAE6FF;
-  border-radius: 20px;
-  background-color: #122035;
-  border: 1px solid #A7CFFF;
+  margin: 10px 4px;
+  padding: 4px 14px;
+  color: #D3E8FF;
+  border-radius: 18px;
+  background-color: #0A2133;
+  border: 1px solid #324A60;
   font-weight: 600;
+}
+
+#mpris {
+  margin: 10px 4px;
+  padding: 4px 12px;
+  border-radius: 18px;
+  background-color: #081B2A;
+  color: #D3E8FF;
+  border: 1px solid #324A60;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+#mpris.playing {
+  color: #BAE2FF;
+  border-color: #BAE2FF;
+  background-color: #0A2133;
+}
+
+#mpris.paused {
+  color: #95AEC7;
+  border-color: #324A60;
 }
 
 #mode {
   border-radius: 16px;
   margin: 10px 4px;
   padding: 4px 10px;
-  color: #9CACCA;
-  background-color: #0E1A2C;
-  border: 1px solid #394863;
+  color: #95AEC7;
+  background-color: #081B2A;
+  border: 1px solid #324A60;
 }
 
 /* ==========================================================
    RIGHT MODULE CLUSTER (Connected Material 3 Ribbon)
-   custom-spacing-right -> mpris -> network -> pulseaudio
+   custom-spacing-right -> network -> pulseaudio
    -> custom-brightness -> backlight -> custom-fan
    -> custom-powerbank -> battery
    ========================================================== */
 #custom-spacing-right {
   margin: 10px 0 10px 10px;
   padding: 4px 6px;
-  background-color: #0E1A2C;
+  background-color: #081B2A;
   border-radius: 20px 0 0 20px;
-  border: 1px solid #394863;
+  border: 1px solid #324A60;
   border-right: none;
   font-size: 14px;
 }
 
-#mpris,
 #network,
 #pulseaudio,
 #custom-brightness,
@@ -154,11 +175,11 @@ window#waybar.hidden {
 #custom-fan,
 #custom-powerbank {
   margin: 10px 0;
-  padding: 4px 10px;
-  background-color: #0E1A2C;
-  color: #DAE6FF;
-  border-top: 1px solid #394863;
-  border-bottom: 1px solid #394863;
+  padding: 4px 7px;
+  background-color: #081B2A;
+  color: #D3E8FF;
+  border-top: 1px solid #324A60;
+  border-bottom: 1px solid #324A60;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -167,10 +188,10 @@ window#waybar.hidden {
 #battery {
   margin: 10px 10px 10px 0;
   padding: 4px 12px;
-  background-color: #0E1A2C;
-  color: #DAE6FF;
+  background-color: #081B2A;
+  color: #D3E8FF;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #394863;
+  border: 1px solid #324A60;
   border-left: none;
   font-weight: 500;
 }
@@ -179,8 +200,8 @@ window#waybar.hidden {
   margin: 10px 10px 10px 4px;
   padding: 2px 10px;
   border-radius: 16px;
-  background-color: #0E1A2C;
-  border: 1px solid #394863;
+  background-color: #081B2A;
+  border: 1px solid #324A60;
 }
 
 /* Status States for Connected Modules */
@@ -189,7 +210,7 @@ window#waybar.hidden {
 }
 
 #custom-powerbank.idle {
-  color: #9CACCA;
+  color: #95AEC7;
 }
 
 #battery.charging {
@@ -219,12 +240,12 @@ window#waybar.hidden {
 tooltip {
   border-radius: 12px;
   padding: 12px;
-  background-color: #122035;
-  border: 1px solid #394863;
+  background-color: #0A2133;
+  border: 1px solid #324A60;
 }
 
 tooltip label {
   padding: 4px;
   background-color: transparent;
-  color: #DAE6FF;
+  color: #D3E8FF;
 }

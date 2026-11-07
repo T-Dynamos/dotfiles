@@ -197,16 +197,38 @@ window#waybar.hidden {{
 }}
 
 /* ==========================================================
-   CENTER (Clock & Mode)
+   CENTER (Clock, Mode & MPRIS)
    ========================================================== */
 #clock {{
-  margin: 10px 8px;
-  padding: 4px 16px;
+  margin: 10px 4px;
+  padding: 4px 14px;
   color: {pal["on_surface"]};
-  border-radius: 20px;
+  border-radius: 18px;
   background-color: {pal["surface_container_high"]};
-  border: 1px solid {pal["primary"]};
+  border: 1px solid {pal["outline_variant"]};
   font-weight: 600;
+}}
+
+#mpris {{
+  margin: 10px 4px;
+  padding: 4px 12px;
+  border-radius: 18px;
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  border: 1px solid {pal["outline_variant"]};
+  font-weight: 500;
+  transition: all 0.2s ease;
+}}
+
+#mpris.playing {{
+  color: {pal["primary"]};
+  border-color: {pal["primary"]};
+  background-color: {pal["surface_container_high"]};
+}}
+
+#mpris.paused {{
+  color: {pal["on_surface_variant"]};
+  border-color: {pal["outline_variant"]};
 }}
 
 #mode {{
@@ -220,7 +242,7 @@ window#waybar.hidden {{
 
 /* ==========================================================
    RIGHT MODULE CLUSTER (Connected Material 3 Ribbon)
-   custom-spacing-right -> mpris -> network -> pulseaudio
+   custom-spacing-right -> network -> pulseaudio
    -> custom-brightness -> backlight -> custom-fan
    -> custom-powerbank -> battery
    ========================================================== */
@@ -234,7 +256,6 @@ window#waybar.hidden {{
   font-size: 14px;
 }}
 
-#mpris,
 #network,
 #pulseaudio,
 #custom-brightness,
@@ -242,7 +263,7 @@ window#waybar.hidden {{
 #custom-fan,
 #custom-powerbank {{
   margin: 10px 0;
-  padding: 4px 10px;
+  padding: 4px 7px;
   background-color: {pal["surface_container"]};
   color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};

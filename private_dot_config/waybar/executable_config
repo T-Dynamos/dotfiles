@@ -11,11 +11,11 @@
     "modules-center": [
         "sway/window",
         "sway/mode",
+        "mpris",
         "clock"
     ],
     "modules-right": [
         "custom/spacing-right",
-        "mpris",
         "network",
         "pulseaudio",
         "custom/brightness",
@@ -34,17 +34,30 @@
       "format": "{temperatureC}°C "
     },
     "mpris": {
-      "format": "{player_icon} {title}",
-      "title-len":15,
-      "format-paused": "{status_icon} {title}",
-      "ignored-players": ["firefox"],
+      "format": "󰒮 {status_icon} 󰒭 {dynamic}",
+      "format-paused": "󰒮 {status_icon} 󰒭 <i>{dynamic}</i>",
+      "format-stopped": "",
       "player-icons": {
-        "default": "󰏤 ",
-        "mpv": "🎵"
+        "default": "🎵",
+        "mpv": "🎬",
+        "spotify": ""
       },
       "status-icons": {
-        "paused": " "
+        "playing": "󰏤",
+        "paused": "󰐊",
+        "stopped": ""
       },
+      "dynamic-order": ["title", "artist"],
+      "dynamic-len": 24,
+      "title-len": 18,
+      "artist-len": 12,
+      "ellipsis": "…",
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl next",
+      "on-click-middle": "playerctl previous",
+      "on-scroll-up": "playerctl next",
+      "on-scroll-down": "playerctl previous",
+      "tooltip-format": "{player} ({status})\n{title} - {artist}\n\nLeft: Play/Pause | Right: Next | Middle: Prev"
     },
     "mpd":{
         "format":"󰏤  {title}",
@@ -89,10 +102,10 @@
         "spacing": 10
     },
     "clock": {
-        "interval":1,
+        "interval": 1,
         "tooltip-format": "<tt>{calendar}</tt>",
-        "format-alt": "  {:%a, %d %b %Y}",
-        "format": "  {:%a, %d %b %Y, %I:%M:%S %p} "
+        "format": "  {:%a %d %b, %I:%M %p}",
+        "format-alt": "  {:%a, %d %b %Y, %I:%M:%S %p} "
     },
     "network": {
         "format-wifi" : "{icon}",
@@ -163,7 +176,7 @@
                 "󰁹"
             ]
         },
-        "format-full": "Charged ",
+        "format-full": "{capacity}% 󰂅",
         "interval": 5,
         "states": {
             "warning": 20,

@@ -6,6 +6,9 @@ All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **Sway
 
 ---
 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0102785b-2c19-455e-b36b-35ba9653e34b" />
+
+
 ## Architecture & Features
 
 ### Material You Dynamic Theming Engine

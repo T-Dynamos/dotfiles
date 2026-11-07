@@ -103,6 +103,7 @@
         "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
 	"tooltip-format-disconnected": "Disconnected",
 	"on-click": "networkmanager_dmenu",
+	"on-click-right": "networkmanager_dmenu",
 	"interval": 5,
 	"nospacing": 1,
     },

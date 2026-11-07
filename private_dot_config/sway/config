@@ -73,6 +73,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Escape exec $file_manager
 bindsym $mod+BackSpace exec $browser
 bindsym $mod+c kill
+bindsym $mod+l exec swaylock
 bindsym $mod+Shift+p exec hyprpicker --render-inactive --autocopy
 bindsym  --whole-window button8 exec playerctl play-pause
 bindsym  --whole-window button9 exec playerctl next

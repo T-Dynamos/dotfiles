@@ -519,7 +519,7 @@ window#waybar.hidden {{
   font-weight: 500;
 }}
 
-/* Only battery changes color based on percentage and charging state */
+/* Only battery changes color to green when charging, otherwise default on_surface color */
 #battery {{
   margin: 10px 10px 10px 0;
   padding: 4px 12px;
@@ -535,31 +535,18 @@ window#waybar.hidden {{
 #battery.warning,
 #battery.critical,
 #battery.critical:not(.charging),
-#battery.urgent,
-#battery.charging,
-#battery.plugged {{
-  background-color: {pal["surface_container"]};
-  animation: none;
-}}
-
-#battery.good {{
-  color: {pal["green"]};
-}}
-
-#battery.warning {{
-  color: {pal["peach"]};
-}}
-
-#battery.critical,
-#battery.critical:not(.charging),
 #battery.urgent {{
-  color: {pal["error"]};
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  animation: none;
 }}
 
 #battery.charging,
 #battery.plugged,
 #custom-powerbank.charging {{
+  background-color: {pal["surface_container"]};
   color: {pal["green"]};
+  animation: none;
 }}
 
 #tray {{
@@ -577,15 +564,6 @@ window#waybar.hidden {{
 
 #custom-powerbank.idle {{
   color: {pal["on_surface_variant"]};
-}}
-
-#battery.charging {{
-  color: {pal["green"]};
-}}
-
-#battery.critical,
-#battery.urgent {{
-  color: {pal["error"]};
 }}
 
 /* Tooltips */

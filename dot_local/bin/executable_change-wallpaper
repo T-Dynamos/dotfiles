@@ -566,9 +566,30 @@ tooltip label {{
 }}
 """
     style_css.write_text(content)
-    res = subprocess.run(["pkill", "-SIGUSR2", "waybar"], stderr=subprocess.DEVNULL)
+
+
+def restart_waybars():
+    # Safely terminate all existing waybar instances
+    subprocess.run(["pkill", "-x", "waybar"], stderr=subprocess.DEVNULL)
+    time.sleep(0.3)
+
+    # Reload Sway (launches top bar via swaybar_command and memento mori via exec_always)
+    subprocess.run(["swaymsg", "reload"], stderr=subprocess.DEVNULL)
+    time.sleep(0.5)
+
+    # Verification: Ensure memento-mori desktop widget is running; if not, launch it directly
+    res = subprocess.run(["pgrep", "-f", "memento-mori.json"], stdout=subprocess.DEVNULL)
     if res.returncode != 0:
-        subprocess.run(["swaymsg", "reload"], stderr=subprocess.DEVNULL)
+        launch_script = WAYBAR_DIR / "scripts" / "launch-memento.sh"
+        if launch_script.is_file():
+            subprocess.Popen([str(launch_script)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+        else:
+            subprocess.Popen(
+                ["waybar", "-c", str(WAYBAR_DIR / "memento-mori.json"), "-s", str(WAYBAR_DIR / "memento-mori.css")],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                start_new_session=True
+            )
 
 
 
@@ -1200,6 +1221,7 @@ def apply_wallpaper(image_path=None, scheme="expressive", is_dark=True):
     print("Updating Waybar...")
     update_waybar(pal)
     update_memento_mori(pal)
+    restart_waybars()
 
     print("Updating Firefox...")
     update_firefox(pal)

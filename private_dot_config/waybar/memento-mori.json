@@ -3,7 +3,7 @@
     "position": "top",
     "margin-top": 280,
     "exclusive": false,
-    "passthrough": false,
+    "passthrough": true,
     "modules-center": [
         "custom/memento-mori"
     ],
@@ -12,7 +12,6 @@
         "return-type": "json",
         "interval": 60,
         "format": "{}",
-        "on-click": "notify-send '⏳ Memento Mori' '\"You could leave life right now. Let that determine what you do and say and think.\" — Marcus Aurelius'",
-        "tooltip": true
+        "tooltip": false
     }
 }

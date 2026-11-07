@@ -47,13 +47,12 @@ def get_lifespan_data():
         f"<span font_weight='bold'>{'━' * max(0, filled - 1)}</span>"
     )
 
-    # Aesthetic display with percentage in the bar itself
+    # Aesthetic single-line display with percentage in the bar itself
     text = (
         f"<span size='x-large' font_weight='bold'>{weeks:,}</span> <span size='small' alpha='80%'>{w_label}</span>  •  "
         f"<span size='x-large' font_weight='bold'>{days}</span> <span size='small' alpha='80%'>{d_label}</span>  •  "
         f"<span size='x-large' font_weight='bold'>{hours}</span> <span size='small' alpha='80%'>{h_label}</span> <span size='small' alpha='70%'>left</span>  •  "
-        f"<span size='x-large' font_weight='bold'>{pct:.1f}%</span>\n"
-        f"{progress_bar}"
+        f"<span size='x-large' font_weight='bold'>{pct:.1f}%</span>"
     )
 
     alt_text = f"󱑎 {weeks:,} {w_label}, {days} {d_label}, {hours} {h_label} left ({pct:.1f}% lived)"

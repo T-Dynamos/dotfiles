@@ -11,16 +11,17 @@ window#waybar {
 
 #custom-memento-mori {
   background: linear-gradient(to left, 
-    rgba(255, 227, 159, 0.28) 0%, 
-    rgba(255, 227, 159, 0.28) 24.4%, 
-    rgba(34, 24, 1, 0.78) 24.4%, 
-    rgba(34, 24, 1, 0.78) 100%
+    #6d4a34 0%, 
+    #6d4a34 24.4%, 
+    #291404 24.4%, 
+    #291404 100%
   );
-  color: #FBE3AD;
-  border: 1.5px solid #55461E;
+  color: #FFDFCA;
+  border: 1.5px solid #956D4E;
   border-radius: 28px;
   padding: 16px 32px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.4);
   font-size: 13px;
   letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
 }

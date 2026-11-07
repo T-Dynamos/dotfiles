@@ -42,7 +42,7 @@ def get_lifespan_data():
     filled = max(1, min(bar_len, int(round(bar_len * (pct / 100.0)))))
     unfilled = bar_len - filled
     progress_bar = (
-        f"<span alpha='30%'>{'─' * unfilled}</span>"
+        f"<span alpha='55%'>{'─' * unfilled}</span>"
         f"<span font_weight='bold'>╸</span>"
         f"<span font_weight='bold'>{'━' * max(0, filled - 1)}</span>"
     )

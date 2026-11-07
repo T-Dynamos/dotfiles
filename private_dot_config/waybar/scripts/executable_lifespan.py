@@ -47,9 +47,8 @@ def get_lifespan_data():
         f"<span font_weight='bold'>{'━' * max(0, filled - 1)}</span>"
     )
 
-    # Multi-line aesthetic display with percentage in the bar itself
+    # Aesthetic display with percentage in the bar itself
     text = (
-        f"<span size='small' letter_spacing='3000' alpha='70%' font_weight='bold'>M E M E N T O   M O R I</span>\n"
         f"<span size='x-large' font_weight='bold'>{weeks:,}</span> <span size='small' alpha='80%'>{w_label}</span>  •  "
         f"<span size='x-large' font_weight='bold'>{days}</span> <span size='small' alpha='80%'>{d_label}</span>  •  "
         f"<span size='x-large' font_weight='bold'>{hours}</span> <span size='small' alpha='80%'>{h_label}</span> <span size='small' alpha='70%'>left</span>  •  "

@@ -17,7 +17,7 @@ set $browser env MOZ_REMOTE_ALLOW_SYSTEM_ACCESS=1 firefox --marionette
 exec swaync
 exec mpd-mpris
 exec_always ~/.config/waybar/scripts/launch-memento.sh
-exec /usr/bin/lxqt-policykit-agent
+exec /home/tdynamos/.local/bin/phylax
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway
 exec /usr/lib/xdg-desktop-portal
 exec swaymsg output DP-1 mode 1920x1080@75.00Hz
@@ -67,6 +67,7 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 for_window [class="[pP]avucontrol"] floating enable
 for_window [app_id="float_term"] floating enable
 for_window [class="float_term"] floating enable
+for_window [app_id="io.github.jakebgrant.phylax"] floating enable, border pixel 2, sticky enable
 
 # Multimonitor
 bindsym $mod+j output eDP-1 toggle

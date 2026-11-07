@@ -18,7 +18,7 @@ exec swaync
 exec mpd-mpris
 exec_always ~/.config/waybar/scripts/launch-memento.sh
 exec /home/tdynamos/.local/bin/phylax
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_ID
 exec /usr/lib/xdg-desktop-portal
 exec swaymsg output DP-1 mode 1920x1080@75.00Hz
 exec kitty

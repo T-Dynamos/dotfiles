@@ -335,6 +335,13 @@ window#waybar.hidden {{
   transition: all 0.2s ease;
 }}
 
+#workspaces button:hover {{
+  color: {pal["primary"]};
+  background-color: {pal["surface_container_high"]};
+  border-color: {pal["primary"]};
+}}
+
+#workspaces button.focused,
 #workspaces button.visible {{
   color: {pal["surface"]};
   background-color: {pal["primary"]};
@@ -342,9 +349,12 @@ window#waybar.hidden {{
   font-weight: bold;
 }}
 
-#workspaces button:hover {{
-  color: {pal["on_surface"]};
-  background-color: {pal["surface_container_high"]};
+#workspaces button.focused:hover,
+#workspaces button.visible:hover {{
+  color: {pal["surface"]};
+  background-color: {pal["primary"]};
+  border-color: {pal["primary"]};
+  opacity: 0.9;
 }}
 
 #workspaces button.urgent {{
@@ -847,7 +857,7 @@ def update_firefox(pal):
         if user_content_src.is_file():
             shutil.copy2(user_content_src, chrome_dir / "userContent.css")
 
-        # Ensure user.js enables custom stylesheets and marionette
+        # Ensure user.js enables custom stylesheets
         user_js = prof / "user.js"
         existing = user_js.read_text() if user_js.is_file() else ""
         additions = []
@@ -855,10 +865,8 @@ def update_firefox(pal):
             additions.append('user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);')
         if "svg.context-properties.content.enabled" not in existing:
             additions.append('user_pref("svg.context-properties.content.enabled", true);')
-        if "marionette.enabled" not in existing:
-            additions.append('user_pref("marionette.enabled", true);')
-        if "marionette.port" not in existing:
-            additions.append('user_pref("marionette.port", 2828);')
+        if "browser.newtabpage.activity-stream.testing.shouldInitializeFeeds" not in existing:
+            additions.append('user_pref("browser.newtabpage.activity-stream.testing.shouldInitializeFeeds", true);')
         if "browser.startup.page" not in existing:
             additions.append('user_pref("browser.startup.page", 3);')
 

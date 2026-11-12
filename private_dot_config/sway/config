@@ -12,7 +12,7 @@ set $right Down
 
 set $file_manager thunar
 set $term kitty
-set $browser env MOZ_REMOTE_ALLOW_SYSTEM_ACCESS=1 firefox --marionette
+set $browser firefox
 
 exec swaync
 exec mpd-mpris
@@ -22,7 +22,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CU
 exec /usr/lib/xdg-desktop-portal
 exec swaymsg output DP-1 mode 1920x1080@75.00Hz
 exec kitty
-exec env MOZ_REMOTE_ALLOW_SYSTEM_ACCESS=1 firefox --marionette
+exec firefox
 exec python3 ~/.config/sway/tablet-pad-listener
 
 bindsym $mod+Shift+n exec swaync-client -t -sw

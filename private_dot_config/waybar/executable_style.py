@@ -109,6 +109,13 @@ window#waybar.hidden {{
   opacity: 0.5;
 }}
 
+#window {{
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+}}
+
 /* ==========================================================
    LEFT MODULE CLUSTER (Connected Material 3 Pill)
    cpu -> temperature -> memory -> custom-spacing-left
@@ -152,6 +159,7 @@ window#waybar.hidden {{
   margin: 10px 10px 10px 0;
   padding: 4px 6px;
   background-color: {pal["surface_container"]};
+  color: {pal["outline"]};
   border-radius: 0 20px 20px 0;
   border: 1px solid {pal["outline_variant"]};
   border-left: none;
@@ -178,6 +186,13 @@ window#waybar.hidden {{
   transition: all 0.2s ease;
 }}
 
+#workspaces button:hover {{
+  color: {pal["primary"]};
+  background-color: {pal["surface_container_high"]};
+  border-color: {pal["primary"]};
+}}
+
+#workspaces button.focused,
 #workspaces button.visible {{
   color: {pal["surface"]};
   background-color: {pal["primary"]};
@@ -185,9 +200,12 @@ window#waybar.hidden {{
   font-weight: bold;
 }}
 
-#workspaces button:hover {{
-  color: {pal["on_surface"]};
-  background-color: {pal["surface_container_high"]};
+#workspaces button.focused:hover,
+#workspaces button.visible:hover {{
+  color: {pal["surface"]};
+  background-color: {pal["primary"]};
+  border-color: {pal["primary"]};
+  opacity: 0.9;
 }}
 
 #workspaces button.urgent {{
@@ -197,7 +215,7 @@ window#waybar.hidden {{
 }}
 
 /* ==========================================================
-   CENTER (Clock, Mode & MPRIS)
+   CENTER (Clock, Mode & MPRIS Capsule)
    ========================================================== */
 #clock {{
   margin: 10px 4px;
@@ -209,33 +227,78 @@ window#waybar.hidden {{
   font-weight: 600;
 }}
 
+#custom-player-prev,
+#custom-player-next,
 #mpris {{
-  margin: 10px 4px;
-  padding: 4px 12px;
-  border-radius: 18px;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+}}
+
+#custom-player-prev.active {{
+  margin: 10px 0 10px 4px;
+  padding: 4px 8px 4px 12px;
+  border-radius: 18px 0 0 18px;
   background-color: {pal["surface_container"]};
   color: {pal["on_surface"]};
   border: 1px solid {pal["outline_variant"]};
+  border-right: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}}
+
+#custom-player-prev.active:hover {{
+  background-color: {pal["surface_container_high"]};
+  color: {pal["primary"]};
+}}
+
+#mpris.playing,
+#mpris.paused {{
+  margin: 10px 0;
+  padding: 4px 10px;
+  border-radius: 0;
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  border-top: 1px solid {pal["outline_variant"]};
+  border-bottom: 1px solid {pal["outline_variant"]};
+  border-left: none;
+  border-right: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }}
 
 #mpris.playing {{
-  color: {pal["primary"]};
-  border-color: {pal["primary"]};
+  color: {pal["on_surface"]};
   background-color: {pal["surface_container_high"]};
 }}
 
 #mpris.paused {{
   color: {pal["on_surface_variant"]};
-  border-color: {pal["outline_variant"]};
+}}
+
+#custom-player-next.active {{
+  margin: 10px 4px 10px 0;
+  padding: 4px 12px 4px 8px;
+  border-radius: 0 18px 18px 0;
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  border: 1px solid {pal["outline_variant"]};
+  border-left: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}}
+
+#custom-player-next.active:hover {{
+  background-color: {pal["surface_container_high"]};
+  color: {pal["primary"]};
 }}
 
 #mode {{
   border-radius: 16px;
   margin: 10px 4px;
   padding: 4px 10px;
-  color: {pal["on_surface_variant"]};
+  color: {pal["on_surface"]};
   background-color: {pal["surface_container"]};
   border: 1px solid {pal["outline_variant"]};
 }}
@@ -250,17 +313,62 @@ window#waybar.hidden {{
   margin: 10px 0 10px 10px;
   padding: 4px 6px;
   background-color: {pal["surface_container"]};
+  color: {pal["outline"]};
   border-radius: 20px 0 0 20px;
   border: 1px solid {pal["outline_variant"]};
   border-right: none;
   font-size: 14px;
 }}
 
-#network,
-#pulseaudio,
+#network {{
+  margin: 10px 0;
+  padding: 4px 7px;
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  border-top: 1px solid {pal["outline_variant"]};
+  border-bottom: 1px solid {pal["outline_variant"]};
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+}}
+
+#pulseaudio {{
+  margin: 10px 0;
+  padding: 4px 7px;
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  border-top: 1px solid {pal["outline_variant"]};
+  border-bottom: 1px solid {pal["outline_variant"]};
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+}}
+
 #custom-brightness,
-#backlight,
-#custom-fan,
+#backlight {{
+  margin: 10px 0;
+  padding: 4px 7px;
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  border-top: 1px solid {pal["outline_variant"]};
+  border-bottom: 1px solid {pal["outline_variant"]};
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+}}
+
+#custom-fan {{
+  margin: 10px 0;
+  padding: 4px 7px;
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  border-top: 1px solid {pal["outline_variant"]};
+  border-bottom: 1px solid {pal["outline_variant"]};
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+}}
+
 #custom-powerbank {{
   margin: 10px 0;
   padding: 4px 7px;
@@ -273,6 +381,7 @@ window#waybar.hidden {{
   font-weight: 500;
 }}
 
+/* Only battery changes color to green when charging, otherwise default on_surface color */
 #battery {{
   margin: 10px 10px 10px 0;
   padding: 4px 12px;
@@ -282,6 +391,24 @@ window#waybar.hidden {{
   border: 1px solid {pal["outline_variant"]};
   border-left: none;
   font-weight: 500;
+}}
+
+#battery.good,
+#battery.warning,
+#battery.critical,
+#battery.critical:not(.charging),
+#battery.urgent {{
+  background-color: {pal["surface_container"]};
+  color: {pal["on_surface"]};
+  animation: none;
+}}
+
+#battery.charging,
+#battery.plugged,
+#custom-powerbank.charging {{
+  background-color: {pal["surface_container"]};
+  color: {pal["green"]};
+  animation: none;
 }}
 
 #tray {{
@@ -299,29 +426,6 @@ window#waybar.hidden {{
 
 #custom-powerbank.idle {{
   color: {pal["on_surface_variant"]};
-}}
-
-#battery.charging {{
-  color: {pal["green"]};
-}}
-
-@keyframes blink {{
-  to {{
-    background-color: {pal["error"]};
-    color: {pal["on_error"]};
-  }}
-}}
-
-#battery.warning,
-#battery.critical,
-#battery.urgent {{
-  background-color: {pal["error"]};
-  color: {pal["on_error"]};
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }}
 
 /* Tooltips */

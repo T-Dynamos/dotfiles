@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background-color: #110B1A;
+  background-color: #001112;
   transition-property: background-color;
   transition-duration: 0.25s;
 }
@@ -35,10 +35,10 @@ window#waybar.hidden {
 #cpu {
   margin: 10px 0 10px 10px;
   padding: 4px 10px;
-  background-color: #1E152A;
-  color: #F0DFFF;
+  background-color: #001D1F;
+  color: #C2EDF0;
   border-radius: 20px 0 0 20px;
-  border: 1px solid #4F4260;
+  border: 1px solid #254E51;
   border-right: none;
   font-weight: 500;
 }
@@ -46,10 +46,10 @@ window#waybar.hidden {
 #temperature {
   margin: 10px 0;
   padding: 4px 10px;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border-top: 1px solid #4F4260;
-  border-bottom: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -58,10 +58,10 @@ window#waybar.hidden {
 #memory {
   margin: 10px 0;
   padding: 4px 10px;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border-top: 1px solid #4F4260;
-  border-bottom: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -70,10 +70,10 @@ window#waybar.hidden {
 #custom-spacing-left {
   margin: 10px 10px 10px 0;
   padding: 4px 6px;
-  background-color: #1E152A;
-  color: #7E6F90;
+  background-color: #001D1F;
+  color: #537C7F;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #4F4260;
+  border: 1px solid #254E51;
   border-left: none;
   font-size: 14px;
 }
@@ -92,28 +92,38 @@ window#waybar.hidden {
   padding: 4px 14px;
   margin: 2px 3px;
   border-radius: 16px;
-  background-color: #1E152A;
-  color: #B5A4C8;
-  border: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #89B2B5;
+  border: 1px solid #254E51;
   transition: all 0.2s ease;
 }
 
+#workspaces button:hover {
+  color: #B0FFFA;
+  background-color: #002426;
+  border-color: #B0FFFA;
+}
+
+#workspaces button.focused,
 #workspaces button.visible {
-  color: #110B1A;
-  background-color: #E5CEFF;
-  border-color: #E5CEFF;
+  color: #001112;
+  background-color: #B0FFFA;
+  border-color: #B0FFFA;
   font-weight: bold;
 }
 
-#workspaces button:hover {
-  color: #F0DFFF;
-  background-color: #251B33;
+#workspaces button.focused:hover,
+#workspaces button.visible:hover {
+  color: #001112;
+  background-color: #B0FFFA;
+  border-color: #B0FFFA;
+  opacity: 0.9;
 }
 
 #workspaces button.urgent {
-  color: #490013;
-  background-color: #FD6F85;
-  border-color: #FD6F85;
+  color: #490006;
+  background-color: #FF716C;
+  border-color: #FF716C;
 }
 
 /* ==========================================================
@@ -122,10 +132,10 @@ window#waybar.hidden {
 #clock {
   margin: 10px 4px;
   padding: 4px 14px;
-  color: #F0DFFF;
+  color: #C2EDF0;
   border-radius: 18px;
-  background-color: #251B33;
-  border: 1px solid #4F4260;
+  background-color: #002426;
+  border: 1px solid #254E51;
   font-weight: 600;
 }
 
@@ -142,17 +152,17 @@ window#waybar.hidden {
   margin: 10px 0 10px 4px;
   padding: 4px 8px 4px 12px;
   border-radius: 18px 0 0 18px;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border: 1px solid #254E51;
   border-right: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 #custom-player-prev.active:hover {
-  background-color: #251B33;
-  color: #E5CEFF;
+  background-color: #002426;
+  color: #B0FFFA;
 }
 
 #mpris.playing,
@@ -160,10 +170,10 @@ window#waybar.hidden {
   margin: 10px 0;
   padding: 4px 10px;
   border-radius: 0;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border-top: 1px solid #4F4260;
-  border-bottom: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -171,38 +181,38 @@ window#waybar.hidden {
 }
 
 #mpris.playing {
-  color: #F0DFFF;
-  background-color: #251B33;
+  color: #C2EDF0;
+  background-color: #002426;
 }
 
 #mpris.paused {
-  color: #B5A4C8;
+  color: #89B2B5;
 }
 
 #custom-player-next.active {
   margin: 10px 4px 10px 0;
   padding: 4px 12px 4px 8px;
   border-radius: 0 18px 18px 0;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border: 1px solid #254E51;
   border-left: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 #custom-player-next.active:hover {
-  background-color: #251B33;
-  color: #E5CEFF;
+  background-color: #002426;
+  color: #B0FFFA;
 }
 
 #mode {
   border-radius: 16px;
   margin: 10px 4px;
   padding: 4px 10px;
-  color: #F0DFFF;
-  background-color: #1E152A;
-  border: 1px solid #4F4260;
+  color: #C2EDF0;
+  background-color: #001D1F;
+  border: 1px solid #254E51;
 }
 
 /* ==========================================================
@@ -214,10 +224,10 @@ window#waybar.hidden {
 #custom-spacing-right {
   margin: 10px 0 10px 10px;
   padding: 4px 6px;
-  background-color: #1E152A;
-  color: #7E6F90;
+  background-color: #001D1F;
+  color: #537C7F;
   border-radius: 20px 0 0 20px;
-  border: 1px solid #4F4260;
+  border: 1px solid #254E51;
   border-right: none;
   font-size: 14px;
 }
@@ -225,10 +235,10 @@ window#waybar.hidden {
 #network {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border-top: 1px solid #4F4260;
-  border-bottom: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -237,10 +247,10 @@ window#waybar.hidden {
 #pulseaudio {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border-top: 1px solid #4F4260;
-  border-bottom: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -250,10 +260,10 @@ window#waybar.hidden {
 #backlight {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border-top: 1px solid #4F4260;
-  border-bottom: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -262,10 +272,10 @@ window#waybar.hidden {
 #custom-fan {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border-top: 1px solid #4F4260;
-  border-bottom: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -274,10 +284,10 @@ window#waybar.hidden {
 #custom-powerbank {
   margin: 10px 0;
   padding: 4px 7px;
-  background-color: #1E152A;
-  color: #F0DFFF;
-  border-top: 1px solid #4F4260;
-  border-bottom: 1px solid #4F4260;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
   border-left: none;
   border-right: none;
   font-weight: 500;
@@ -287,10 +297,10 @@ window#waybar.hidden {
 #battery {
   margin: 10px 10px 10px 0;
   padding: 4px 12px;
-  background-color: #1E152A;
-  color: #F0DFFF;
+  background-color: #001D1F;
+  color: #C2EDF0;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #4F4260;
+  border: 1px solid #254E51;
   border-left: none;
   font-weight: 500;
 }
@@ -300,15 +310,15 @@ window#waybar.hidden {
 #battery.critical,
 #battery.critical:not(.charging),
 #battery.urgent {
-  background-color: #1E152A;
-  color: #F0DFFF;
+  background-color: #001D1F;
+  color: #C2EDF0;
   animation: none;
 }
 
 #battery.charging,
 #battery.plugged,
 #custom-powerbank.charging {
-  background-color: #1E152A;
+  background-color: #001D1F;
   color: #52DF9A;
   animation: none;
 }
@@ -317,8 +327,8 @@ window#waybar.hidden {
   margin: 10px 10px 10px 4px;
   padding: 2px 10px;
   border-radius: 16px;
-  background-color: #1E152A;
-  border: 1px solid #4F4260;
+  background-color: #001D1F;
+  border: 1px solid #254E51;
 }
 
 /* Status States for Connected Modules */
@@ -327,19 +337,19 @@ window#waybar.hidden {
 }
 
 #custom-powerbank.idle {
-  color: #B5A4C8;
+  color: #89B2B5;
 }
 
 /* Tooltips */
 tooltip {
   border-radius: 12px;
   padding: 12px;
-  background-color: #251B33;
-  border: 1px solid #4F4260;
+  background-color: #002426;
+  border: 1px solid #254E51;
 }
 
 tooltip label {
   padding: 4px;
   background-color: transparent;
-  color: #F0DFFF;
+  color: #C2EDF0;
 }

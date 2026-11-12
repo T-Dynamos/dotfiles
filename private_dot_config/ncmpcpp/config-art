@@ -1,15 +1,16 @@
-## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+## Dynamic Material You Theme - ncmpcpp (Cover Art Profile)
+## Material UI + ASCII Mix Design
 
 ### Directories ###
-ncmpcpp_directory 	= ~/.ncmpcpp
-lyrics_directory  	= ~/.ncmpcpp/lyrics
+ncmpcpp_directory 	= ~/.config/ncmpcpp
+lyrics_directory  	= ~/.config/ncmpcpp/lyrics
 mpd_music_dir     	= ~/Music
 mpd_host 		  	= "localhost"
 mpd_port 		  	= "6600"
 mpd_crossfade_time 	= "2"
 
 ### Script ###
-execute_on_song_change="~/.ncmpcpp/scripts/album-art"
+execute_on_song_change = "~/.ncmpcpp/scripts/album-art"
 
 ### Behaviour ###
 message_delay_time 				 = 1
@@ -18,76 +19,87 @@ centered_cursor 				 = "yes"
 ignore_leading_the 				 = "yes"
 playlist_disable_highlight_delay = 2
 allow_for_physical_item_deletion = "no"
+cyclic_scrolling 				 = "yes"
+header_text_scrolling 			 = "yes"
+jump_to_now_playing_song_at_start = "yes"
+lines_scrolled 					 = "2"
+system_encoding 				 = "utf-8"
+regular_expressions 			 = "extended"
 
 ### Visualizer ###
-visualizer_data_source = /tmp/mpd.fifo
-visualizer_output_name = "mpd_visualizer"
-visualizer_in_stereo   = "yes"
-visualizer_look 	   = "  "
-visualizer_type 	   = "ellipse"
+visualizer_data_source 			= "/tmp/mpd.fifo"
+visualizer_output_name 			= "my_fifo"
+visualizer_in_stereo   			= "yes"
+visualizer_type 	   			= "spectrum"
+visualizer_look 	   			= "▮▮"
+visualizer_spectrum_smooth_look = "yes"
+visualizer_spectrum_dft_size 	= 2
+visualizer_autoscale 			= "yes"
+visualizer_color 	   			= "75,111,146,252,251,108,144,150,157,187,254,146"
 
 ### Appearance ###
-playlist_display_mode = "columns"
-colors_enabled 		  = "yes"
-#user_interface       = classic
-user_interface 		  = alternative
-volume_color 		  = "73"
+user_interface 		  			= alternative
+playlist_display_mode 			= "columns"
+browser_display_mode  			= "columns"
+search_engine_display_mode 		= "columns"
+playlist_editor_display_mode 	= "columns"
 
-### Window ###
-song_window_title_format = "Music Player"
-#song_window_title_format = "{%a - }{%t}|{%f}"
-statusbar_visibility 	 = "no"
-header_visibility 		 = "no"
-titles_visibility 		 = "yes"
+### Window & Status ###
+song_window_title_format 		= "{%a - }{%t}|{%f}"
+header_visibility 		 		= "yes"
+statusbar_visibility 	 		= "yes"
+titles_visibility 		 		= "yes"
+display_volume_level 	 		= "yes"
+display_bitrate 		 		= "yes"
+display_remaining_time 	 		= "no"
 
-### Progress bar ###
-progressbar_look 			= "▂▂▂"
-progressbar_color 			= "233"
-progressbar_elapsed_color   = "216"
+### Material Progress Bar (Smooth Modern Slider) ###
+progressbar_look 				= "━╸─"
+progressbar_color 				= "234"
+progressbar_elapsed_color   	= "147"
 
-### Alternative UI ###
-alternative_ui_separator_color 		  = "242"
-alternative_header_first_line_format  = $b$5$/b  $b$8{%t}|{%f}$/b $/b 
-alternative_header_second_line_format = {$b{$2  %a$9}{ - $7  %b$9}{ ($2%y$9)}}|{%D}
+### Alternative UI Header (Material UI Card + ASCII Frame) ###
+alternative_ui_separator_color 		  = "244"
+alternative_header_first_line_format  = "$b$(75)╭───$(end) $b$(147)󰎆 {%t}|{%f}$/b$(end) $(75)───╮$(end)"
+alternative_header_second_line_format = "$b$(75)╰───$(end) $(108)󰠃 {%a}$/b$(end) {$b$(244)• $/b$(end)$(193)󰀥 %b$/b$(end)} {$b$(244)• $/b$(end)$(75)󰃭 %y$/b$(end)} $(75)───╯$(end)"
 
-### Song list ###
-song_status_format		 = "$7%t"
-song_list_format 		 = "  $4%t$9 $7$R%a$9 $2%l$9  "
+### Song List & Columns ###
+song_status_format		 = "$b$(75)󰐊 $(147)%t$/b$(end) $(244)•$(end) $(108)%a$(end) {$(244)•$(end) $(193)%b$(end)}"
+song_columns_list_format = "(4)[244]{n} (42)[147]{t} (26)[108]{a} (20)[193]{b} (6)[75]{lr}"
+song_list_format 		 = " $8%n$9 $(244)│$(end) $(147)%t$(end) $(244)│$(end) $(108)%a$(end) $R$(244)│$(end) $(75)%l$(end) "
 song_library_format 	 = {{%a - %t} (%b)}|{%f}
-song_columns_list_format = "(35)[216]{t} (30)[251]{a} (6)[73]{lr}"
 
-### Colors ###
-main_window_color 					= "216"
-state_line_color					= "242"
-current_item_prefix 				= "$(216)$r"
+### Material UI Prefixes & Selection ###
+now_playing_prefix 					= "$b$(75)󰐊 $(147)"
+now_playing_suffix 					= "$/b$(end)"
+current_item_prefix 				= "$(147)$r "
 current_item_suffix 				= "$/r$(end)"
-current_item_inactive_column_prefix = "$(242)"
+current_item_inactive_column_prefix = "$(244)"
 current_item_inactive_column_suffix = "$/r$(end)"
-now_playing_prefix = "$(216) "
-selected_item_prefix = "* "
+selected_item_prefix 				= "$b$(75)✔ $9"
+selected_item_suffix 				= "$/b$(end)"
+modified_item_prefix 				= "$b$(193)● $9"
+browser_playlist_prefix 			= "$b$(75)󰲸 $9"
 
-color1 = "216"
-color2 = "216"
+### Material Colors ###
+colors_enabled 			= "yes"
+header_window_color 	= "147"
+volume_color 			= "75"
+state_line_color 		= "244"
+state_flags_color 		= "108"
+player_state_color 		= "75"
+statusbar_color 		= "183"
+statusbar_time_color 	= "75"
+main_window_color 		= "183"
+color1 					= "183"
+color2 					= "147"
+empty_tag_color 		= "244"
+window_border_color 	= "244"
+active_window_border 	= "147"
 
 ### Layout ###
 startup_screen = visualizer
 startup_slave_screen = playlist  
 startup_slave_screen_focus = yes
 locked_screen_width_part = 41
-
-### Misc ###
-default_place_to_search_in = "database"
-
-display_bitrate = "no"
-enable_window_title = "yes"
-follow_now_playing_lyrics = "yes"
-empty_tag_marker = ""
-
-cyclic_scrolling = "yes"
-header_text_scrolling = "yes"
-jump_to_now_playing_song_at_start = "yes"
-lines_scrolled = "2"
-
-system_encoding = "utf-8"
-regular_expressions = "extended"
-visualizer_color = "73,216,251,105,211"
+ask_for_locked_screen_width_part = no

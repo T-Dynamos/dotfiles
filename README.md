@@ -2,7 +2,7 @@
 
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/), featuring an integrated **Material You (Material Design 3)** dynamic theming system powered by [`materialyoucolor`](https://github.com/T-Dynamos/materialyoucolor-python).
 
-All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **SwayNC**, **Thunar (GTK)**, **Firefox**, and **Chromium**—synchronize their color palettes dynamically from your active wallpaper.
+All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **SwayNC**, **Thunar (GTK)**, **Firefox**, **Chromium**, **btop**, and **ncmpcpp**—synchronize their color palettes dynamically from your active wallpaper.
 
 ---
 
@@ -63,6 +63,14 @@ All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **Sway
 - **Firefox**: Custom `userChrome.css` and `userContent.css` matching the active Material You dark theme across navigation toolbar, pill URL bar, context menus, and custom home page (`about:home` / `about:newtab`).
 - **Chromium**: Native Wayland execution via `chromium-flags.conf` with PipeWire WebRTC screen sharing, touch gesture navigation, and dynamic Material 3 theme extension (`~/.config/chromium-material-theme/`) with matching wallpaper NTP background.
 - Colors auto-regenerated upon wallpaper change.
+
+### System Monitor: btop
+- Dedicated dynamic theme file (`~/.config/btop/themes/material-you.theme`) generated from active wallpaper.
+- Harmonized graph gradients (CPU, temperature, memory free/cached/used, network up/down) and tonal box outlines matching the system palette.
+
+### Music Player: ncmpcpp
+- Complete Material You color synchronization across main playlist, visualizer, catalog, and album art views (`config`, `config-art`, `catalog.conf`, `visualizer.conf`).
+- Dynamic 5-stop visualizer gradient spectrum mapped to vibrant tonal accents.
 
 ---
 
@@ -167,6 +175,15 @@ change-wallpaper --watch
 ├── wofi/
 │   ├── config
 │   └── style.css            # Dynamic launcher styling
+├── btop/
+│   ├── btop.conf            # Dynamic system monitor configuration
+│   └── themes/
+│       └── material-you.theme # Generated Material You btop theme
+├── ncmpcpp/
+│   ├── config               # Dynamic MPD client theme & styling
+│   ├── config-art           # Album art layout configuration
+│   ├── catalog.conf
+│   └── visualizer.conf
 ├── chromium-flags.conf      # Wayland & theme launch flags
 ├── chromium-material-theme/ # Dynamic Material You extension
 ├── pip/

@@ -1,0 +1,92 @@
+{
+  "manifest_version": 3,
+  "name": "Material You Dynamic Theme",
+  "version": "1.0",
+  "description": "Dynamic Material Design 3 theme matching active wallpaper",
+  "theme": {
+    "images": {
+      "theme_ntp_background": "ntp_background.png"
+    },
+    "colors": {
+      "frame": [
+        7,
+        14,
+        27
+      ],
+      "frame_inactive": [
+        7,
+        14,
+        27
+      ],
+      "frame_incognito": [
+        7,
+        14,
+        27
+      ],
+      "frame_incognito_inactive": [
+        7,
+        14,
+        27
+      ],
+      "toolbar": [
+        15,
+        25,
+        44
+      ],
+      "toolbar_text": [
+        220,
+        229,
+        255
+      ],
+      "tab_text": [
+        177,
+        201,
+        255
+      ],
+      "tab_background_text": [
+        158,
+        171,
+        203
+      ],
+      "bookmark_text": [
+        220,
+        229,
+        255
+      ],
+      "ntp_background": [
+        7,
+        14,
+        27
+      ],
+      "ntp_text": [
+        220,
+        229,
+        255
+      ],
+      "ntp_link": [
+        177,
+        201,
+        255
+      ],
+      "button_background": [
+        15,
+        25,
+        44
+      ],
+      "omnibox_background": [
+        20,
+        31,
+        53
+      ],
+      "omnibox_text": [
+        220,
+        229,
+        255
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "center",
+      "ntp_background_repeat": "no-repeat"
+    }
+  }
+}

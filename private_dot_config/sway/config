@@ -83,6 +83,7 @@ bindsym $mod+d exec pkill wofi || wofi --show drun
 bindsym $mod+Return exec $term
 bindsym $mod+Escape exec $file_manager
 bindsym $mod+BackSpace exec $browser
+bindsym $mod+Shift+BackSpace exec chromium
 bindsym $mod+c kill
 bindsym $mod+l exec swaylock
 bindsym $mod+Shift+p exec hyprpicker --render-inactive --autocopy

@@ -2,7 +2,7 @@
 
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/), featuring an integrated **Material You (Material Design 3)** dynamic theming system powered by [`materialyoucolor`](https://github.com/T-Dynamos/materialyoucolor-python).
 
-All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **SwayNC**, **Thunar (GTK)**, and **Firefox**—synchronize their color palettes dynamically from your active wallpaper.
+All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **SwayNC**, **Thunar (GTK)**, **Firefox**, and **Chromium**—synchronize their color palettes dynamically from your active wallpaper.
 
 ---
 
@@ -59,11 +59,10 @@ All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **Sway
 - Full Material 3 dark styling across GTK 3 & GTK 4 apps (`~/.config/gtk-3.0/` and `~/.config/gtk-4.0/`).
 - Seamless Thunar custom styling: tonal sidebar pane, rounded pill search and pathbar chips, and refined popover menus.
 
-### Browser: Firefox
-- Custom `userChrome.css` and `userContent.css` matching the active Material You dark theme across navigation toolbar, pill URL bar, context menus, and custom home page.
-- **Distinct Active Tab Elevation**: Current tab is highlighted with an elevated tonal container tint, crisp primary border, and subtle glow.
-- **Custom Home & New Tab Page (`about:home` / `about:newtab`)**: Styled Material 3 search capsule, elevated shortcut cards with hover elevation, and themed personalize button.
-- Colors auto-regenerated in `chrome/colors.css` upon wallpaper change.
+### Browsers: Firefox & Chromium
+- **Firefox**: Custom `userChrome.css` and `userContent.css` matching the active Material You dark theme across navigation toolbar, pill URL bar, context menus, and custom home page (`about:home` / `about:newtab`).
+- **Chromium**: Native Wayland execution via `chromium-flags.conf` with PipeWire WebRTC screen sharing, touch gesture navigation, and dynamic Material 3 theme extension (`~/.config/chromium-material-theme/`) with matching wallpaper NTP background.
+- Colors auto-regenerated upon wallpaper change.
 
 ---
 
@@ -119,6 +118,7 @@ change-wallpaper --watch
 | `Super` (tap) / `Super + d` | Toggle **Wofi** App Launcher |
 | `Super + Return` | Open **Kitty** Terminal |
 | `Super + Backspace` | Open **Firefox** Browser |
+| `Super + Shift + Backspace` | Open **Chromium** Browser |
 | `Super + Escape` | Open **Thunar** File Manager |
 | `Super + l` | Lock Screen with **Swaylock** |
 | `Super + c` | Close focused window |
@@ -167,6 +167,8 @@ change-wallpaper --watch
 ├── wofi/
 │   ├── config
 │   └── style.css            # Dynamic launcher styling
+├── chromium-flags.conf      # Wayland & theme launch flags
+├── chromium-material-theme/ # Dynamic Material You extension
 ├── pip/
 │   └── pip.conf             # Global Python package settings
 └── wallpaper                # Active wallpaper image

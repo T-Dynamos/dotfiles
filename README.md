@@ -2,7 +2,7 @@
 
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/), featuring an integrated **Material You (Material Design 3)** dynamic theming system powered by [`materialyoucolor`](https://github.com/T-Dynamos/materialyoucolor-python).
 
-All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **SwayNC**, **Thunar (GTK)**, **Firefox**, **Chromium**, **btop**, and **ncmpcpp**—synchronize their color palettes dynamically from your active wallpaper.
+All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **SwayNC**, **Thunar (GTK)**, **Firefox**, **Chromium**, **btop**, **ncmpcpp**, and **CAVA**—synchronize their color palettes dynamically from your active wallpaper.
 
 ---
 
@@ -70,7 +70,12 @@ All components—**Sway**, **Waybar**, **Kitty**, **Wofi**, **Swaylock**, **Sway
 
 ### Music Player: ncmpcpp
 - Complete Material You color synchronization across main playlist, visualizer, catalog, and album art views (`config`, `config-art`, `catalog.conf`, `visualizer.conf`).
-- Dynamic 5-stop visualizer gradient spectrum mapped to vibrant tonal accents.
+- Dynamic visualizer gradient spectrum mapped to vibrant tonal accents with full-screen mode and Material 3 slider styling.
+
+### Audio Visualizer: CAVA
+- Dynamic 8-stop vertical gradient (`~/.config/cava/themes/material-you` and `~/.config/cava/config`) generated from active wallpaper palette.
+- High-performance 60 FPS PipeWire audio capture with Monstercat wave smoothing.
+- Real-time theme reloading (`live-config = 1`).
 
 ---
 
@@ -184,6 +189,10 @@ change-wallpaper --watch
 │   ├── config-art           # Album art layout configuration
 │   ├── catalog.conf
 │   └── visualizer.conf
+├── cava/
+│   ├── config               # PipeWire 60 FPS visualizer configuration
+│   └── themes/
+│       └── material-you     # Generated 8-stop Material You spectral theme
 ├── chromium-flags.conf      # Wayland & theme launch flags
 ├── chromium-material-theme/ # Dynamic Material You extension
 ├── pip/

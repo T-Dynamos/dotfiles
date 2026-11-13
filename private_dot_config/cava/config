@@ -1,0 +1,83 @@
+## Dynamic Material You Configuration for CAVA
+## Managed by change-wallpaper & Chezmoi
+
+[general]
+# Auto reload config if the configuration file has changed. 1 = on, 0 = off.
+live-config = 1
+
+# Accepts only non-negative values. Framerate 60 for silky smooth animation.
+framerate = 60
+
+# 'autosens' will attempt to decrease sensitivity if the bars peak and increase slowly
+# as long as the bars don't peak. 0 = off, 1 = normal, 2..n = more aggressive.
+autosens = 1
+
+# Overshoot allowance in %
+overshoot = 20
+
+# Manual sensitivity in %. If autosens is enabled, this will only be the initial value.
+sensitivity = 100
+
+# The number of bars (0 = auto fill console).
+bars = 0
+
+# Bars' width and space between bars in number of characters.
+bar_width = 2
+bar_spacing = 1
+
+# Center bars in terminal, if there is space.
+center_align = 1
+
+# Lower and higher cutoff frequencies for lowest and highest bars
+lower_cutoff_freq = 50
+higher_cutoff_freq = 10000
+
+[input]
+# Audio capturing method: pipewire with auto source detection
+method = pipewire
+source = auto
+
+[output]
+# Output method: 'noncurses' uses modern VT/ANSI buffer for smooth low-overhead rendering
+method = noncurses
+
+# Orientation of visualization: 'bottom'
+orientation = bottom
+
+# Visual channels: 'stereo' mirrors both channels with bass in center
+channels = stereo
+mono_option = average
+reverse = 0
+
+[color]
+# Active Theme
+theme = 'material-you'
+
+# Gradient mode, 8 colors from bottom (bass) to top (peak)
+gradient = 1
+gradient_count = 8
+gradient_color_1 = '#63d3ff'
+gradient_color_2 = '#8bcdff'
+gradient_color_3 = '#b4c7ff'
+gradient_color_4 = '#d1c2ff'
+gradient_color_5 = '#d7bdff'
+gradient_color_6 = '#ddb8ff'
+gradient_color_7 = '#e7b6eb'
+gradient_color_8 = '#f3b4cd'
+
+[smoothing]
+# Monstercat smoothing with wave curve
+monstercat = 1
+waves = 0
+
+# Noise reduction, int 0 - 100. default 77
+# Adjusts integral and gravity filters to keep signal smooth without jitter
+noise_reduction = 77
+
+[eq]
+# Dynamic equalizer response across frequencies
+1 = 1.0 # sub-bass
+2 = 1.0 # bass
+3 = 1.0 # mid
+4 = 1.0 # mid-high
+5 = 1.0 # treble

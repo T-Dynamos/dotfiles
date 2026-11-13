@@ -50,20 +50,31 @@ mono_option = average
 reverse = 0
 
 [color]
-# Active Theme
-theme = 'material-you'
+# --- HORIZONTAL GRADIENT (Across Spectrum Bars) ---
+horizontal_gradient = 1
+horizontal_gradient_color_1 = '#63D3FF'
+horizontal_gradient_color_2 = '#52DF9A'
+horizontal_gradient_color_3 = '#DCC490'
+horizontal_gradient_color_4 = '#D0C4FF'
+horizontal_gradient_color_5 = '#DFB7FF'
+horizontal_gradient_color_6 = '#FD6F85'
+horizontal_gradient_color_7 = '#FFB3B0'
+horizontal_gradient_color_8 = '#F1DAFF'
 
-# Gradient mode, 8 colors from bottom (bass) to top (peak)
+# --- VERTICAL GRADIENT (Bottom to Peak) ---
 gradient = 1
 gradient_count = 8
-gradient_color_1 = '#63d3ff'
-gradient_color_2 = '#8bcdff'
-gradient_color_3 = '#b4c7ff'
-gradient_color_4 = '#d1c2ff'
-gradient_color_5 = '#d7bdff'
-gradient_color_6 = '#ddb8ff'
-gradient_color_7 = '#e7b6eb'
-gradient_color_8 = '#f3b4cd'
+gradient_color_1 = '#003545'
+gradient_color_2 = '#00838F'
+gradient_color_3 = '#63D3FF'
+gradient_color_4 = '#D0C4FF'
+gradient_color_5 = '#DFB7FF'
+gradient_color_6 = '#FD6F85'
+gradient_color_7 = '#FFB3B0'
+gradient_color_8 = '#FFD54F'
+
+# Blend horizontal frequency spectrum into vertical peak gradient
+blend_direction = 'up'
 
 [smoothing]
 # Monstercat smoothing with wave curve

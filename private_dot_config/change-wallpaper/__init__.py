@@ -1,0 +1,3 @@
+"""
+change-wallpaper modular framework
+"""

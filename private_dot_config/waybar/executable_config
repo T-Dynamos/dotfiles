@@ -27,7 +27,7 @@
     ],
     "cpu":{
       "interval": 1,
-      "format":"{icon} {usage}%",
+      "format":"{usage}% {icon}",
       "format-icons":["󰾆","󰾅","󰓅"]
     },
     "temperature": {
@@ -53,8 +53,8 @@
         "tooltip": false
     },
     "mpris": {
-        "format": "{status_icon} {dynamic}",
-        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "format": "{dynamic} {status_icon}",
+        "format-paused": "<i>{dynamic}</i> {status_icon}",
         "format-stopped": "",
         "player-icons": {
             "default": "🎵",
@@ -88,10 +88,10 @@
         "tooltip": false
     },
     "mpd":{
-        "format":"󰏤  {title}",
-        "format-stopped":"󰐓 Empty!",
-        "format-paused":"  {title}",
-        "format-disconnected":"󰝛 Disconnected!",
+        "format":"{title}  󰏤",
+        "format-stopped":"Empty! 󰐓",
+        "format-paused":"{title}  ",
+        "format-disconnected":"Disconnected! 󰝛",
         "on-click":"mpc toggle"
     },
     "wlr/taskbar": {
@@ -132,8 +132,8 @@
     "clock": {
         "interval": 1,
         "tooltip-format": "<tt>{calendar}</tt>",
-        "format": "  {:%a %d %b, %I:%M %p}",
-        "format-alt": "  {:%a, %d %b %Y, %I:%M:%S %p} "
+        "format": "{:%a %d %b, %I:%M %p} ",
+        "format-alt": "{:%a, %d %b %Y, %I:%M:%S %p} "
     },
     "network": {
         "format-wifi" : "{icon}",

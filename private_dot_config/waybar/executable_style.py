@@ -470,7 +470,6 @@ tooltip label {{
   padding: 2px 4px;
   background-color: transparent;
   color: {pal["on_surface"]};
-  text-align: center;
 }}
 """
 

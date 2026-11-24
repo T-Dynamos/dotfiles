@@ -132,7 +132,7 @@ window#waybar.hidden {{
   background: transparent;
   border: none;
   margin: 0;
-  padding: 0 7px;
+  padding: 0;
   color: {pal["on_surface"]};
   font-weight: 500;
 }}
@@ -143,8 +143,8 @@ window#waybar.hidden {{
 }}
 
 #hardware #temperature {{
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 6px;
+  padding-right: 4px;
 }}
 
 #hardware #memory {{
@@ -307,18 +307,18 @@ window#waybar.hidden {{
   background: transparent;
   border: none;
   margin: 0;
-  padding: 0 7px;
+  padding: 0;
   color: {pal["on_surface"]};
   font-weight: 500;
 }}
 
 #quicklinks #network.name {{
   padding-left: 6px;
-  padding-right: 2px;
+  padding-right: 4px;
 }}
 
-#quicklinks #network {{
-  padding-left: 2px;
+#quicklinks #network:not(.name) {{
+  padding-left: 4px;
   padding-right: 7px;
 }}
 
@@ -328,8 +328,28 @@ window#waybar.hidden {{
   padding-right: 7px;
 }}
 
+#quicklinks #pulseaudio {{
+  padding-left: 7px;
+  padding-right: 7px;
+}}
+
+#quicklinks #custom-brightness {{
+  padding: 0 5px;
+}}
+
+#quicklinks #custom-brightness.empty {{
+  padding: 0;
+  margin: 0;
+}}
+
+#quicklinks #backlight {{
+  padding-left: 5px;
+  padding-right: 5px;
+}}
+
 #quicklinks #custom-power-profile {{
-  padding: 0 7px;
+  padding-left: 7px;
+  padding-right: 7px;
   font-weight: 500;
 }}
 

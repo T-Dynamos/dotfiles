@@ -136,7 +136,7 @@
         "format-alt": "{:%a, %d %b %Y, %I:%M:%S %p} "
     },
     "network": {
-        "format-wifi" : "{icon}",
+        "format-wifi" : "{essid:.8} {icon}",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
         "format-ethernet": "󰀂",
         "format-disconnected" : "󰖪",

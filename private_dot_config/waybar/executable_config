@@ -16,6 +16,7 @@
     ],
     "modules-right": [
         "custom/spacing-right",
+        "network#name",
         "network",
         "pulseaudio",
         "custom/brightness",
@@ -135,8 +136,19 @@
         "format": "{:%a %d %b, %I:%M %p} ",
         "format-alt": "{:%a, %d %b %Y, %I:%M:%S %p} "
     },
+    "network#name": {
+        "format-wifi" : "{essid}",
+        "format-ethernet": "",
+        "format-disconnected" : "",
+        "max-length": 9,
+        "on-click": "networkmanager_dmenu",
+        "on-click-right": "networkmanager_dmenu",
+        "interval": 1,
+        "tooltip": false,
+        "nospacing": 1
+    },
     "network": {
-        "format-wifi" : "{essid:.8} {icon}",
+        "format-wifi" : "{icon}",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
         "format-ethernet": "󰀂",
         "format-disconnected" : "󰖪",

@@ -320,9 +320,10 @@ window#waybar.hidden {{
   font-size: 14px;
 }}
 
-#network {{
+#network,
+#network.name {{
   margin: 10px 0;
-  padding: 4px 7px;
+  padding: 4px 3px;
   background-color: {pal["surface_container"]};
   color: {pal["on_surface"]};
   border-top: 1px solid {pal["outline_variant"]};
@@ -330,6 +331,21 @@ window#waybar.hidden {{
   border-left: none;
   border-right: none;
   font-weight: 500;
+}}
+
+#network.name {{
+  padding-left: 7px;
+  padding-right: 2px;
+}}
+
+#network {{
+  padding-left: 2px;
+  padding-right: 7px;
+}}
+
+#network.disconnected {{
+  padding-left: 7px;
+  padding-right: 7px;
 }}
 
 #pulseaudio {{

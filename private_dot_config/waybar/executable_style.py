@@ -328,9 +328,9 @@ window#waybar.hidden {{
   padding-right: 7px;
 }}
 
-#quicklinks #power-profiles-daemon {{
-  padding: 0 5px;
-  font-size: 14px;
+#quicklinks #custom-power-profile {{
+  padding: 0 7px;
+  font-weight: 500;
 }}
 
 #quicklinks #battery {{
@@ -338,22 +338,20 @@ window#waybar.hidden {{
   padding-right: 6px;
 }}
 
-#quicklinks #power-profiles-daemon.performance {{
+#quicklinks #custom-power-profile.performance {{
   color: {pal["peach"]};
 }}
 
-#quicklinks #power-profiles-daemon.balanced {{
+#quicklinks #custom-power-profile.balanced {{
   color: {pal["teal"]};
 }}
 
-#quicklinks #power-profiles-daemon.power-saver {{
+#quicklinks #custom-power-profile.power-saver {{
   color: {pal["green"]};
 }}
 
 #quicklinks #battery.charging,
-#quicklinks #battery.plugged,
-#quicklinks #custom-battery-time.charging,
-#quicklinks #custom-powerbank.charging {{
+#quicklinks #battery.plugged {{
   color: {pal["green"]};
 }}
 

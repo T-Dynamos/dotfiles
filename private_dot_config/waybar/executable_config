@@ -31,8 +31,7 @@
             "pulseaudio",
             "custom/brightness",
             "backlight",
-            "custom/battery-time",
-            "power-profiles-daemon",
+            "custom/power-profile",
             "battery"
         ]
     },
@@ -185,13 +184,13 @@
         "on-click-right": "pamixer -t",
         "scroll-step": 1
     },
-    "custom/battery-time": {
-        "exec": "python3 /home/tdynamos/.config/waybar/scripts/battery-time.py",
-        "format": "{}",
+    "custom/power-profile": {
+        "exec": "python3 /home/tdynamos/.config/waybar/scripts/power-profile.py",
         "return-type": "json",
         "interval": 1,
-        "hide-empty-text": true,
-        "tooltip": false
+        "signal": 8,
+        "on-click": "python3 /home/tdynamos/.config/waybar/scripts/power-profile.py cycle && pkill -RTMIN+8 waybar",
+        "tooltip": true
     },
     "custom/powerbank": {
         "exec": "python3 /home/tdynamos/.config/waybar/scripts/powerbank.py",
@@ -201,17 +200,6 @@
         "on-click": "kitty --class float_term -e python3 /home/tdynamos/Projects/PowerBank/monitor.py",
         "on-click-right": "python3 /home/tdynamos/.config/waybar/scripts/powerbank.py reset",
         "restart-interval": 5
-    },
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
     },
     "battery": {
         "format": "{capacity}% {icon}",

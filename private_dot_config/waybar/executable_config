@@ -20,7 +20,6 @@
         "pulseaudio",
         "custom/brightness",
         "backlight",
-        "custom/power",
         "power-profiles-daemon",
         "battery",
         "tray"
@@ -217,6 +216,8 @@
             ]
         },
         "format-full": "{capacity}% 󰂅",
+        "format-charging": "{capacity}% {time} {icon}",
+        "format-discharging": "{capacity}% {time} {icon}",
         "format-time": "{H}h {m}m",
         "interval": 5,
         "states": {
@@ -224,11 +225,7 @@
             "warning": 30,
             "critical": 15
         },
-        "tooltip": true,
-        "tooltip-format": "{timeTo}",
-        "tooltip-format-charging": "Time to charge:\n<b>{time}</b>",
-        "tooltip-format-discharging": "Time to discharge:\n<b>{time}</b>",
-        "tooltip-format-full": "Fully charged"
+        "tooltip": false
     },
     "sway/window": {
         "format": ""

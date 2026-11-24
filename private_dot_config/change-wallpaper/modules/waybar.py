@@ -425,14 +425,6 @@ def restart_waybars():
 def update_memento_mori(pal):
     memento_css = WAYBAR_DIR / "memento-mori.css"
 
-    r_pri = int(pal["primary"][1:3], 16)
-    g_pri = int(pal["primary"][3:5], 16)
-    b_pri = int(pal["primary"][5:7], 16)
-
-    r_bg = int(pal["surface_container"][1:3], 16)
-    g_bg = int(pal["surface_container"][3:5], 16)
-    b_bg = int(pal["surface_container"][5:7], 16)
-
     content = f"""* {{
   border: none;
   border-radius: 0;
@@ -447,15 +439,14 @@ window#waybar {{
 }}
 
 #custom-memento-mori {{
-  background-color: rgba({r_bg}, {g_bg}, {b_bg}, 0.68);
+  background-color: {pal["surface_container"]};
   color: {pal["on_surface"]};
-  border: 1.5px solid rgba({r_pri}, {g_pri}, {b_pri}, 0.28);
+  border: 1px solid {pal["outline_variant"]};
   border-radius: 28px;
   padding: 14px 32px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   font-size: 13px;
   letter-spacing: 0.5px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 }}
 """
     memento_css.write_text(content)

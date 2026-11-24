@@ -6,6 +6,20 @@ STEP=5
 STATE_FILE="/tmp/waybar_brightness.tmp"
 # ---------------------
 
+has_external_display() {
+    for conn in /sys/class/drm/*; do
+        case "$conn" in
+            *eDP*|*Writeback*|*card[0-9]) continue ;;
+            *)
+                if [ -f "$conn/status" ] && [ "$(cat "$conn/status" 2>/dev/null)" = "connected" ]; then
+                    return 0
+                fi
+                ;;
+        esac
+    done
+    return 1
+}
+
 # Function to send the actual DDC/CI command in the background
 set_brightness_in_background() {
     pkill -f "ddcutil.*setvcp 10"
@@ -26,6 +40,12 @@ get_brightness() {
 
 case "$1" in
     "get")
+        if ! has_external_display; then
+            rm -f "$STATE_FILE"
+            echo ""
+            exit 0
+        fi
+
         if [ -f "$STATE_FILE" ]; then
             current=$(cat "$STATE_FILE" 2>/dev/null)
             if [[ "$current" =~ ^[0-9]+$ ]]; then
@@ -38,6 +58,9 @@ case "$1" in
         fi
         ;;
     "up")
+        if ! has_external_display; then
+            exit 0
+        fi
         current=$(cat "$STATE_FILE" 2>/dev/null)
         if [[ "$current" =~ ^[0-9]+$ ]]; then
             new_brightness=$((current + STEP > 100 ? 100 : current + STEP))
@@ -49,6 +72,9 @@ case "$1" in
         fi
         ;;
     "down")
+        if ! has_external_display; then
+            exit 0
+        fi
         current=$(cat "$STATE_FILE" 2>/dev/null)
         if [[ "$current" =~ ^[0-9]+$ ]]; then
             new_brightness=$((current - STEP < 0 ? 0 : current - STEP))
@@ -60,6 +86,9 @@ case "$1" in
         fi
         ;;
     "right_click")
+        if ! has_external_display; then
+            exit 0
+        fi
         current=$(cat "$STATE_FILE" 2>/dev/null)
         if [[ "$current" =~ ^[0-9]+$ ]]; then
             echo "0" > "$STATE_FILE"
@@ -68,6 +97,9 @@ case "$1" in
         fi
         ;;
     "left_click")
+        if ! has_external_display; then
+            exit 0
+        fi
         current=$(cat "$STATE_FILE" 2>/dev/null)
         if [[ "$current" =~ ^[0-9]+$ ]]; then
             echo "100" > "$STATE_FILE"

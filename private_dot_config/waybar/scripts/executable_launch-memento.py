@@ -144,6 +144,8 @@ def listen_for_output_changes():
         for _ in iter(proc.stdout.readline, ""):
             # Output event detected, debounce slightly to allow sway mode commit
             time.sleep(0.3)
+            # Signal waybar to refresh external brightness module on display change
+            subprocess.run(["pkill", "-RTMIN+9", "waybar"], capture_output=True)
             outputs = get_active_outputs()
             config = build_config(outputs)
             new_content = json.dumps(config, indent=2)

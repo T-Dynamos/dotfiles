@@ -21,7 +21,6 @@
         "custom/brightness",
         "backlight",
         "custom/power",
-        "custom/powerbank",
         "power-profiles-daemon",
         "battery",
         "tray"
@@ -245,7 +244,7 @@
     "custom/brightness": {
         "format": "{}% {icon}",
         "format-icons":["󰃝","󰃞","󰃟","󰃠"],
-        "interval": "once",
+        "interval": 5,
         "signal": 9,
         "exec": "~/.config/waybar/scripts/brightness.sh get",
         "hide-empty-text": true,

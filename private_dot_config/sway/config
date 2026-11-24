@@ -18,9 +18,8 @@ exec swaync
 exec mpd-mpris
 exec_always ~/.config/waybar/scripts/launch-memento.sh
 exec /home/tdynamos/.local/bin/phylax
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_ID
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway XDG_SESSION_TYPE=wayland XDG_SESSION_ID
 exec /usr/lib/xdg-desktop-portal
-exec swaymsg output DP-1 mode 1920x1080@75.00Hz
 exec kitty
 exec firefox
 exec python3 ~/.config/sway/tablet-pad-listener
@@ -31,6 +30,14 @@ bindsym XF86PowerOff exec echo Hellow
 
 include theme
 smart_borders 1
+
+### Output configuration
+# Enable 125% fractional scaling for laptop display
+output eDP-1 scale 1.25
+output DP-1 mode 1920x1080@75Hz
+
+# Load Xresources to ensure XWayland / X11 applications scale properly at 125% (120 DPI = 96 * 1.25)
+exec_always xrdb -merge ~/.Xresources
 
 # output HDMI-A-1 resolution 1920x1080 position 1920,0
 # exec swayidle -w \
@@ -43,15 +50,13 @@ smart_borders 1
 # resumed. It will also lock your screen before your computer goes to sleep.
 ### Input configuration
 #
-# Example configuration:
-#
-
-
-input "1739:30963:Synaptics_TM3096-003" {
-       dwt disabled
-       tap enabled
-       natural_scroll enabled
-       middle_emulation enabled
+# Touchpad configuration (enable tap-to-click on all touchpads)
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    tap_button_map lrm
 }
 
 ### Key bindings
@@ -196,5 +201,3 @@ bar {
 }
 
 include /etc/sway/config.d/*
-
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway

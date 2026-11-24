@@ -147,15 +147,16 @@
 	"nospacing": 1
     },
     "pulseaudio": {
-        "format": "{icon} {volume}",
-        "format-bluetooth": "󰂰 {volume}",
+        "format": "{volume} {icon}",
+        "format-bluetooth": "{volume} 󰂰",
         "nospacing": 1,
         "tooltip-format": "Volume : {volume}%",
         "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
-            "default": ["󰖀 ","󰕾 " ," "]
+            "default": ["󰖀", "󰕾", ""]
         },
+        "max-volume": 100,
         "on-click": "pavucontrol",
         "on-click-right": "pamixer -t",
         "scroll-step": 1

@@ -424,12 +424,6 @@ def restart_waybars():
 
 def update_memento_mori(pal):
     memento_css = WAYBAR_DIR / "memento-mori.css"
-    birth = datetime.datetime(2007, 4, 21, 4, 0, 0)
-    target = datetime.datetime(2087, 4, 21, 4, 0, 0)
-    now = datetime.datetime.now()
-    total_span = (target - birth).total_seconds()
-    lived_span = max(0, (now - birth).total_seconds())
-    pct = round(min(100.0, max(0.0, (lived_span / total_span) * 100)), 1)
 
     r_pri = int(pal["primary"][1:3], 16)
     g_pri = int(pal["primary"][3:5], 16)
@@ -438,15 +432,6 @@ def update_memento_mori(pal):
     r_bg = int(pal["surface_container"][1:3], 16)
     g_bg = int(pal["surface_container"][3:5], 16)
     b_bg = int(pal["surface_container"][5:7], 16)
-
-    # 100% opaque blend so bright/white wallpapers cannot bleed through
-    r_blend = int(0.68 * r_bg + 0.32 * r_pri)
-    g_blend = int(0.68 * g_bg + 0.32 * g_pri)
-    b_blend = int(0.68 * b_bg + 0.32 * b_pri)
-    blend_hex = f"#{r_blend:02x}{g_blend:02x}{b_blend:02x}"
-
-    start_blur = max(0.0, pct - 6.0)
-    end_blur = min(100.0, pct + 8.0)
 
     content = f"""* {{
   border: none;
@@ -462,20 +447,15 @@ window#waybar {{
 }}
 
 #custom-memento-mori {{
-  background: linear-gradient(to left, 
-    {blend_hex} 0%, 
-    {blend_hex} {start_blur}%, 
-    {pal["surface_container"]} {end_blur}%, 
-    {pal["surface_container"]} 100%
-  );
+  background-color: rgba({r_bg}, {g_bg}, {b_bg}, 0.68);
   color: {pal["on_surface"]};
-  border: 1.5px solid {pal["outline"]};
+  border: 1.5px solid rgba({r_pri}, {g_pri}, {b_pri}, 0.28);
   border-radius: 28px;
-  padding: 16px 32px;
-  box-shadow: none;
+  padding: 14px 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2);
   font-size: 13px;
   letter-spacing: 0.5px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 }}
 """
     memento_css.write_text(content)

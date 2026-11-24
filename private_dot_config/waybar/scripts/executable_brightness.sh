@@ -12,58 +12,67 @@ set_brightness_in_background() {
     (ddcutil --display $DISPLAY_NUM setvcp 10 $1) &
 }
 
-# Ensure state file exists, or create it by querying the monitor
-if [ ! -f "$STATE_FILE" ]; then
-    # ddcutil terse output format: "VCP 10 C <current> <max>"
-    initial_brightness=$(ddcutil --display $DISPLAY_NUM getvcp 10 -t 2>/dev/null | awk '{print $4}')
-    # Fallback to 50 if ddcutil fails or returns non-numeric
-    if ! [[ "$initial_brightness" =~ ^[0-9]+$ ]]; then
-        initial_brightness=50
+get_brightness() {
+    local b
+    b=$(ddcutil --display $DISPLAY_NUM getvcp 10 -t 2>/dev/null | awk '{print $4}')
+    if [[ "$b" =~ ^[0-9]+$ ]]; then
+        echo "$b" > "$STATE_FILE"
+        echo "$b"
+    else
+        rm -f "$STATE_FILE"
+        echo ""
     fi
-    echo "$initial_brightness" > "$STATE_FILE"
-fi
-
-current=$(cat "$STATE_FILE")
-# Validate current is a number, fallback to 50 if corrupted
-if ! [[ "$current" =~ ^[0-9]+$ ]]; then
-    current=50
-    echo "$current" > "$STATE_FILE"
-fi
+}
 
 case "$1" in
     "get")
-        echo "$current"
+        if [ -f "$STATE_FILE" ]; then
+            current=$(cat "$STATE_FILE" 2>/dev/null)
+            if [[ "$current" =~ ^[0-9]+$ ]]; then
+                echo "$current"
+            else
+                get_brightness
+            fi
+        else
+            get_brightness
+        fi
         ;;
     "up")
-        new_brightness=$((current + STEP > 100 ? 100 : current + STEP))
-        if [ "$current" -ne "$new_brightness" ]; then
-            echo "$new_brightness" > "$STATE_FILE"
-            set_brightness_in_background "$new_brightness"
+        current=$(cat "$STATE_FILE" 2>/dev/null)
+        if [[ "$current" =~ ^[0-9]+$ ]]; then
+            new_brightness=$((current + STEP > 100 ? 100 : current + STEP))
+            if [ "$current" -ne "$new_brightness" ]; then
+                echo "$new_brightness" > "$STATE_FILE"
+                set_brightness_in_background "$new_brightness"
+            fi
+            pkill -RTMIN+9 waybar
         fi
-        pkill -RTMIN+9 waybar # Can add whatever RTMIN+n you please, as long as it's an integer. Make sure the signals match between the config and script.
         ;;
     "down")
-        new_brightness=$((current - STEP < 0 ? 0 : current - STEP))
-        if [ "$current" -ne "$new_brightness" ]; then
-            echo "$new_brightness" > "$STATE_FILE"
-            set_brightness_in_background "$new_brightness"
+        current=$(cat "$STATE_FILE" 2>/dev/null)
+        if [[ "$current" =~ ^[0-9]+$ ]]; then
+            new_brightness=$((current - STEP < 0 ? 0 : current - STEP))
+            if [ "$current" -ne "$new_brightness" ]; then
+                echo "$new_brightness" > "$STATE_FILE"
+                set_brightness_in_background "$new_brightness"
+            fi
+            pkill -RTMIN+9 waybar
         fi
-        pkill -RTMIN+9 waybar
         ;;
     "right_click")
-	new_brightness=0
-	if [ "$current" -ne "$new_brightness" ]; then
-            echo "$new_brightness" > "$STATE_FILE"
-            set_brightness_in_background "$new_brightness"
+        current=$(cat "$STATE_FILE" 2>/dev/null)
+        if [[ "$current" =~ ^[0-9]+$ ]]; then
+            echo "0" > "$STATE_FILE"
+            set_brightness_in_background 0
+            pkill -RTMIN+9 waybar
         fi
-        pkill -RTMIN+9 waybar
         ;;
     "left_click")
-	new_brightness=100
-     	if [ "$current" -ne "$new_brightness" ]; then
-            echo "$new_brightness" > "$STATE_FILE"
-            set_brightness_in_background "$new_brightness"
+        current=$(cat "$STATE_FILE" 2>/dev/null)
+        if [[ "$current" =~ ^[0-9]+$ ]]; then
+            echo "100" > "$STATE_FILE"
+            set_brightness_in_background 100
+            pkill -RTMIN+9 waybar
         fi
-        pkill -RTMIN+9 waybar
         ;;
 esac

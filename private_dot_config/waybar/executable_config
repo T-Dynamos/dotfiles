@@ -121,7 +121,7 @@
     },
     "memory": {
         "interval": 1,
-        "format": "{used} GB 󰍛",
+        "format": "{used:0.1f} GB 󰍛",
         "max-length": 10,
         "on-click":"xfce4-taskmanager"
     },
@@ -162,7 +162,7 @@
         "scroll-step": 1
     },
   "custom/fan": {
-          "exec": "sensors | awk '/curr1:/ { if ($2 == \"1000.00\") { print \"\" } else { print $2, $3 }}'",
+        "exec": "sensors | awk '/curr1:/ { if ($2+0 > 0.05 && $2+0 < 500) { val=$2 \" \" $3 } } END { if (val) print val }'",
         "format": "{}",
         "interval": 1, 
         "hide-empty-text": true
@@ -247,6 +247,7 @@
         "interval": "once",
         "signal": 9,
         "exec": "~/.config/waybar/scripts/brightness.sh get",
+        "hide-empty-text": true,
         "on-scroll-up": "~/.config/waybar/scripts/brightness.sh up",
         "on-scroll-down": "~/.config/waybar/scripts/brightness.sh down",
         "on-click": "~/.config/waybar/scripts/brightness.sh left_click",

@@ -22,6 +22,7 @@
         "backlight",
         "custom/fan",
         "custom/powerbank",
+        "power-profiles-daemon",
         "battery",
         "tray"
     ],
@@ -175,6 +176,17 @@
         "on-click-right": "python3 /home/tdynamos/.config/waybar/scripts/powerbank.py reset",
         "restart-interval": 5
     },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
     "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": {
@@ -204,13 +216,18 @@
             ]
         },
         "format-full": "{capacity}% 󰂅",
+        "format-time": "{H}h {m}m",
         "interval": 5,
         "states": {
             "good": 80,
             "warning": 30,
             "critical": 15
         },
-        "tooltip": false
+        "tooltip": true,
+        "tooltip-format": "{timeTo}",
+        "tooltip-format-charging": "Time to charge: {time}",
+        "tooltip-format-discharging": "Time to discharge: {time}",
+        "tooltip-format-full": "Fully charged"
     },
     "sway/window": {
         "format": ""

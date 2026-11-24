@@ -293,6 +293,19 @@ window#waybar.hidden {
   font-weight: 500;
 }
 
+#power-profiles-daemon {
+  margin: 10px 0;
+  padding: 4px 9px;
+  background-color: #001D1F;
+  color: #C2EDF0;
+  border-top: 1px solid #254E51;
+  border-bottom: 1px solid #254E51;
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+
 /* Only battery changes color to green when charging, otherwise default on_surface color */
 #battery {
   margin: 10px 10px 10px 0;
@@ -338,6 +351,19 @@ window#waybar.hidden {
 
 #custom-powerbank.idle {
   color: #89B2B5;
+}
+
+/* Power Profiles Daemon */
+#power-profiles-daemon.performance {
+  color: #FF8A65;
+}
+
+#power-profiles-daemon.balanced {
+  color: #00BCD4;
+}
+
+#power-profiles-daemon.power-saver {
+  color: #52DF9A;
 }
 
 /* Tooltips */

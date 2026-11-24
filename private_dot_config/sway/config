@@ -18,7 +18,10 @@ exec swaync
 exec mpd-mpris
 exec_always ~/.config/waybar/scripts/launch-memento.sh
 exec /home/tdynamos/.local/bin/phylax
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway XDG_SESSION_TYPE=wayland XDG_SESSION_ID
+xwayland force
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway XDG_SESSION_TYPE=wayland XDG_SESSION_ID MOZ_ENABLE_WAYLAND QT_QPA_PLATFORM QT_WAYLAND_DISABLE_WINDOWDECORATION QT_SCALE_FACTOR_ROUNDING_POLICY QT_AUTO_SCREEN_SCALE_FACTOR GDK_BACKEND SDL_VIDEODRIVER CLUTTER_BACKEND ELECTRON_OZONE_PLATFORM_HINT _JAVA_AWT_WM_NONREPARENTING
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway XDG_SESSION_TYPE=wayland XDG_SESSION_ID MOZ_ENABLE_WAYLAND QT_QPA_PLATFORM QT_WAYLAND_DISABLE_WINDOWDECORATION QT_SCALE_FACTOR_ROUNDING_POLICY QT_AUTO_SCREEN_SCALE_FACTOR GDK_BACKEND SDL_VIDEODRIVER CLUTTER_BACKEND ELECTRON_OZONE_PLATFORM_HINT _JAVA_AWT_WM_NONREPARENTING
 exec /usr/lib/xdg-desktop-portal
 exec kitty
 exec firefox
@@ -33,7 +36,7 @@ smart_borders 1
 
 ### Output configuration
 # Enable 125% fractional scaling for laptop display
-output eDP-1 scale 1.25
+output eDP-1 scale 1.25 scale_filter smart
 output DP-1 mode 1920x1080@75Hz
 
 # Load Xresources to ensure XWayland / X11 applications scale properly at 125% (120 DPI = 96 * 1.25)

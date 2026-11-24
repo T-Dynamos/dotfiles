@@ -39,6 +39,9 @@ output DP-1 mode 1920x1080@75Hz
 # Load Xresources to ensure XWayland / X11 applications scale properly at 125% (120 DPI = 96 * 1.25)
 exec_always xrdb -merge ~/.Xresources
 
+# Disable suspend when laptop lid is closed (do nothing on lid close)
+exec pgrep -f "handle-lid-switch" || systemd-inhibit --what=handle-lid-switch --who="Sway" --why="Do nothing on lid close" sleep infinity
+
 # output HDMI-A-1 resolution 1920x1080 position 1920,0
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \

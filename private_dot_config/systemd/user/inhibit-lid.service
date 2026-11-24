@@ -1,0 +1,12 @@
+[Unit]
+Description=Disable Suspend on Laptop Lid Close
+PartOf=graphical-session.target default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/systemd-inhibit --what=handle-lid-switch --who="User Session" --why="Do nothing on lid close" /usr/bin/sleep infinity
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

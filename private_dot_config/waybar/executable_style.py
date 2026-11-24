@@ -357,6 +357,7 @@ window#waybar.hidden {{
   font-weight: 500;
 }}
 
+#custom-power,
 #custom-fan {{
   margin: 10px 0;
   padding: 4px 7px;

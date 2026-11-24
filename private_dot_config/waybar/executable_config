@@ -20,7 +20,7 @@
         "pulseaudio",
         "custom/brightness",
         "backlight",
-        "custom/fan",
+        "custom/power",
         "custom/powerbank",
         "power-profiles-daemon",
         "battery",
@@ -161,12 +161,13 @@
         "on-click-right": "pamixer -t",
         "scroll-step": 1
     },
-  "custom/fan": {
-        "exec": "sensors | awk '/curr1:/ { if ($2+0 > 0.05 && $2+0 < 500) { val=$2 \" \" $3 } } END { if (val) print val }'",
+    "custom/power": {
+        "exec": "python3 /home/tdynamos/.config/waybar/scripts/power.py",
         "format": "{}",
-        "interval": 1, 
+        "return-type": "json",
+        "interval": 2,
         "hide-empty-text": true
-      },
+    },
     "custom/powerbank": {
         "exec": "python3 /home/tdynamos/.config/waybar/scripts/powerbank.py",
         "return-type": "json",

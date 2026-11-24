@@ -320,7 +320,7 @@ window#waybar.hidden {{
 
 /* Only battery changes color to green when charging, otherwise default on_surface color */
 #battery {{
-  margin: 10px 10px 10px 0;
+  margin: 10px 14px 10px 0;
   padding: 4px 12px;
   background-color: {pal["surface_container"]};
   color: {pal["on_surface"]};
@@ -381,15 +381,20 @@ window#waybar.hidden {{
 /* Tooltips */
 tooltip {{
   border-radius: 12px;
-  padding: 12px;
+  padding: 6px 10px;
   background-color: {pal["surface_container_high"]};
   border: 1px solid {pal["outline_variant"]};
 }}
 
+tooltip decoration {{
+  border-radius: 12px;
+}}
+
 tooltip label {{
-  padding: 4px;
+  padding: 2px 4px;
   background-color: transparent;
   color: {pal["on_surface"]};
+  text-align: center;
 }}
 """
     style_css.write_text(content)

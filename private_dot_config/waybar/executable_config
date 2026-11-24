@@ -225,8 +225,8 @@
         },
         "tooltip": true,
         "tooltip-format": "{timeTo}",
-        "tooltip-format-charging": "Time to charge: {time}",
-        "tooltip-format-discharging": "Time to discharge: {time}",
+        "tooltip-format-charging": "Time to charge:\n<b>{time}</b>",
+        "tooltip-format-discharging": "Time to discharge:\n<b>{time}</b>",
         "tooltip-format-full": "Fully charged"
     },
     "sway/window": {

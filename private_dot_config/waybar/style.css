@@ -308,7 +308,7 @@ window#waybar.hidden {
 
 /* Only battery changes color to green when charging, otherwise default on_surface color */
 #battery {
-  margin: 10px 10px 10px 0;
+  margin: 10px 14px 10px 0;
   padding: 4px 12px;
   background-color: #001D1F;
   color: #C2EDF0;
@@ -369,13 +369,18 @@ window#waybar.hidden {
 /* Tooltips */
 tooltip {
   border-radius: 12px;
-  padding: 12px;
+  padding: 6px 10px;
   background-color: #002426;
   border: 1px solid #254E51;
 }
 
+tooltip decoration {
+  border-radius: 12px;
+}
+
 tooltip label {
-  padding: 4px;
+  padding: 2px 4px;
   background-color: transparent;
   color: #C2EDF0;
+  text-align: center;
 }

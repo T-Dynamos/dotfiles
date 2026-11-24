@@ -49,7 +49,7 @@ window#waybar.hidden {{
   border: 1px solid {pal["outline_variant"]};
   border-radius: 18px;
   margin: 10px 4px 10px 10px;
-  padding: 4px 6px;
+  padding: 4px 7px;
 }}
 
 #hardware * {{
@@ -62,18 +62,18 @@ window#waybar.hidden {{
 }}
 
 #hardware #cpu {{
-  padding-left: 6px;
-  padding-right: 7px;
+  padding-left: 7px;
+  padding-right: 8px;
 }}
 
 #hardware #temperature {{
-  padding-left: 6px;
-  padding-right: 4px;
+  padding-left: 7px;
+  padding-right: 5px;
 }}
 
 #hardware #memory {{
-  padding-left: 7px;
-  padding-right: 6px;
+  padding-left: 8px;
+  padding-right: 7px;
 }}
 
 /* ==========================================================
@@ -87,7 +87,7 @@ window#waybar.hidden {{
 #workspaces button {{
   all: initial;
   min-width: 0;
-  padding: 4px 14px;
+  padding: 4px 15px;
   margin: 2px 3px;
   border-radius: 16px;
   background-color: {pal["surface_container"]};
@@ -129,7 +129,7 @@ window#waybar.hidden {{
    ========================================================== */
 #clock {{
   margin: 10px 4px;
-  padding: 4px 14px;
+  padding: 4px 15px;
   color: {pal["on_surface"]};
   border-radius: 18px;
   background-color: {pal["surface_container_high"]};
@@ -224,7 +224,7 @@ window#waybar.hidden {{
   border: 1px solid {pal["outline_variant"]};
   border-radius: 18px;
   margin: 10px 10px 10px 4px;
-  padding: 4px 6px;
+  padding: 4px 7px;
 }}
 
 #quicklinks * {{
@@ -237,28 +237,28 @@ window#waybar.hidden {{
 }}
 
 #quicklinks #network.name {{
-  padding-left: 6px;
+  padding-left: 7px;
   padding-right: 4px;
 }}
 
 #quicklinks #network:not(.name) {{
-  padding-left: 4px;
-  padding-right: 7px;
+  padding-left: 5px;
+  padding-right: 8px;
 }}
 
 #quicklinks #network.disconnected,
 #quicklinks #network.ethernet {{
-  padding-left: 6px;
-  padding-right: 7px;
+  padding-left: 7px;
+  padding-right: 8px;
 }}
 
 #quicklinks #pulseaudio {{
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
 }}
 
 #quicklinks #custom-brightness {{
-  padding: 0 5px;
+  padding: 0 6px;
 }}
 
 #quicklinks #custom-brightness.empty {{
@@ -267,19 +267,19 @@ window#waybar.hidden {{
 }}
 
 #quicklinks #backlight {{
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
 }}
 
 #quicklinks #custom-power-profile {{
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
   font-weight: 500;
 }}
 
 #quicklinks #battery {{
-  padding-left: 7px;
-  padding-right: 6px;
+  padding-left: 8px;
+  padding-right: 7px;
 }}
 
 #quicklinks #custom-power-profile.performance {{

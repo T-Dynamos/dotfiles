@@ -281,6 +281,7 @@ window#waybar.hidden {{
   font-weight: 500;
 }}
 
+#custom-battery-time,
 #custom-power,
 #custom-fan {{
   margin: 10px 0;
@@ -343,6 +344,7 @@ window#waybar.hidden {{
 
 #battery.charging,
 #battery.plugged,
+#custom-battery-time.charging,
 #custom-powerbank.charging {{
   background-color: {pal["surface_container"]};
   color: {pal["green"]};
@@ -358,6 +360,7 @@ window#waybar.hidden {{
 }}
 
 /* Status States for Connected Modules */
+#custom-battery-time.charging,
 #custom-powerbank.charging {{
   color: {pal["green"]};
 }}

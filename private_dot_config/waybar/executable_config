@@ -20,15 +20,18 @@
         "pulseaudio",
         "custom/brightness",
         "backlight",
+        "custom/battery-time",
         "power-profiles-daemon",
         "battery",
         "tray"
     ],
     "cpu":{
+      "interval": 1,
       "format":"{icon} {usage}%",
       "format-icons":["󰾆","󰾅","󰓅"]
     },
     "temperature": {
+      "interval": 1,
       "hwmon-path": ["/sys/class/hwmon/hwmon3/temp1_input"],
       "format": "{temperatureC}°C "
     },
@@ -142,7 +145,7 @@
 	"tooltip-format-disconnected": "Disconnected",
 	"on-click": "networkmanager_dmenu",
 	"on-click-right": "networkmanager_dmenu",
-	"interval": 5,
+	"interval": 1,
 	"nospacing": 1
     },
     "pulseaudio": {
@@ -160,12 +163,13 @@
         "on-click-right": "pamixer -t",
         "scroll-step": 1
     },
-    "custom/power": {
-        "exec": "python3 /home/tdynamos/.config/waybar/scripts/power.py",
+    "custom/battery-time": {
+        "exec": "python3 /home/tdynamos/.config/waybar/scripts/battery-time.py",
         "format": "{}",
         "return-type": "json",
-        "interval": 2,
-        "hide-empty-text": true
+        "interval": 1,
+        "hide-empty-text": true,
+        "tooltip": false
     },
     "custom/powerbank": {
         "exec": "python3 /home/tdynamos/.config/waybar/scripts/powerbank.py",
@@ -216,10 +220,8 @@
             ]
         },
         "format-full": "{capacity}% 󰂅",
-        "format-charging": "{capacity}% {time} {icon}",
-        "format-discharging": "{capacity}% {time} {icon}",
         "format-time": "{H}h {m}m",
-        "interval": 5,
+        "interval": 1,
         "states": {
             "good": 80,
             "warning": 30,
@@ -242,7 +244,7 @@
     "custom/brightness": {
         "format": "{}% {icon}",
         "format-icons":["󰃝","󰃞","󰃟","󰃠"],
-        "interval": 5,
+        "interval": 1,
         "signal": 9,
         "exec": "~/.config/waybar/scripts/brightness.sh get",
         "hide-empty-text": true,

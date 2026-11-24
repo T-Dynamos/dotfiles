@@ -2,10 +2,7 @@
     "layer": "top",
     "position": "top",
     "modules-left": [
-        "cpu",
-        "temperature",
-        "memory",
-        "custom/spacing-left",
+        "group/hardware",
         "sway/workspaces"
     ],
     "modules-center": [
@@ -15,17 +12,30 @@
         "clock"
     ],
     "modules-right": [
-        "custom/spacing-right",
-        "network#name",
-        "network",
-        "pulseaudio",
-        "custom/brightness",
-        "backlight",
-        "custom/battery-time",
-        "power-profiles-daemon",
-        "battery",
+        "group/quicklinks",
         "tray"
     ],
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "temperature",
+            "memory"
+        ]
+    },
+    "group/quicklinks": {
+        "orientation": "horizontal",
+        "modules": [
+            "network#name",
+            "network",
+            "pulseaudio",
+            "custom/brightness",
+            "backlight",
+            "custom/battery-time",
+            "power-profiles-daemon",
+            "battery"
+        ]
+    },
     "cpu":{
       "interval": 1,
       "format":"{usage}% {icon}",

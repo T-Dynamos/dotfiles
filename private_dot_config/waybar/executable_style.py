@@ -117,53 +117,39 @@ window#waybar.hidden {{
 }}
 
 /* ==========================================================
-   LEFT MODULE CLUSTER (Connected Material 3 Pill)
-   cpu -> temperature -> memory -> custom-spacing-left
+   LEFT MODULE CLUSTER (Clean Material 3 Container)
+   group/hardware: cpu -> temperature -> memory
    ========================================================== */
-#cpu {{
-  margin: 10px 0 10px 10px;
-  padding: 4px 10px;
+#hardware {{
   background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-radius: 20px 0 0 20px;
   border: 1px solid {pal["outline_variant"]};
-  border-right: none;
-  font-weight: 500;
-}}
-
-#temperature {{
-  margin: 10px 0;
-  padding: 4px 10px;
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-top: 1px solid {pal["outline_variant"]};
-  border-bottom: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  border-right: none;
-  font-weight: 500;
-}}
-
-#memory {{
-  margin: 10px 0;
-  padding: 4px 10px;
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-top: 1px solid {pal["outline_variant"]};
-  border-bottom: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  border-right: none;
-  font-weight: 500;
-}}
-
-#custom-spacing-left {{
-  margin: 10px 10px 10px 0;
+  border-radius: 18px;
+  margin: 10px 4px 10px 10px;
   padding: 4px 6px;
-  background-color: {pal["surface_container"]};
-  color: {pal["outline"]};
-  border-radius: 0 20px 20px 0;
-  border: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  font-size: 14px;
+}}
+
+#hardware * {{
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0 7px;
+  color: {pal["on_surface"]};
+  font-weight: 500;
+}}
+
+#hardware #cpu {{
+  padding-left: 6px;
+  padding-right: 7px;
+}}
+
+#hardware #temperature {{
+  padding-left: 7px;
+  padding-right: 7px;
+}}
+
+#hardware #memory {{
+  padding-left: 7px;
+  padding-right: 6px;
 }}
 
 /* ==========================================================
@@ -304,143 +290,71 @@ window#waybar.hidden {{
 }}
 
 /* ==========================================================
-   RIGHT MODULE CLUSTER (Connected Material 3 Ribbon)
-   custom-spacing-right -> network -> pulseaudio
-   -> custom-brightness -> backlight -> custom-fan
-   -> custom-powerbank -> battery
+   RIGHT MODULE CLUSTER (Clean Material 3 Container)
+   group/quicklinks: network#name -> network -> pulseaudio
+   -> custom-brightness -> backlight -> custom-battery-time
+   -> power-profiles-daemon -> battery
    ========================================================== */
-#custom-spacing-right {{
-  margin: 10px 0 10px 10px;
-  padding: 4px 6px;
+#quicklinks {{
   background-color: {pal["surface_container"]};
-  color: {pal["outline"]};
-  border-radius: 20px 0 0 20px;
   border: 1px solid {pal["outline_variant"]};
-  border-right: none;
-  font-size: 14px;
+  border-radius: 18px;
+  margin: 10px 10px 10px 4px;
+  padding: 4px 6px;
 }}
 
-#network,
-#network.name {{
-  margin: 10px 0;
-  padding: 4px 3px;
-  background-color: {pal["surface_container"]};
+#quicklinks * {{
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0 7px;
   color: {pal["on_surface"]};
-  border-top: 1px solid {pal["outline_variant"]};
-  border-bottom: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  border-right: none;
   font-weight: 500;
 }}
 
-#network.name {{
-  padding-left: 7px;
+#quicklinks #network.name {{
+  padding-left: 6px;
   padding-right: 2px;
 }}
 
-#network {{
+#quicklinks #network {{
   padding-left: 2px;
   padding-right: 7px;
 }}
 
-#network.disconnected {{
-  padding-left: 7px;
+#quicklinks #network.disconnected,
+#quicklinks #network.ethernet {{
+  padding-left: 6px;
   padding-right: 7px;
 }}
 
-#pulseaudio {{
-  margin: 10px 0;
-  padding: 4px 7px;
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-top: 1px solid {pal["outline_variant"]};
-  border-bottom: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  border-right: none;
-  font-weight: 500;
-}}
-
-#custom-brightness,
-#backlight {{
-  margin: 10px 0;
-  padding: 4px 7px;
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-top: 1px solid {pal["outline_variant"]};
-  border-bottom: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  border-right: none;
-  font-weight: 500;
-}}
-
-#custom-battery-time,
-#custom-power,
-#custom-fan {{
-  margin: 10px 0;
-  padding: 4px 7px;
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-top: 1px solid {pal["outline_variant"]};
-  border-bottom: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  border-right: none;
-  font-weight: 500;
-}}
-
-#custom-powerbank {{
-  margin: 10px 0;
-  padding: 4px 7px;
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-top: 1px solid {pal["outline_variant"]};
-  border-bottom: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  border-right: none;
-  font-weight: 500;
-}}
-
-#power-profiles-daemon {{
-  margin: 10px 0;
-  padding: 4px 9px;
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-top: 1px solid {pal["outline_variant"]};
-  border-bottom: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  border-right: none;
-  font-weight: 500;
+#quicklinks #power-profiles-daemon {{
+  padding: 0 5px;
   font-size: 14px;
 }}
 
-/* Only battery changes color to green when charging, otherwise default on_surface color */
-#battery {{
-  margin: 10px 14px 10px 0;
-  padding: 4px 12px;
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  border-radius: 0 20px 20px 0;
-  border: 1px solid {pal["outline_variant"]};
-  border-left: none;
-  font-weight: 500;
+#quicklinks #battery {{
+  padding-left: 7px;
+  padding-right: 6px;
 }}
 
-#battery.good,
-#battery.warning,
-#battery.critical,
-#battery.critical:not(.charging),
-#battery.urgent {{
-  background-color: {pal["surface_container"]};
-  color: {pal["on_surface"]};
-  animation: none;
+#quicklinks #power-profiles-daemon.performance {{
+  color: {pal["peach"]};
 }}
 
-#battery.charging,
-#battery.plugged,
-#custom-battery-time.charging,
-#custom-powerbank.charging {{
-  background-color: {pal["surface_container"]};
+#quicklinks #power-profiles-daemon.balanced {{
+  color: {pal["teal"]};
+}}
+
+#quicklinks #power-profiles-daemon.power-saver {{
   color: {pal["green"]};
-  animation: none;
+}}
+
+#quicklinks #battery.charging,
+#quicklinks #battery.plugged,
+#quicklinks #custom-battery-time.charging,
+#quicklinks #custom-powerbank.charging {{
+  color: {pal["green"]};
 }}
 
 #tray {{

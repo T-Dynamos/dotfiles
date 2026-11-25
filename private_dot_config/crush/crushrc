@@ -9,16 +9,24 @@ provider add ollama \
   --base-url "http://localhost:11434/v1/" \
   --discover-models true
 
-# Register Qwen 3.6 35B-A3B explicitly (64K context to stay comfortably within 32 GB RAM)
+# Register Qwen 3.6 35B-A3B explicitly (32K context to match OLLAMA_CONTEXT_LENGTH=32768)
 model add ollama/qwen3.6:35b \
   --name "Qwen 3.6 35B-A3B" \
-  --context-window 65536 \
+  --context-window 32768 \
   --default-max-tokens 16384 \
   --thinking toggleable \
   --supports-images true
 
+# Register Qwen 3.5 9B (fits 100% on Radeon 780M Vulkan GPU, fast + vision + thinking)
+model add ollama/qwen3.5:9b \
+  --name "Qwen 3.5 9B" \
+  --context-window 32768 \
+  --default-max-tokens 8192 \
+  --thinking toggleable \
+  --supports-images true
+
 model large ollama/qwen3.6:35b --think
-model small ollama/qwen3.6:35b
+model small ollama/qwen3.5:9b
 
 # Give local Ollama prefill enough breathing room (default is 60s)
 option request-timeout 300

@@ -149,6 +149,82 @@ change-wallpaper --watch
 
 ---
 
+## Local AI Coding Stack (`Ollama` + `Crush`)
+
+Local LLM coding setup powered by **`ollama-vulkan`** (AMD Radeon 780M RADV Vulkan) and [**Charmbracelet Crush**](https://github.com/charmbracelet/crush).
+
+### Configured Files
+* **Crush Config:** `~/.config/crush/crushrc` (`private_dot_config/crush/crushrc`)
+  * Connects to `http://localhost:11434/v1/` with `--discover-models true`.
+  * Currently configures `ollama/qwen3.6:35b` (`131072` / `128K` context, `--thinking toggleable`, `--supports-images true`, `--think` enabled on `model large`).
+  * Grants full built-in tool auto-approval (`permissions allow ...`) and unblocks default bash restrictions (`permissions unblock ...`).
+* **Ollama Environment:** `~/.config/fish/conf.d/ollama.fish` & `~/.config/environment.d/20-ollama.conf`
+  * `OLLAMA_IGPU_ENABLE=1` — prevents Ollama from dropping integrated GPUs (`Radeon 780M`).
+  * `OLLAMA_FLASH_ATTENTION=1` & `OLLAMA_KV_CACHE_TYPE=q8_0` — halves KV-cache RAM usage.
+  * `OLLAMA_CONTEXT_LENGTH=131072` — sets server context length to `128K` (must stay aligned with `crushrc`).
+
+### Changing Models
+1. Pull or remove models in Ollama:
+   ```bash
+   ollama pull qwen3.5:9b      # example: fast 100%-GPU model
+   ollama rm qwen3.6:35b       # remove unused model files
+   ollama list
+   ```
+2. Update `model add`, `model large`, and `model small` in `~/.local/share/chezmoi/private_dot_config/crush/crushrc`:
+   ```bash
+   model add ollama/<model-tag> \
+     --name "Display Name" \
+     --context-window 131072 \
+     --default-max-tokens 16384 \
+     --thinking toggleable \
+     --supports-images true
+
+   model large ollama/<model-tag> --think
+   model small ollama/<model-tag>
+   ```
+3. Apply & clear cached discovery list if you removed models:
+   ```bash
+   chezmoi apply ~/.config/crush/crushrc
+   rm -f ~/.local/share/crush/discovered_models/ollama.json
+   ```
+
+### Changing the Context Window
+Always keep **both** Ollama (`OLLAMA_CONTEXT_LENGTH`) and Crush (`--context-window`) at the same value so Crush auto-compacts (~80% full) before Ollama truncates early turns:
+1. Edit `OLLAMA_CONTEXT_LENGTH` in:
+   * `~/.local/share/chezmoi/private_dot_config/private_fish/conf.d/ollama.fish`
+   * `~/.local/share/chezmoi/private_dot_config/environment.d/20-ollama.conf`
+2. Edit `--context-window` to match in `~/.local/share/chezmoi/private_dot_config/crush/crushrc`.
+3. Apply and restart `ollama serve` (open a fresh Fish shell so new env vars are loaded):
+   ```bash
+   chezmoi apply ~/.config/crush/crushrc ~/.config/fish/conf.d/ollama.fish ~/.config/environment.d/20-ollama.conf
+   systemctl --user set-environment OLLAMA_CONTEXT_LENGTH=131072   # match new value
+   pkill ollama; ollama serve
+   ```
+   *(Verify with `ollama ps` while a model is loaded that `CONTEXT` and `PROCESSOR` match expectations.)*
+
+### Useful Crush Commands & Shortcuts
+* **Run Crush:** `crush` *(or `crush -yy` for sysadmin mode across future MCP tools too)*
+* **Switch model:** `Ctrl+M` inside TUI
+* **Toggle thinking:** `Ctrl+P` → `Enable/Disable Thinking Mode`
+* **Expand/collapse thinking blocks:** Click the thinking header, or press `Tab` (focus chat) → `Space`
+* **Delete all sessions in current project:**
+  ```bash
+  crush session list --json | jq -r '.[].id' | xargs -r -n1 crush session delete
+  # or wipe the project's local Crush state completely:
+  rm -rf .crush
+  ```
+
+### Syncing Changes to Chezmoi & GitHub
+After editing any file under `~/.local/share/chezmoi/`:
+```bash
+chezmoi apply
+git -C ~/.local/share/chezmoi add -A
+git -C ~/.local/share/chezmoi commit -m "chore: update crush/ollama config"
+git -C ~/.local/share/chezmoi push origin master
+```
+
+---
+
 ## Tracked Configurations
 
 ```
@@ -195,6 +271,14 @@ change-wallpaper --watch
 │       └── material-you     # Generated 8-stop Material You spectral theme
 ├── chromium-flags.conf      # Wayland & theme launch flags
 ├── chromium-material-theme/ # Dynamic Material You extension
+├── crush/
+│   └── crushrc              # Crush AI agent config (Ollama + full permissions)
+├── environment.d/
+│   ├── 10-wayland.conf      # Native Wayland toolkit environment variables
+│   └── 20-ollama.conf       # Ollama Vulkan iGPU + 128K context environment
+├── fish/
+│   └── conf.d/
+│       └── ollama.fish      # Fish exports for Ollama Vulkan & context
 ├── pip/
 │   └── pip.conf             # Global Python package settings
 └── wallpaper                # Active wallpaper image

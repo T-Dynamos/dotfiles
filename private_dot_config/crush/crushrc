@@ -25,6 +25,14 @@ model add ollama/qwen3.5:9b \
   --thinking toggleable \
   --supports-images true
 
+# Register Qwen 2.5 Coder 7B (100% GPU, fast non-thinking coding model)
+model add ollama/qwen2.5-coder:7b \
+  --name "Qwen 2.5 Coder 7B" \
+  --context-window 32768 \
+  --default-max-tokens 8192 \
+  --thinking never \
+  --supports-images false
+
 model large ollama/qwen3.6:35b --think
 model small ollama/qwen3.5:9b
 

@@ -9,10 +9,10 @@ provider add ollama \
   --base-url "http://localhost:11434/v1/" \
   --discover-models true
 
-# Register Qwen 3.6 35B-A3B explicitly (64K context matching OLLAMA_CONTEXT_LENGTH=65536)
+# Register Qwen 3.6 35B-A3B explicitly (128K context matching OLLAMA_CONTEXT_LENGTH=131072)
 model add ollama/qwen3.6:35b \
   --name "Qwen 3.6 35B-A3B" \
-  --context-window 65536 \
+  --context-window 131072 \
   --default-max-tokens 16384 \
   --thinking toggleable \
   --supports-images true

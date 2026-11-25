@@ -100,6 +100,8 @@ yay -S woomer-sway   # Screen magnifier bound to Super + Shift + x
 chezmoi init --apply T-Dynamos
 ```
 
+Applying with Chezmoi automatically runs `run_onchange_before_install-packages.sh` to install any missing Arch packages (including `sway`, `waybar`, `kitty`, `fish`, `ollama-vulkan`, `go`, etc.), `materialyoucolor`, and `charmbracelet/crush`.
+
 ---
 
 ## Wallpaper & Theme Manager (`change-wallpaper`)

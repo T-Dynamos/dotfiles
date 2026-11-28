@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# mason.lua hash: {{ include "private_dot_config/nvim/lua/plugins/mason.lua" | sha256sum }}
+if command -v nvim >/dev/null 2>&1; then
+    nvim --headless "+Lazy! sync" "+MasonToolsInstallSync" +qa || true
+fi
